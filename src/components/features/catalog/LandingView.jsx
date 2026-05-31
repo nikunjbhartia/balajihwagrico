@@ -289,8 +289,51 @@ function InfiniteProductMarquee({ panels, onPick }) {
       }
     };
 
+    let isDragging = false;
+    let startX = 0;
+    let startOffset = 0;
+
+    const handleTouchStart = (e) => {
+      if (e.touches.length > 0) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startOffset = offsetRef.current;
+      }
+    };
+
+    const handleTouchMove = (e) => {
+      if (!isDragging || e.touches.length === 0) return;
+      const currentX = e.touches[0].clientX;
+      const dx = currentX - startX;
+
+      // Prevent page vertical scroll when swiping horizontal marquee
+      if (Math.abs(dx) > 8) {
+        if (e.cancelable) e.preventDefault();
+      }
+
+      const w = widthRef.current;
+      if (w > 0) {
+        offsetRef.current = startOffset + dx;
+        if (offsetRef.current <= -w) offsetRef.current += w;
+        if (offsetRef.current > 0)   offsetRef.current -= w;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      isDragging = false;
+    };
+
     el.addEventListener('wheel', handleWheel, { passive: false });
-    return () => el.removeEventListener('wheel', handleWheel);
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchmove', handleTouchMove, { passive: false });
+    el.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener('wheel', handleWheel);
+      el.removeEventListener('touchstart', handleTouchStart);
+      el.removeEventListener('touchmove', handleTouchMove);
+      el.removeEventListener('touchend', handleTouchEnd);
+    };
   }, []);
 
   const looped = useMemo(() => [...panels, ...panels], [panels]);
@@ -550,8 +593,24 @@ export function InteractiveMesh() {
       mouse.targetY = -1000;
     };
 
+    const handleTouchMove = (e) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.targetX = e.touches[0].clientX - rect.left;
+        mouse.targetY = e.touches[0].clientY - rect.top;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      mouse.targetX = -1000;
+      mouse.targetY = -1000;
+    };
+
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchstart', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
     window.addEventListener('resize', initGrid, { passive: true });
 
     // Pre-built constants to avoid per-frame allocation
@@ -839,6 +898,9 @@ export function InteractiveMesh() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchstart', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('resize', initGrid);
     };
   }, []);
@@ -1159,7 +1221,7 @@ export default function LandingView({
             💼 Open Inquiry Basket
           </button>
           <a 
-            href="https://www.indiamart.com/balajihardwareagrico/" 
+            href="https://www.indiamart.com/balajihardwareagrico/our-products.html" 
             target="_blank" 
             rel="noopener noreferrer"
             style={{
@@ -1205,27 +1267,27 @@ export default function LandingView({
             zIndex: 5
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left' }}>
-            <span style={{ fontSize: 20, color: 'var(--accent)' }}>🏆</span>
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, textAlign: 'left' }}>
+            <span style={{ fontSize: 20, color: 'var(--accent)', paddingTop: 2, display: 'inline-block', lineHeight: 1 }}>🏆</span>
             <div>
               <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>30+ Years Legacy</h4>
-              <p style={{ margin: '2px 0 0 0', fontSize: 11, color: 'var(--text-mute)' }}>Manufacturing &amp; distribution excellence.</p>
+              <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>Manufacturing &amp; distribution excellence.</p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 20 }} className="bento-divider">
-            <span style={{ fontSize: 20, color: 'var(--accent)' }}>🚛</span>
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 24 }} className="bento-divider">
+            <span style={{ fontSize: 20, color: 'var(--accent)', paddingTop: 2, display: 'inline-block', lineHeight: 1 }}>🚛</span>
             <div>
               <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Pan-India Logistics</h4>
-              <p style={{ margin: '2px 0 0 0', fontSize: 11, color: 'var(--text-mute)' }}>Timely delivery &amp; reliable supply network.</p>
+              <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>Timely delivery &amp; reliable supply network.</p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 20 }} className="bento-divider">
-            <span style={{ fontSize: 20, color: 'var(--accent)' }}>🛡️</span>
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 24 }} className="bento-divider">
+            <span style={{ fontSize: 20, color: 'var(--accent)', paddingTop: 2, display: 'inline-block', lineHeight: 1 }}>🛡️</span>
             <div>
               <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Verified B2B Compliance</h4>
-              <p style={{ margin: '2px 0 0 0', fontSize: 11, color: 'var(--text-mute)' }}>GST Compliant Enterprise &amp; MSME credentials.</p>
+              <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>GST Compliant Enterprise &amp; MSME credentials.</p>
             </div>
           </div>
         </div>
@@ -1611,7 +1673,7 @@ export default function LandingView({
             MSME Registered · GSTIN 19AAAAA0000A1Z5 · ISO 9001:2015
           </span>
           <span className="wordmark-sub" style={{ marginTop: 6 }}>
-            Verified TrustSEAL Seller on <a href="https://www.indiamart.com/balajihardwareagrico/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', fontWeight: 700 }}>IndiaMART</a>
+            Verified TrustSEAL Seller on <a href="https://www.indiamart.com/balajihardwareagrico/our-products.html" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', fontWeight: 700 }}>IndiaMART</a>
           </span>
           <span className="copyright">
             © {new Date().getFullYear()} Balaji Hardware &amp; Agrico. All rights reserved.

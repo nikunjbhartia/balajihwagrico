@@ -112,7 +112,38 @@ const RfqDrawer = ({
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      if (!formReady || submitting) return;
+      if (submitting) return;
+      setTouched(true);
+
+      if (!formReady) {
+        if (!gstinValid) {
+          alert("Please enter a valid 15-character corporate GSTIN.");
+          firstFieldRef.current?.focus();
+          return;
+        }
+        if (companyName.trim().length < 2) {
+          alert("Please enter a valid company name.");
+          return;
+        }
+        if (contactName.trim().length < 2) {
+          alert("Please enter your contact name.");
+          return;
+        }
+        if (!/^[6-9]\d{9}$/.test(contactPhone)) {
+          alert("Please enter a valid 10-digit contact phone number.");
+          return;
+        }
+        if (!/^\d{6}$/.test(deliveryPincode)) {
+          alert("Please enter a valid 6-digit delivery pincode.");
+          return;
+        }
+        if (inquiry.length === 0) {
+          alert("Your inquiry basket is empty!");
+          return;
+        }
+        return;
+      }
+
       setSubmitting(true);
 
       const payload = {
@@ -189,13 +220,45 @@ const RfqDrawer = ({
       onGSTINSubmit,
       onClearInquiry,
       onClose,
+      gstinValid,
     ]
   );
 
   const handleWhatsAppSubmit = useCallback(
-    async (e) => {
+    (e) => {
       if (e) e.preventDefault();
-      if (!formReady || submitting) return;
+      if (submitting) return;
+      setTouched(true);
+
+      if (!formReady) {
+        if (!gstinValid) {
+          alert("Please enter a valid 15-character corporate GSTIN.");
+          firstFieldRef.current?.focus();
+          return;
+        }
+        if (companyName.trim().length < 2) {
+          alert("Please enter a valid company name.");
+          return;
+        }
+        if (contactName.trim().length < 2) {
+          alert("Please enter your contact name.");
+          return;
+        }
+        if (!/^[6-9]\d{9}$/.test(contactPhone)) {
+          alert("Please enter a valid 10-digit contact phone number.");
+          return;
+        }
+        if (!/^\d{6}$/.test(deliveryPincode)) {
+          alert("Please enter a valid 6-digit delivery pincode.");
+          return;
+        }
+        if (inquiry.length === 0) {
+          alert("Your inquiry basket is empty!");
+          return;
+        }
+        return;
+      }
+
       setSubmitting(true);
 
       const payload = {
@@ -209,24 +272,7 @@ const RfqDrawer = ({
         totals,
       };
 
-      // 1. Submit to Google Sheets in the background (non-blocking)
-      try {
-        const endpoint = import.meta.env.VITE_GOOGLE_SHEETS_URL;
-        if (endpoint && !endpoint.includes("placeholder")) {
-          await fetch(endpoint, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-              'Content-Type': 'text/plain',
-            },
-            body: JSON.stringify(payload),
-          });
-        }
-      } catch (error) {
-        console.error("Background Sheets Save Error:", error);
-      }
-
-      // 2. Construct formatted WhatsApp B2B inquiry message
+      // 1. Construct formatted WhatsApp B2B inquiry message
       const number = "918100448052";
       
       let itemLines = "";
@@ -251,8 +297,22 @@ const RfqDrawer = ({
       const encodedText = encodeURIComponent(text);
       const waUrl = `https://api.whatsapp.com/send?phone=${number}&text=${encodedText}`;
 
-      // Redirect to WhatsApp Web / App in a new tab
+      // IMPORTANT: Open WhatsApp synchronously inside direct click gesture context!
+      // This bypasses modern browser popup blockers completely.
       window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      // 2. Submit to Google Sheets in background (non-blocking async task)
+      const endpoint = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      if (endpoint && !endpoint.includes("placeholder")) {
+        fetch(endpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain',
+          },
+          body: JSON.stringify(payload),
+        }).catch((err) => console.error("Background Sheets Save Error:", err));
+      }
 
       // Show success view
       setSubmitting(false);
@@ -287,6 +347,7 @@ const RfqDrawer = ({
       totals,
       onClearInquiry,
       onClose,
+      gstinValid,
     ]
   );
 
@@ -568,7 +629,7 @@ const RfqDrawer = ({
                   <button
                     type="submit"
                     className="bh-btn bh-btn-primary"
-                    disabled={!formReady || submitting}
+                    disabled={submitting}
                     style={{ width: '100%', justifyContent: 'center', height: 48, textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 13, borderRadius: 'var(--radius-md)' }}
                   >
                     {submitting ? 'Verifying…' : 'Submit RFQ Inquiry'}
@@ -576,7 +637,7 @@ const RfqDrawer = ({
                   <button
                     type="button"
                     className="bh-btn"
-                    disabled={!formReady || submitting}
+                    disabled={submitting}
                     onClick={handleWhatsAppSubmit}
                     style={{
                       width: '100%',
