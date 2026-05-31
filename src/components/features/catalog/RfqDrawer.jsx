@@ -228,37 +228,7 @@ const RfqDrawer = ({
     (e) => {
       if (e) e.preventDefault();
       if (submitting) return;
-      setTouched(true);
-
-      if (!formReady) {
-        if (!gstinValid) {
-          alert("Please enter a valid 15-character corporate GSTIN.");
-          firstFieldRef.current?.focus();
-          return;
-        }
-        if (companyName.trim().length < 2) {
-          alert("Please enter a valid company name.");
-          return;
-        }
-        if (contactName.trim().length < 2) {
-          alert("Please enter your contact name.");
-          return;
-        }
-        if (!/^[6-9]\d{9}$/.test(contactPhone)) {
-          alert("Please enter a valid 10-digit contact phone number.");
-          return;
-        }
-        if (!/^\d{6}$/.test(deliveryPincode)) {
-          alert("Please enter a valid 6-digit delivery pincode.");
-          return;
-        }
-        if (inquiry.length === 0) {
-          alert("Your inquiry basket is empty!");
-          return;
-        }
-        return;
-      }
-
+      // Zero validation for WhatsApp B2B inquiry - direct frictionless redirect!
       setSubmitting(true);
 
       const payload = {
@@ -383,9 +353,27 @@ const RfqDrawer = ({
             </h2>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <div className="rfq-drawer-count" aria-live="polite" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
-              <span className="rfq-count-num" style={{ fontSize: 16, fontWeight: 900 }}>{totals.lineCount}</span>
-              <span className="rfq-count-lbl" style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-mute)' }}>
+            <div 
+              className="rfq-drawer-count" 
+              aria-live="polite" 
+              style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                width: 56,
+                height: 56,
+                borderRadius: '50%',
+                background: 'var(--accent-soft)',
+                color: 'var(--accent)',
+                padding: 0,
+                gap: 0,
+                flex: '0 0 56px',
+                boxSizing: 'border-box'
+              }}
+            >
+              <span className="rfq-count-num" style={{ fontSize: 16, fontWeight: 900, lineHeight: 1.1 }}>{totals.lineCount}</span>
+              <span className="rfq-count-lbl" style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.02em', color: 'var(--accent)', fontWeight: 800, lineHeight: 1.1 }}>
                 {totals.lineCount === 1 ? 'item' : 'items'}
               </span>
             </div>

@@ -235,17 +235,6 @@ export default function AssistantDrawer({
         style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
       >
         <header className="rfq-drawer-header">
-          <div className="rfq-drawer-traffic" aria-hidden="true">
-            <button
-              type="button"
-              className="rfq-traffic rfq-traffic--close"
-              onClick={onClose}
-              tabIndex={open ? 0 : -1}
-              aria-label="Close"
-            />
-            <span className="rfq-traffic rfq-traffic--min" />
-            <span className="rfq-traffic rfq-traffic--max" />
-          </div>
           <div className="rfq-drawer-titleblock">
             <p className="rfq-drawer-eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <Sparkles size={11} style={{ color: 'var(--accent)' }} /> Smart AI Assistant
@@ -254,14 +243,38 @@ export default function AssistantDrawer({
               Balaji Sourcing Copilot
             </h2>
           </div>
-          <button
-            type="button"
-            onClick={handleClearChat}
-            style={{ background: 'none', border: 0, padding: 4, cursor: 'pointer', color: 'var(--text-mute)', display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, fontFamily: 'var(--font-mono)', fontWeight: 'bold', textTransform: 'uppercase' }}
-            title="Clear Conversation History"
-          >
-            <Trash2 size={13} /> Clear
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <button
+              type="button"
+              onClick={handleClearChat}
+              style={{ background: 'none', border: 0, padding: 4, cursor: 'pointer', color: 'var(--text-mute)', display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, fontFamily: 'var(--font-mono)', fontWeight: 'bold', textTransform: 'uppercase' }}
+              title="Clear Conversation History"
+            >
+              <Trash2 size={13} /> Clear
+            </button>
+            <button
+              type="button"
+              className="rfq-close-btn"
+              onClick={onClose}
+              tabIndex={open ? 0 : -1}
+              aria-label="Close AI assistant"
+              style={{
+                background: 'var(--surface-2, #F4F4F0)',
+                border: 'none',
+                width: 36,
+                height: 36,
+                borderRadius: '50%',
+                display: 'grid',
+                placeItems: 'center',
+                fontSize: 16,
+                color: 'var(--text-body)',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              ✕
+            </button>
+          </div>
         </header>
 
         {/* Chat Window Area */}

@@ -1267,24 +1267,24 @@ export default function LandingView({
             zIndex: 5
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, textAlign: 'left' }}>
-            <span style={{ fontSize: 20, color: 'var(--accent)', paddingTop: 2, display: 'inline-block', lineHeight: 1 }}>🏆</span>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 8 }}>
+            <span style={{ fontSize: 24, color: 'var(--accent)', lineHeight: 1 }}>🏆</span>
             <div>
               <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>30+ Years Legacy</h4>
               <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>Manufacturing &amp; distribution excellence.</p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 24 }} className="bento-divider">
-            <span style={{ fontSize: 20, color: 'var(--accent)', paddingTop: 2, display: 'inline-block', lineHeight: 1 }}>🚛</span>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 8 }}>
+            <span style={{ fontSize: 24, color: 'var(--accent)', lineHeight: 1 }}>🚛</span>
             <div>
               <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Pan-India Logistics</h4>
               <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>Timely delivery &amp; reliable supply network.</p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 24 }} className="bento-divider">
-            <span style={{ fontSize: 20, color: 'var(--accent)', paddingTop: 2, display: 'inline-block', lineHeight: 1 }}>🛡️</span>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 8 }}>
+            <span style={{ fontSize: 24, color: 'var(--accent)', lineHeight: 1 }}>🛡️</span>
             <div>
               <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Verified B2B Compliance</h4>
               <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>GST Compliant Enterprise &amp; MSME credentials.</p>

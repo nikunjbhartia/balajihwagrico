@@ -685,7 +685,7 @@ export default function ProductView({
                 textTransform: 'uppercase',
                 color: 'var(--text-body, #3F3F46)',
                 listStyle: 'none',
-                margin: 0,
+                margin: '20px 0 10px 0',
                 padding: 0,
               }}
             >
