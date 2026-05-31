@@ -3,14 +3,58 @@ import { Send, Sparkles, ArrowLeft, ShieldCheck, HelpCircle, Plus, Trash2 } from
 import productsData from '../../../data/productsData';
 import { TOKENS as T } from '../../../data/tokens.js';
 
-const generateSystemPrompt = (products, activeView = 'landing', selectedProduct = null, selectedCategory = null) => {
-  const catalogSummary = products.map((p) => {
-    const specs = p.specifications || {};
-    const specSummary = Object.entries(specs)
-      .slice(0, 4)
-      .map(([k, v]) => `${k}: ${v}`)
-      .join(', ');
-    return `- ${p.prodname || p.name} (ID: ${p.id}, Category: ${p.category}, Specs: ${specSummary})`;
+const getFilteredCatalog = (products, query = '', activeView = 'landing', selectedProduct = null, selectedCategory = null) => {
+  let list = [];
+  
+  // 1. If viewing a product, always include it first
+  if (selectedProduct) {
+    list.push(selectedProduct);
+  }
+  
+  // 2. If viewing a category, include its products
+  if (selectedCategory) {
+    const catProds = products.filter(p => p.category_slug === selectedCategory.slug || p.category === selectedCategory.name);
+    list = [...list, ...catProds];
+  }
+  
+  // 3. Keyword match on user query
+  if (query.trim()) {
+    const terms = query.toLowerCase().split(/\s+/).filter(t => t.length > 2);
+    if (terms.length > 0) {
+      const keywordProds = products.filter(p => {
+        const name = (p.prodname || p.name || '').toLowerCase();
+        const cat = (p.category || '').toLowerCase();
+        return terms.some(t => name.includes(t) || cat.includes(t));
+      });
+      list = [...list, ...keywordProds];
+    }
+  }
+  
+  // 4. Pad with flagship featured products to ensure baseline context
+  if (list.length < 12) {
+    const featured = products.slice(0, 12);
+    featured.forEach(p => {
+      if (!list.some(item => String(item.id) === String(p.id))) {
+        list.push(p);
+      }
+    });
+  }
+  
+  // De-duplicate and limit to maximum 15 products
+  const uniqueList = [];
+  list.forEach(p => {
+    if (!uniqueList.some(item => String(item.id) === String(p.id))) {
+      uniqueList.push(p);
+    }
+  });
+  
+  return uniqueList.slice(0, 15);
+};
+
+const generateSystemPrompt = (products, activeView = 'landing', selectedProduct = null, selectedCategory = null, query = '') => {
+  const filteredProducts = getFilteredCatalog(products, query, activeView, selectedProduct, selectedCategory);
+  const catalogSummary = filteredProducts.map((p) => {
+    return `- ${p.prodname || p.name} (ID: ${p.id}, Category: ${p.category}, Price: ${p.specifications?.wholesale_price || 'Request Quote'})`;
   }).join('\n');
 
   let pageContextStr = "";
@@ -132,7 +176,7 @@ export default function AssistantDrawer({
     try {
       if (apiKey && !apiKey.includes('placeholder')) {
         const contextMessages = [
-          { role: 'system', content: generateSystemPrompt(productsData, activeView, selectedProduct, selectedCategory) },
+          { role: 'system', content: generateSystemPrompt(productsData, activeView, selectedProduct, selectedCategory, userText) },
           ...messages.map(m => ({
             role: m.sender === 'ai' ? 'assistant' : 'user',
             content: m.text
@@ -140,41 +184,85 @@ export default function AssistantDrawer({
           { role: 'user', content: userText }
         ];
 
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-          method: 'POST',
-          headers: {
-            "Authorization": `Bearer ${apiKey}`,
-            "HTTP-Referer": "https://balajihwagrico.in",
-            "X-Title": "Balaji Hardware Digital Showroom",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            model: "google/gemini-2.5-flash",
-            messages: contextMessages,
-            temperature: 0.3,
-            max_tokens: 1000
-          })
-        });
+        const models = [
+          "google/gemini-2.5-flash:free",
+          "meta-llama/llama-3-8b-instruct:free",
+          "mistralai/mistral-7b-instruct:free"
+        ];
 
-        const resData = await response.json();
-        if (resData?.error) {
-          console.error("OpenRouter API Error:", resData.error);
-          const errMsg = resData.error.message || "Please check your settings or key limit.";
-          setMessages(prev => [...prev, { 
-            sender: 'ai', 
-            text: `AI Assistant Error: ${errMsg}` 
-          }]);
-          setSending(false);
-          return;
+        let replyText = null;
+        let parseSuggestions = [];
+
+        for (const modelName of models) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+            const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+              method: 'POST',
+              headers: {
+                "Authorization": `Bearer ${apiKey}`,
+                "HTTP-Referer": "https://balajihwagrico.in",
+                "X-Title": "Balaji Hardware Digital Showroom",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                model: modelName,
+                messages: contextMessages,
+                temperature: 0.3,
+                max_tokens: 350
+              }),
+              signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const resData = await response.json();
+            if (resData?.error) {
+              console.warn(`OpenRouter Model ${modelName} failed:`, resData.error);
+              continue;
+            }
+
+            const content = resData?.choices?.[0]?.message?.content;
+            if (content) {
+              replyText = content;
+              parseSuggestions = parseProductSuggestions(content);
+              break;
+            }
+          } catch (err) {
+            console.warn(`OpenRouter Model ${modelName} fetch error:`, err);
+            continue;
+          }
         }
 
-        const replyText = resData?.choices?.[0]?.message?.content || "Apologies, my connection to the sourcing database is experiencing lag. Please try again shortly.";
-        
-        setMessages(prev => [...prev, { 
-          sender: 'ai', 
-          text: replyText,
-          suggestions: parseProductSuggestions(replyText)
-        }]);
+        if (replyText) {
+          setMessages(prev => [...prev, { 
+            sender: 'ai', 
+            text: replyText,
+            suggestions: parseSuggestions
+          }]);
+        } else {
+          // Local fallback if OpenRouter is completely down or key has no quota
+          const lowerText = userText.toLowerCase();
+          let matchedReply = "I can assist you in selecting the right specifications. We offer wire meshes, chain link fences, waterproofing membranes, shade nets, and PVC mortar pans. Could you specify which category you need for your project?";
+          
+          for (const item of MOCK_REPLIES) {
+            if (item.keywords.some(k => lowerText.includes(k))) {
+              matchedReply = item.reply;
+              break;
+            }
+          }
+          
+          setMessages(prev => [...prev, { 
+            sender: 'ai', 
+            text: matchedReply,
+            suggestions: parseProductSuggestions(matchedReply)
+          }]);
+        }
       } else {
         // Dev Mode local fallback simulation
         await new Promise(resolve => setTimeout(resolve, 900));
@@ -197,7 +285,7 @@ export default function AssistantDrawer({
       }
     } catch (err) {
       console.error("AI Assistant Error:", err);
-      setMessages(prev => [...prev, { sender: 'ai', text: "Apologies, a connection error occurred. Please check your network or contact our sales team directly at +91-8100448052." }]);
+      setMessages(prev => [...prev, { sender: 'ai', text: "The sourcing copilot is currently adjusting connection bands. Please try again in a moment or contact our procurement desk directly at +91-8100448052." }]);
     } finally {
       setSending(false);
     }
