@@ -1,0 +1,1462 @@
+/* ============================================================
+   Balaji Hardware & Agrico — Decoupled Visual Stylesheet
+   Tech-Luxury Light · Awwwards SOTY-grade
+
+   RIGID FULL-PAGE SNAP SLIDER (4 ACTS, each = 100vh)
+     ACT 1  .hero-band     (100vh) — Headline + CTA
+     ACT 2  .marquee-act   (100vh) — FULL-SCREEN 3D MARQUEE WALL
+     ACT 3  .bento-act     (100vh) — Search rail + bento grid
+     ACT 4  .faq-act       (100vh) — FAQ + MSME credentials footer
+
+   The scroll container is `.landing-shell`. The browser is
+   FORCED to snap to the top of each .act-snap section — no
+   intermediate half-cropped pages are ever possible.
+
+   PDP (`.pv` / `.route-product`) uses an INDEPENDENT scroll
+   model with `overflow-y: auto; height: auto; scroll-snap-type: none;`
+   so the buy module, specs, and bento cards scroll smoothly.
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   0. DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* ── Brand accent ── */
+  --accent:        hsl(151, 56%, 24%);
+  --accent-teal:   hsl(174, 62%, 28%);
+  --accent-needle: hsl(151, 56%, 24%);
+  --accent-soft:   hsl(146, 28%, 93%);
+  --accent-glow:   hsl(146, 28%, 93%);
+
+  --accent-gradient:
+    linear-gradient(135deg, var(--accent) 0%, var(--accent-teal) 100%);
+  --accent-gradient-soft:
+    linear-gradient(135deg,
+      hsla(151, 56%, 24%, 0.92) 0%,
+      hsla(174, 62%, 28%, 0.92) 100%);
+
+  /* Surfaces */
+  --canvas:        hsl(60, 14%, 97%);
+  --card:          hsl(0,  0%, 100%);
+  --card-inset:    hsl(60, 11%, 94%);
+  --border:        hsl(240, 5%, 91%);
+  --border-soft:   hsl(240, 5%, 95%);
+
+  /* Ink */
+  --text-title:    hsl(240, 6%, 5%);
+  --text-body:     hsl(240, 5%, 26%);
+  --text-mute:     hsl(240, 4%, 46%);
+  --text-faint:    hsl(240, 5%, 84%);
+
+  /* Brass */
+  --brass-gold:    hsl(33, 39%, 54%);
+  --gold-soft:     hsl(33, 39%, 94%);
+
+  /* Hairlines */
+  --hair-emerald:  hsla(151, 56%, 24%, 0.18);
+  --hair-teal:     hsla(174, 62%, 28%, 0.18);
+  --hair-brass:    hsla(33,  39%, 54%, 0.22);
+  --hair-slate:    hsla(240, 6%,  12%, 0.10);
+
+  /* Radius */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px; --r-2xl: 32px;
+
+  /* Shadow-luxe */
+  --shadow-hair: 0 1px 2px rgba(10,10,11,.04);
+  --shadow-luxe: 0 1px 2px rgba(10,10,11,.04), 0 8px 32px -12px rgba(10,10,11,.08);
+  --shadow-lift: 0 30px 60px -12px rgba(10,10,11,.12);
+  --shadow-slab:
+    0 1px 0 rgba(255,255,255,0.92) inset,
+    0 2px 6px rgba(10,10,11,0.06),
+    0 24px 60px -20px rgba(10,10,11,0.28),
+    0 44px 80px -30px rgba(10,10,11,0.22);
+
+  /* RAF-driven custom properties */
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --scroll-y: 0;
+  --scroll-v: 0;
+
+  /* Fonts */
+  --font-display: 'Fraunces', 'Instrument Serif', Georgia, serif;
+  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ============================================================
+   1. BASE
+   ─────────────────────────────────────────────────────────────
+   IMPORTANT: html/body must NOT scroll. The snap scroll container
+   is `.landing-shell`. This is the only way scroll-snap-stop:
+   always reliably forces top-aligned page slides on every browser.
+   ============================================================ */
+
+html, body {
+  background: var(--canvas);
+  color: var(--text-title);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
+}
+
+body { overflow: hidden; }   /* the landing-shell owns the scroll */
+
+#root { height: 100%; }
+
+* { box-sizing: border-box; }
+
+::selection { background: var(--accent-soft); color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ============================================================
+   1A. APP SHELL — quiet aurora backdrop
+   ============================================================ */
+
+.app-shell {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--canvas);
+}
+
+.app-viewport { position: relative; z-index: 1; height: 100%; }
+
+.app-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.app-aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.app-aurora-blob--emerald {
+  top: -15%;
+  left: -15%;
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle, hsla(151, 56%, 24%, 0.08) 0%, transparent 70%);
+}
+
+.app-aurora-blob--brass {
+  bottom: -15%;
+  right: -15%;
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle, hsla(33, 39%, 54%, 0.08) 0%, transparent 70%);
+}
+
+.app-aurora-blob--cobalt {
+  top: 40%;
+  left: 55%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, hsla(60, 14%, 80%, 0.10) 0%, transparent 70%);
+}
+
+/* ============================================================
+   1B. SITE HEADER — DRAMATICALLY PROMINENT BRAND MARK
+   ─────────────────────────────────────────────────────────────
+   The masthead is unapologetically loud: display-serif wordmark
+   paired with a monospaced uppercase sub-mark, sitting on a
+   blurred glass slab so it floats above every act. The brand
+   logo + name MUST be the first thing a visitor sees, with a
+   commanding 22px / 900-weight / 0.05em letter-spacing presence.
+   ============================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px clamp(20px, 3vw, 40px);
+  background: rgba(250, 250, 247, 0.78);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid var(--border-soft);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.65) inset, 0 6px 28px -18px rgba(10,10,11,0.18);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text-title);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  transition: transform .25s ease, color .25s ease;
+}
+.site-brand:hover { transform: translateY(-1px); }
+.site-brand:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  border-radius: 8px;
+}
+
+/* The brand logo glyph — a heavy lozenge with a brass hairline. */
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 12px;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 22px;            /* DRAMATIC: 22px monospaced glyph */
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.35) inset,
+    0 6px 18px -6px hsla(151, 56%, 24%, 0.55),
+    0 0 0 1px var(--hair-brass);
+}
+
+.brand-name {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  font-family: var(--font-display);
+  font-size: 22px;            /* DRAMATIC: 22px display-serif wordmark */
+  font-weight: 900;           /* unapologetically bold */
+  letter-spacing: 0.05em;     /* contract spec */
+  text-transform: uppercase;
+  color: var(--text-title);
+  line-height: 1;
+}
+
+.brand-name-mono {
+  font-family: var(--font-mono);
+  font-size: 22px;            /* DRAMATIC monospaced variant */
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-title);
+  line-height: 1;
+}
+
+.brand-name-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  line-height: 1;
+}
+
+.site-header-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-body);
+}
+
+.site-header-nav a,
+.site-header-nav button {
+  background: none;
+  border: 0;
+  padding: 8px 10px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: color .2s ease;
+}
+.site-header-nav a:hover,
+.site-header-nav button:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .site-header { padding: 14px 18px; }
+  .brand-mark  { width: 40px; height: 40px; flex-basis: 40px; font-size: 20px; }
+  .brand-name,
+  .brand-name-mono { font-size: 20px; letter-spacing: 0.045em; }
+  .brand-name-sub  { font-size: 10px; }
+}
+
+/* ============================================================
+   2. LANDING SHELL — THE SCROLL CONTAINER
+   ─────────────────────────────────────────────────────────────
+   This element OWNS the scroll. Each .act-snap child is exactly
+   100vh tall and snap-stops at its top. The browser CANNOT
+   come to rest at any intermediate position.
+   ============================================================ */
+
+.landing-shell {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  background: var(--canvas);
+  position: relative;
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge legacy */
+}
+.landing-shell::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+/* ── Universal act primitive — applies to all .act-snap sections ── */
+.act-snap {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-shell {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+}
+
+/* On very small viewports, allow soft snap so users can read long
+   FAQ content without being trapped. */
+@media (max-width: 860px) {
+  .landing-shell { scroll-snap-type: y proximity; }
+  .act-snap { scroll-snap-stop: normal; }
+}
+
+/* ============================================================
+   2A. ACT 1 — HERO BAND
+   ============================================================ */
+.hero-band {
+  padding: 32px 32px;
+  text-align: center;
+  align-items: center;
+  gap: 8px;
+  background: var(--canvas);
+}
+
+.hero-band > * {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 8px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-hair);
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '◇';
+  color: var(--accent);
+  font-size: 9px;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--text-title);
+  margin: 20px auto 16px;
+  max-width: 22ch;
+  will-change: transform;
+}
+.hero-headline em {
+  font-style: italic;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.hero-sub {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text-body);
+  max-width: 56ch;
+  margin: 0 auto 24px;
+}
+
+.hero-tollfree {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--text-title);
+  padding: 12px 22px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-hair);
+  text-decoration: none;
+}
+
+/* ============================================================
+   2B. ACT 2 — FULL-SCREEN 3D INTERACTIVE MARQUEE WALL
+   ─────────────────────────────────────────────────────────────
+   100vh snap target. The header is an ABSOLUTE floating overlay
+   pinned to the top-left corner. The marquee viewport occupies
+   the entire stage with massive 72vh × 420px product panels,
+   all wrapped in a CSS perspective so the .marquee-track can be
+   transformed in 3D space (rotateX / rotateY / translate3d)
+   directly from the cursor's normalized coordinates.
+   ============================================================ */
+.marquee-act {
+  /* Stage takes the whole act — no internal grid, the header
+     floats over the wall as an absolute overlay. */
+  justify-content: stretch;
+  display: block;
+  padding: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(70vw 70vw at 18% 12%, hsla(151, 56%, 24%, 0.22) 0%, transparent 60%),
+    radial-gradient(60vw 60vw at 82% 88%, hsla(174, 62%, 28%, 0.18) 0%, transparent 62%),
+    linear-gradient(180deg, hsl(240, 8%, 6%) 0%, hsl(240, 10%, 9%) 100%);
+}
+
+.marquee-act::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 60%, #000 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 60%, #000 0%, transparent 80%);
+  opacity: 0.6;
+}
+
+/* ── Floating overlay header (top-left corner of viewport) ── */
+.marquee-header {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+  z-index: 5;
+  max-width: 460px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  pointer-events: none;            /* never blocks the 3D wall */
+}
+.marquee-header > * { pointer-events: auto; }
+
+.marquee-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.10);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  box-shadow: 0 4px 18px -4px rgba(0,0,0,0.35);
+}
+
+.marquee-headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 3.0vw, 44px);
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  color: #ffffff;
+  margin: 0;
+  max-width: 18ch;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.40),
+    0 6px 24px rgba(0,0,0,0.35);
+}
+
+.marquee-sub {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.86);
+  max-width: 42ch;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+/* ── The 3D viewport — a perspective stage filling the act ── */
+.marquee-viewport {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  cursor: ew-resize;
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+}
+
+.marquee-fade {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 14vw;
+  z-index: 4;
+  pointer-events: none;
+}
+.marquee-fade--left {
+  left: 0;
+  background: linear-gradient(to right, hsl(240, 10%, 7%) 0%, transparent 100%);
+}
+.marquee-fade--right {
+  right: 0;
+  background: linear-gradient(to left, hsl(240, 10%, 7%) 0%, transparent 100%);
+}
+
+/* The track is the WALL — the JS rotateX/rotateY/translate3d
+   transform is composed on top of these base properties. */
+.marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 36px;
+  padding: 0 32px;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transform: translate3d(0, 0, 0);
+  transition: none;
+}
+
+/* ── Massive 72vh × 420px panels — the headline hero specs ── */
+.marquee-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 420px;
+  height: 72vh;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  outline: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.marquee-card-frame {
+  position: relative;
+  width: 100%;
+  height: 84%;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(160deg, hsl(240, 8%, 14%) 0%, hsl(240, 10%, 10%) 100%);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.12) inset,
+    0 4px 12px rgba(0,0,0,0.30),
+    0 40px 90px -22px rgba(0,0,0,0.55),
+    0 80px 140px -40px rgba(0,0,0,0.45);
+  transition: box-shadow .4s ease, transform .5s cubic-bezier(.22,.8,.28,1);
+}
+
+.marquee-card-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .8s cubic-bezier(.22,.8,.28,1);
+}
+.marquee-card:hover .marquee-card-frame img { transform: scale(1.06); }
+
+.marquee-card:hover .marquee-card-frame {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.18) inset,
+    0 6px 16px rgba(0,0,0,0.32),
+    0 60px 120px -28px rgba(0,0,0,0.65),
+    0 100px 180px -50px rgba(0,0,0,0.55);
+}
+
+.marquee-card:focus-visible .marquee-card-frame {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.18) inset,
+    0 40px 90px -22px rgba(0,0,0,0.55),
+    0 0 0 3px var(--accent-soft);
+}
+
+.marquee-card-fallback {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(60% 60% at 30% 30%, hsla(151, 56%, 24%, 0.28) 0%, transparent 70%),
+    linear-gradient(135deg, hsl(240, 8%, 16%) 0%, hsl(240, 12%, 10%) 100%);
+}
+
+.marquee-card-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255,255,255,0.45) 0%,
+      transparent 55%
+    );
+  opacity: 0;
+  transition: opacity .35s ease;
+  mix-blend-mode: screen;
+}
+.marquee-card:hover .marquee-card-shine { opacity: 1; }
+
+.marquee-card-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  padding: 0 6px;
+}
+.marquee-card-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+}
+.marquee-card-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+}
+
+/* ── Floating overlay footnote (bottom-right corner) ── */
+.marquee-footnote {
+  position: absolute;
+  bottom: 28px;
+  right: 32px;
+  z-index: 5;
+  text-align: right;
+  padding: 0;
+  pointer-events: none;
+}
+.marquee-scroll-hint {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  box-shadow: 0 4px 18px -4px rgba(0,0,0,0.35);
+}
+
+@media (max-width: 860px) {
+  .marquee-header {
+    top: 24px;
+    left: 20px;
+    right: 20px;
+    max-width: none;
+    gap: 10px;
+  }
+  .marquee-footnote { bottom: 18px; right: 20px; }
+  .marquee-card {
+    width: clamp(220px, 72vw, 320px);
+    height: 64vh;
+  }
+  .marquee-track { gap: 22px; padding: 0 18px; }
+  .marquee-fade { width: 8vw; }
+}
+
+/* ============================================================
+   2C. ACT 3 — BENTO ACT (search rail TOP, grid BELOW)
+   ─────────────────────────────────────────────────────────────
+   100vh snap target. Content fits inside the viewport via tight
+   vertical rhythm (gap 16-20px) and capped row heights. The
+   grid is built from UNIFORM SQUARE tiles (3×3 mosaic) so each
+   row-span 1 cell renders as a clean square aligned to the
+   bento headline above.
+   ============================================================ */
+.bento-act {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px 28px;
+  gap: 20px;
+  justify-content: flex-start;   /* overrides .act-snap centring */
+  align-items: stretch;
+}
+
+.bento-act-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 4px;
+  flex: 0 0 auto;
+}
+
+.cmd-search {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 4px 4px 4px 20px;
+  box-shadow: var(--shadow-luxe);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.cmd-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft), var(--shadow-luxe);
+  transform: translateY(-1px);
+}
+
+.cmd-search-input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--text-title);
+  padding: 12px 0;
+}
+.cmd-search-input::placeholder { color: var(--text-mute); }
+
+.cmd-search-ai {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-title);
+  background: var(--card-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.cmd-search-ai:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.sector-rail {
+  max-width: 960px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.sector-capsule {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-body);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all .22s cubic-bezier(.25,.8,.25,1);
+}
+.sector-capsule:hover {
+  color: var(--text-title);
+  border-color: var(--text-faint);
+  transform: translateY(-1px);
+}
+.sector-capsule[data-active="true"] {
+  background: var(--text-title);
+  color: var(--canvas);
+  border-color: var(--text-title);
+}
+
+.bento-header {
+  text-align: center;
+  flex: 0 0 auto;
+}
+.bento-heading {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 42px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--text-title);
+  margin: 0 auto 4px;
+  max-width: 22ch;
+  font-weight: 500;
+}
+.bento-heading em {
+  font-style: italic;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.bento-subheading {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-mute);
+  margin: 0 auto;
+  max-width: 56ch;
+}
+
+/* ── UNIFORM SQUARES MOSAIC ──
+   3 equal columns × 3 equal rows. Every tile is a square.
+   `hero` claims a 2×2 super-square top-left; the remaining
+   five 1×1 squares wrap cleanly into the right column and the
+   bottom row. Aspect-ratio: 1/1 on the grid container keeps the
+   whole canvas locked to a square footprint at any viewport,
+   which is what the new bento alignment specification demands. */
+.bento-grid {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  grid-auto-flow: dense;
+  gap: 14px;
+  min-height: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 100%;
+  margin: 0 auto;
+  will-change: transform;
+}
+
+.bento-card {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1 / 1;          /* every base tile is a square */
+  background:
+    linear-gradient(165deg,
+      rgba(255,255,255,0.92) 0%,
+      rgba(250,250,247,0.82) 100%);
+  -webkit-backdrop-filter: saturate(1.05) blur(10px);
+  backdrop-filter: saturate(1.05) blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-title);
+  min-height: 0;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 1px 2px rgba(10,10,11,.04),
+    0 14px 32px -22px rgba(10,10,11,.18);
+  transition:
+    transform .5s cubic-bezier(.25,.8,.25,1),
+    box-shadow .45s ease,
+    border-color .35s ease;
+  will-change: transform;
+}
+
+/* New row-span / col-span mapping aligned to the 3×3 square mosaic. */
+.bento-card[data-span="hero"]   { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.bento-card[data-span="tall"]   { grid-column: span 1; grid-row: span 2; aspect-ratio: auto; }
+.bento-card[data-span="wide"]   { grid-column: span 2; grid-row: span 1; aspect-ratio: auto; }
+.bento-card[data-span="square"] { grid-column: span 1; grid-row: span 1; aspect-ratio: 1 / 1; }
+
+.bento-card                       { --hair-accent: var(--hair-slate); }
+.bento-card[data-hue="emerald"]   { --hair-accent: var(--hair-emerald); }
+.bento-card[data-hue="verdant"]   { --hair-accent: var(--hair-emerald); }
+.bento-card[data-hue="cobalt"]    { --hair-accent: var(--hair-teal);    }
+.bento-card[data-hue="teal"]      { --hair-accent: var(--hair-teal);    }
+.bento-card[data-hue="amber"]     { --hair-accent: var(--hair-brass);   }
+.bento-card[data-hue="brass"]     { --hair-accent: var(--hair-brass);   }
+.bento-card[data-hue="gold"]      { --hair-accent: var(--hair-brass);   }
+
+.bento-card .bento-aurora {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      460px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255,255,255,0.55) 0%,
+      transparent 60%
+    );
+  opacity: 0;
+  transition: opacity .45s ease;
+}
+.bento-card:hover .bento-aurora { opacity: 1; }
+
+.bento-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  padding: 1px;
+  background:
+    radial-gradient(
+      300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      var(--hair-accent) 0%,
+      transparent 60%
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.bento-card:hover::after { opacity: 1; }
+
+.bento-card:hover {
+  transform: perspective(1200px) translate3d(0,-5px,12px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.95) inset,
+    0 26px 50px -22px rgba(10,10,11,.18),
+    0 6px 18px -12px var(--hair-accent);
+  border-color: var(--text-faint);
+}
+
+.bento-card > *:not(.bento-aurora) { position: relative; z-index: 1; }
+
+.bento-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-title);
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(10,10,11,.04);
+}
+.bento-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(18px, 1.9vw, 26px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-title);
+  margin: 2px 0 4px;
+}
+.bento-body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-body);
+  max-width: 42ch;
+  margin: 0;
+  /* clamp body copy so it never overflows tight tiles */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bento-cta {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .25s ease, color .25s ease;
+}
+.bento-card:hover .bento-cta { gap: 14px; }
+
+.bento-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 10px;
+  border-top: 1px solid var(--hair-accent);
+}
+.bento-count {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-title);
+}
+
+.bento-empty {
+  grid-column: 1 / -1;
+  padding: 48px 24px;
+  text-align: center;
+  font-family: var(--font-sans);
+  color: var(--text-mute);
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-lg);
+}
+
+@media (max-width: 900px) {
+  .bento-act { padding: 24px 16px; gap: 16px; }
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    aspect-ratio: auto;
+  }
+  .bento-card { padding: 16px; border-radius: 18px; aspect-ratio: auto; }
+  .bento-card[data-span="hero"]   { grid-column: span 2; grid-row: span 2; }
+  .bento-card[data-span="tall"]   { grid-column: span 2; grid-row: span 1; }
+  .bento-card[data-span="wide"]   { grid-column: span 2; grid-row: span 1; }
+  .bento-card[data-span="square"] { grid-column: span 2; grid-row: span 1; }
+}
+
+/* ============================================================
+   2D. CATEGORY DETAIL BANNER (unchanged)
+   ============================================================ */
+.category-banner,
+.category-hero,
+.category-detail-view .category-banner,
+.category-detail-view > header {
+  background: var(--accent-gradient);
+  color: #ffffff;
+}
+.category-banner h1,
+.category-banner h2,
+.category-banner p,
+.category-hero h1,
+.category-hero h2,
+.category-hero p,
+.category-detail-view .category-banner h1,
+.category-detail-view .category-banner h2,
+.category-detail-view .category-banner p {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(10,10,11,0.25);
+}
+
+/* ============================================================
+   2E. ACT 4 — FAQ + MSME FOOTER
+   ─────────────────────────────────────────────────────────────
+   100vh snap target. Heading at TOP, FULL-SCREEN FAQ booklets
+   in the middle (each card occupies 85vw — prestigious, spacious,
+   completely UN-CONSTRICTED), editorial credentials footer pinned
+   at the BOTTOM.
+   ============================================================ */
+.faq-act {
+  justify-content: flex-start;   /* override .act-snap centring */
+  align-items: stretch;
+  padding: 40px 24px 24px;
+  background:
+    radial-gradient(60vw 60vw at 12% 18%, hsla(151, 30%, 90%, 0.45) 0%, transparent 60%),
+    radial-gradient(55vw 55vw at 88% 82%, hsla(33,  30%, 92%, 0.45) 0%, transparent 62%),
+    var(--canvas);
+}
+
+.faq-act-header {
+  flex: 0 0 auto;
+  text-align: center;
+  width: 85vw;                   /* match deck width for editorial rhythm */
+  max-width: 1600px;
+  margin: 0 auto 24px;
+}
+
+.faq-heading {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.2vw, 60px);   /* scaled-up, prestigious */
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  color: var(--text-title);
+  margin: 0;
+  font-weight: 500;
+}
+.faq-heading em {
+  font-style: italic;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+/* ── FULL-SCREEN B2B FAQ BOOKLETS DECK ──
+   85% of viewport width, generous gap, scroll-on-overflow with a
+   slim luxe scrollbar. The deck is the centerpiece of Act 4. */
+.faq-deck,
+.faq-list {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 85vw;                   /* CRITICAL: 85% of full viewport width */
+  max-width: 1600px;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-faint) transparent;
+}
+.faq-deck::-webkit-scrollbar,
+.faq-list::-webkit-scrollbar { width: 6px; }
+.faq-deck::-webkit-scrollbar-thumb,
+.faq-list::-webkit-scrollbar-thumb {
+  background: var(--text-faint);
+  border-radius: 999px;
+}
+
+/* Each booklet is prestigious: generous radius, soft luxe slab. */
+.faq-card,
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  flex: 0 0 auto;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.85) inset,
+    0 1px 2px rgba(10,10,11,0.03),
+    0 18px 40px -28px rgba(10,10,11,0.18);
+}
+.faq-card:hover,
+.faq-item:hover {
+  border-color: var(--text-faint);
+  transform: translateY(-1px);
+}
+.faq-card[data-open="true"],
+.faq-item[data-open="true"] {
+  border-color: var(--text-faint);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 2px 6px rgba(10,10,11,0.05),
+    0 28px 60px -28px rgba(10,10,11,0.22);
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: transparent;
+  border: 0;
+  padding: 28px 36px;                       /* spacious, un-constricted */
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.6vw, 26px);      /* prestigious scale */
+  letter-spacing: -0.018em;
+  color: var(--text-title);
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.faq-chev {
+  width: 40px; height: 40px;                /* scaled up */
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--card-inset);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--text-body);
+  transition: background .25s ease, color .25s ease, transform .35s ease;
+}
+.faq-card[data-open="true"] .faq-chev,
+.faq-item[data-open="true"] .faq-chev {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+.faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .4s cubic-bezier(.25,.8,.25,1);
+}
+.faq-card[data-open="true"] .faq-body,
+.faq-item[data-open="true"] .faq-body { grid-template-rows: 1fr; }
+.faq-body-inner { overflow: hidden; }
+.faq-body-inner p {
+  padding: 0 36px 28px;                     /* matches trigger padding */
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.05vw, 17px);     /* readable at full width */
+  line-height: 1.65;
+  color: var(--text-body);
+  margin: 0;
+  max-width: 78ch;                          /* readable measure inside wide booklet */
+}
+
+/* Editorial credentials footer — pinned to the bottom of Act 4. */
+.editorial-foot {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--border);
+  padding: 18px 24px 8px;
+  margin-top: 16px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+}
+.editorial-foot .wordmark {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--text-title);
+  display: block;
+  font-weight: 500;
+}
+.editorial-foot .wordmark-sub {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-body);
+  display: block;
+  margin-top: 2px;
+}
+.editorial-foot .copyright {
+  margin-top: 8px;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .faq-act { padding: 24px 16px 16px; }
+  .faq-act-header { width: 92vw; margin-bottom: 18px; }
+  .faq-deck,
+  .faq-list { width: 92vw; gap: 12px; }
+  .faq-trigger { padding: 20px 22px; font-size: 17px; gap: 18px; }
+  .faq-chev   { width: 32px; height: 32px; font-size: 14px; }
+  .faq-body-inner p { padding: 0 22px 20px; font-size: 15px; }
+}
+
+/* ============================================================
+   3. PRODUCT VIEW (PDP) — UNBLOCKED VERTICAL SCROLLING
+   ─────────────────────────────────────────────────────────────
+   The PDP is NEVER a snap stop. It opts out of every parent
+   scroll-snap constraint and grants its sections natural,
+   smooth vertical scrollability so the cinematic photo theatre,
+   buy module, specs tables, and bento cards all reveal cleanly
+   without lock blocks.
+   ============================================================ */
+
+/* Top-level PDP route — drives the page scroll.
+   CRITICAL P0 CONTRACT: the triplet `overflow-y: auto; height: auto;
+   scroll-snap-type: none;` MUST be present and !important so the
+   browser's native vertical scroll is unblocked regardless of any
+   inherited rule from `.landing-shell` (which enforces y-mandatory
+   snap on the landing route). */
+.pv,
+.route-product,
+.product-detail-view {
+  display: block;
+  width: 100%;
+  /* ── unblock browser scrolling (P0 contract) ── */
+  overflow-y: auto !important;     /* standard browser scroll */
+  overflow-x: hidden;
+  height: auto !important;         /* never lock to a fixed viewport */
+  scroll-snap-type: none !important;  /* opt-out of any inherited snap */
+  /* ── geometry & polish ── */
+  min-height: 100vh;
+  max-height: none;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  padding: clamp(20px, 3vw, 48px) clamp(16px, 3vw, 40px) 96px;
+  background: var(--canvas);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Any nested section/article/header inside the PDP must NOT lock
+   the viewport. Photos, specs, bento, configurators — all of them
+   flow naturally and can be reached by a normal scroll gesture. */
+.pv section,
+.pv article,
+.pv > header,
+.pv > div,
+.route-product section,
+.route-product article,
+.product-detail-view section,
+.product-detail-view article,
+.pv-gallery-grid,
+.pv-buy-module,
+.pv-specs,
+.pv-bento,
+.pv-related {
+  overflow-y: auto;
+  overflow-x: visible;
+  height: auto;
+  max-height: none;
+  scroll-snap-type: none;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
+/* The cinematic gallery grid — never clamp its row tracks. */
+.pv-gallery-grid {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: visible;               /* photos may exceed viewport */
+}
+
+/* Sticky buy module — sticky inside the natural document flow.
+   Because the PDP scroll lives on `.pv` (not the window) the
+   sticky target binds to the .pv scrolling container correctly. */
+.pv-buy-module,
+.product-buy-module {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+
+/* Breadcrumbs sit at the top of the PDP — never sticky-trap. */
+.pv-breadcrumbs {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
+/* PDP empty state still uses the same scroll opt-out so the
+   fallback card is visible without trickery. */
+.pv-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  scroll-snap-type: none;
+  padding: 48px 24px;
+}
+.pv-empty__card {
+  max-width: 520px;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-luxe);
+}
+
+/* Mobile: keep the same un-blocked scroll behaviour, just tighten
+   the chrome. */
+@media (max-width: 860px) {
+  .pv,
+  .route-product,
+  .product-detail-view {
+    padding: 18px 14px 80px;
+  }
+  .pv-buy-module,
+  .product-buy-module {
+    position: static;
+  }
+}

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  <circle cx="250" cy="250" r="150" fill="none" stroke="#059669" stroke-width="1" opacity="0.2" stroke-dasharray="10,10"/>
+  
+  <rect x="15" y="15" width="470" height="470" rx="10" fill="none" stroke="#334155" stroke-width="2" opacity="0.5"/>
+  <rect x="25" y="25" width="450" height="450" rx="8" fill="none" stroke="#10b981" stroke-width="1" opacity="0.2"/>
+
+  <path d="M 20 40 L 20 20 L 40 20" fill="none" stroke="#10b981" stroke-width="3"/>
+  <path d="M 480 40 L 480 20 L 460 20" fill="none" stroke="#10b981" stroke-width="3"/>
+  <path d="M 20 460 L 20 480 L 40 480" fill="none" stroke="#10b981" stroke-width="3"/>
+  <path d="M 480 460 L 480 480 L 460 480" fill="none" stroke="#10b981" stroke-width="3"/>
+
+  <circle cx="250" cy="160" r="65" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <circle cx="250" cy="160" r="55" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+  <text x="250" y="178" fill="url(#accentGrad)" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="1">HPHS</text>
+
+  <text x="250" y="250" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" text-anchor="middle">High-Density Polypropylene Hand Shovel</text>
+  <text x="250" y="270" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" text-anchor="middle" letter-spacing="1.5">HAND SHOVEL</text>
+
+  <line x1="100" y1="282" x2="400" y2="282" stroke="#334155" stroke-width="1" opacity="0.8"/>
+  <text x="250" y="290" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">Material: Virgin High-Density Polypropylene (PP)</text>
+<text x="250" y="315" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">Wholesale Price: ₹75/piece</text>
+
+  <line x1="100" y1="330" x2="400" y2="330" stroke="#334155" stroke-width="1" opacity="0.8"/>
+
+  <text x="250" y="445" fill="#64748b" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="2">BALAJI PREMIUM • B2B FACTORY MODEL</text>
+</svg>
