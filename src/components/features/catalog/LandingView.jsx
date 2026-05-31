@@ -276,7 +276,19 @@ function InfiniteProductMarquee({ panels, onPick }) {
     const el = sectionRef.current;
     if (!el) return undefined;
 
+    let isDragging = false;
+    let startX = 0;
+    let startOffset = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let touchVelocity = 0;
+    let momentumRaf = null;
+
     const handleWheel = (e) => {
+      if (momentumRaf) {
+        cancelAnimationFrame(momentumRaf);
+        momentumRaf = null;
+      }
       // Intercept horizontal trackpad swipes or horizontal shift+wheel scrolling
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
         e.preventDefault();
@@ -289,21 +301,25 @@ function InfiniteProductMarquee({ panels, onPick }) {
       }
     };
 
-    let isDragging = false;
-    let startX = 0;
-    let startOffset = 0;
-
     const handleTouchStart = (e) => {
       if (e.touches.length > 0) {
         isDragging = true;
         startX = e.touches[0].clientX;
+        lastX = startX;
+        lastTime = Date.now();
         startOffset = offsetRef.current;
+        touchVelocity = 0;
+        if (momentumRaf) {
+          cancelAnimationFrame(momentumRaf);
+          momentumRaf = null;
+        }
       }
     };
 
     const handleTouchMove = (e) => {
       if (!isDragging || e.touches.length === 0) return;
       const currentX = e.touches[0].clientX;
+      const currentTime = Date.now();
       const dx = currentX - startX;
 
       // Prevent page vertical scroll when swiping horizontal marquee
@@ -317,10 +333,50 @@ function InfiniteProductMarquee({ panels, onPick }) {
         if (offsetRef.current <= -w) offsetRef.current += w;
         if (offsetRef.current > 0)   offsetRef.current -= w;
       }
+
+      // Dynamic touch velocity tracking
+      const dt = currentTime - lastTime;
+      if (dt > 0) {
+        const instantVelocity = (currentX - lastX) / dt;
+        touchVelocity = touchVelocity * 0.4 + instantVelocity * 0.6;
+      }
+      lastX = currentX;
+      lastTime = currentTime;
     };
 
     const handleTouchEnd = () => {
       isDragging = false;
+
+      const w = widthRef.current;
+      if (w > 0 && Math.abs(touchVelocity) > 0.12) {
+        const maxFlingSpeed = 2.8; // premium dampening
+        let vel = Math.max(-maxFlingSpeed, Math.min(maxFlingSpeed, touchVelocity));
+        let lastTickTime = Date.now();
+
+        const momentumTick = () => {
+          if (isDragging) return;
+          const now = Date.now();
+          const dt = now - lastTickTime;
+          lastTickTime = now;
+
+          // Decaying friction decay
+          vel *= 0.95;
+
+          const step = vel * dt;
+          offsetRef.current += step;
+
+          if (offsetRef.current <= -w) offsetRef.current += w;
+          if (offsetRef.current > 0)   offsetRef.current -= w;
+
+          if (Math.abs(vel) > 0.025) {
+            momentumRaf = requestAnimationFrame(momentumTick);
+          } else {
+            momentumRaf = null;
+          }
+        };
+
+        momentumRaf = requestAnimationFrame(momentumTick);
+      }
     };
 
     el.addEventListener('wheel', handleWheel, { passive: false });
@@ -333,6 +389,7 @@ function InfiniteProductMarquee({ panels, onPick }) {
       el.removeEventListener('touchstart', handleTouchStart);
       el.removeEventListener('touchmove', handleTouchMove);
       el.removeEventListener('touchend', handleTouchEnd);
+      if (momentumRaf) cancelAnimationFrame(momentumRaf);
     };
   }, []);
 

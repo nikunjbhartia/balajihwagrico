@@ -2704,10 +2704,14 @@ body[data-route="category"] .app-aurora {
     min-height: auto !important;
   }
   .bento-card {
-    padding: 10px !important;
+    padding: 8px 10px !important;
     border-radius: 12px !important;
-    min-height: 78px !important;
-    height: 78px !important;
+    min-height: 82px !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
   }
   .bento-card[data-span="hero"],
   .bento-card[data-span="tall"],
@@ -2716,19 +2720,21 @@ body[data-route="category"] .app-aurora {
     grid-column: span 1 !important;
     grid-row: span 1 !important;
   }
-  .bento-card-tag {
+  .bento-tag {
     font-size: 8px !important;
     padding: 2px 6px !important;
+    letter-spacing: 0.08em !important;
+    display: inline-flex !important;
+    align-self: flex-start !important;
   }
-  .bento-card-title {
-    font-size: 11px !important;
-    line-height: 1.25 !important;
-    margin-top: 4px !important;
+  .bento-title {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
   }
-  .bento-card-arrow {
-    width: 18px !important;
-    height: 18px !important;
-    font-size: 9px !important;
+  .bento-body,
+  .bento-foot {
+    display: none !important;
   }
 
   /* Slide 4: Quality Assurance Mobile Compression */
@@ -2740,37 +2746,16 @@ body[data-route="category"] .app-aurora {
     gap: 12px !important;
     height: auto !important;
     min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   .qa-left-card {
-    padding: 14px 12px !important;
-    gap: 10px !important;
-    border-radius: 14px !important;
-  }
-  .qa-left-title {
-    font-size: 18px !important;
-    line-height: 1.2 !important;
-  }
-  .qa-protocols-list {
-    gap: 10px !important;
-    margin-top: 2px !important;
-  }
-  .qa-protocol-item {
-    gap: 8px !important;
-  }
-  .qa-protocol-num {
-    padding: 3px 6px !important;
-    font-size: 9px !important;
-  }
-  .qa-protocol-title {
-    font-size: 10px !important;
-    margin-bottom: 2px !important;
-  }
-  .qa-protocol-desc {
-    font-size: 9px !important;
-    line-height: 1.25 !important;
+    display: none !important; /* Hide left card on mobile to completely avoid layout clipping */
   }
   .qa-right-content {
     padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   .qa-headline {
     font-size: 20px !important;
@@ -2786,7 +2771,7 @@ body[data-route="category"] .app-aurora {
     display: none !important;
   }
   .qa-metrics-row {
-    margin-top: 6px !important;
+    margin-top: 8px !important;
     gap: 8px !important;
   }
   .qa-metric-col {
@@ -2855,6 +2840,9 @@ body[data-route="category"] .app-aurora {
     height: 38px !important;
     font-size: 11px !important;
   }
+  .bulk-trust-bar {
+    display: none !important; /* Hide bulk trust bar on mobile to give custom requisition form breathing space */
+  }
 
   /* Slide 6: FAQ Mobile Compression */
   .faq-act {
@@ -2901,3 +2889,156 @@ body[data-route="category"] .app-aurora {
     font-size: 8px !important;
   }
 }
+
+/* ── Defensive Vertical Viewport Scaling (Immunity on short mobile screens like iPhone SE) ── */
+@media (max-height: 740px) and (max-width: 860px) {
+  .landing-shell {
+    height: calc(100vh - 60px) !important;
+    height: calc(100dvh - 60px) !important;
+  }
+  .hero-band,
+  .bento-act,
+  .qa-act,
+  .bulk-act,
+  .faq-act {
+    height: calc(100vh - 60px) !important;
+    height: calc(100dvh - 60px) !important;
+    padding: 8px 10px 16px 10px !important;
+  }
+
+  /* Slide 1: Hero */
+  .hero-band {
+    gap: 4px !important;
+    padding-top: 12px !important;
+  }
+  .hero-headline {
+    font-size: 19px !important;
+    margin: 6px auto 4px !important;
+  }
+  .hero-sub {
+    display: none !important; /* Suppress descriptions to secure bounds */
+  }
+  .hero-tollfree,
+  .bh-btn {
+    font-size: 10px !important;
+    padding: 8px 14px !important;
+  }
+  .hero-band canvas {
+    max-height: 40% !important;
+  }
+
+  /* Slide 3: Bento Grid */
+  .bento-headline {
+    font-size: 16px !important;
+  }
+  .bento-sub {
+    display: none !important;
+  }
+  .bento-grid {
+    gap: 4px !important;
+  }
+  .bento-card {
+    min-height: 68px !important;
+    padding: 5px 8px !important;
+  }
+  .bento-title {
+    font-size: 10px !important;
+  }
+  .bento-tag {
+    font-size: 7px !important;
+    padding: 1px 4px !important;
+  }
+
+  /* Slide 4: Quality Assurance */
+  .qa-headline {
+    font-size: 16px !important;
+    margin-bottom: 2px !important;
+  }
+  .qa-paragraph {
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+  .qa-metrics-row {
+    margin-top: 4px !important;
+    gap: 4px !important;
+  }
+  .qa-metric-value {
+    font-size: 16px !important;
+  }
+  .qa-metric-label {
+    font-size: 8px !important;
+  }
+  .qa-metric-sub {
+    display: none !important; /* Hide subtext to keep layout immune */
+  }
+
+  /* Slide 5: Requisition Form */
+  .bulk-headline {
+    font-size: 16px !important;
+  }
+  .bulk-sub {
+    display: none !important;
+  }
+  .bulk-card {
+    padding: 8px !important;
+  }
+  .bulk-form {
+    gap: 6px !important;
+  }
+  .bulk-form-grid {
+    gap: 6px !important;
+  }
+  .bulk-label {
+    font-size: 7px !important;
+  }
+  .bulk-input {
+    height: 28px !important;
+    padding: 4px 8px !important;
+    font-size: 9.5px !important;
+  }
+  .bulk-textarea {
+    min-height: 48px !important;
+    max-height: 48px !important;
+    font-size: 9.5px !important;
+    padding: 4px 8px !important;
+  }
+  .bulk-submit-btn {
+    height: 30px !important;
+    font-size: 10px !important;
+  }
+
+  /* Slide 6: Technical FAQ */
+  .faq-heading {
+    font-size: 16px !important;
+  }
+  .faq-act-header {
+    margin-bottom: 4px !important;
+  }
+  .faq-trigger {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+  .faq-trigger span {
+    font-size: 11px !important;
+  }
+  .faq-chev {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 8px !important;
+  }
+  .faq-body-inner p {
+    font-size: 9.5px !important;
+    padding: 0 10px 6px !important;
+  }
+  .editorial-foot {
+    margin-top: 6px !important;
+  }
+  .editorial-foot .wordmark {
+    font-size: 10px !important;
+  }
+  .editorial-foot .wordmark-sub {
+    font-size: 8px !important;
+  }
+}
+
