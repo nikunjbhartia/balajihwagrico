@@ -100,13 +100,14 @@ export default function AssistantDrawer({
   }, [messages]);
 
   const parseProductSuggestions = (text) => {
-    const matches = text.match(/\[([^\]]+)\]\s*\(ID:\s*(\d+)\)/gi);
+    if (!text) return [];
+    const matches = text.match(/ID:?\s*(\d+)/gi);
     if (!matches) return [];
     const list = [];
     matches.forEach(m => {
-      const idMatch = m.match(/ID:\s*(\d+)/i);
-      if (idMatch && idMatch[1]) {
-        const prodId = Number(idMatch[1]);
+      const idMatch = m.match(/\d+/);
+      if (idMatch && idMatch[0]) {
+        const prodId = Number(idMatch[0]);
         const match = productsData.find(p => Number(p.id) === prodId);
         if (match && !list.some(p => Number(p.id) === prodId)) {
           list.push(match);
