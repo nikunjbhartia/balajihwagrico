@@ -366,32 +366,36 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
    to allow natural long-form scrolling. This solves all flow breaking
    and element clipping issues on small screens! */
 @media (max-width: 860px) {
-  /* Restore premium slide-snapping scroll locks on mobile viewports
-     while making individual slides vertically scrollable internally if
-     their content exceeds the phone's screen height. This prevents overlaps! */
+  /* Disable nested scrollers on mobile viewports to enable 100% smooth,
+     rigid vertical slide-snapping on the parent .landing-shell. Everything
+     now fits pixel-perfectly in the viewport! */
   .hero-band,
   .bento-act,
   .qa-act,
   .bulk-act,
   .faq-act {
-    justify-content: flex-start !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
+    justify-content: center !important;
+    overflow-y: hidden !important;
+    overflow: hidden !important;
     box-sizing: border-box;
-    padding: 40px 20px 80px 20px !important;
+    padding: 20px 16px 40px 16px !important;
+    height: calc(100vh - 68px) !important;
+    height: calc(100dvh - 68px) !important;
   }
 
   /* Specific Mobile adjustments for Slide 1 (Hero) */
   .hero-band {
-    padding: 80px 20px 80px 20px !important;
+    padding: 32px 16px !important;
+    gap: 12px !important;
   }
   .hero-headline {
-    font-size: 34px !important;
-    line-height: 1.2 !important;
+    font-size: 24px !important;
+    line-height: 1.25 !important;
   }
   .hero-sub {
-    font-size: 13px !important;
-    line-height: 1.5 !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
   }
 }
 
@@ -2661,6 +2665,239 @@ body[data-route="category"] .app-aurora {
   }
 }
 
+/* ============================================================
+   3. PRESET MOBILE SCROLL-LOCK COMPACT OVERRIDES (< 860px)
+   ─────────────────────────────────────────────────────────────
+   Forces every single act to fit exactly in 100dvh viewport
+   height, preventing overflow clipping while fully unlocking
+   rigid vertical slide snapping!
+   ============================================================ */
+@media (max-width: 860px) {
+  /* Slide 3: Bento Grid Categories Mobile Compression */
+  .bento-act {
+    padding: 16px 12px !important;
+    gap: 10px !important;
+    justify-content: center !important;
+  }
+  .bento-header {
+    margin-bottom: 4px !important;
+  }
+  .bento-headline {
+    font-size: 20px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.2 !important;
+  }
+  .bento-sub {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+  }
+  .bento-search-rail {
+    margin-bottom: 8px !important;
+    padding: 2px !important;
+  }
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(4, auto) !important;
+    grid-auto-rows: auto !important;
+    gap: 8px !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .bento-card {
+    padding: 10px !important;
+    border-radius: 12px !important;
+    min-height: 78px !important;
+    height: 78px !important;
+  }
+  .bento-card[data-span="hero"],
+  .bento-card[data-span="tall"],
+  .bento-card[data-span="wide"],
+  .bento-card[data-span="square"] {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+  .bento-card-tag {
+    font-size: 8px !important;
+    padding: 2px 6px !important;
+  }
+  .bento-card-title {
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    margin-top: 4px !important;
+  }
+  .bento-card-arrow {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 9px !important;
+  }
 
+  /* Slide 4: Quality Assurance Mobile Compression */
+  .qa-act {
+    padding: 16px 12px !important;
+  }
+  .qa-container {
+    padding: 0 !important;
+    gap: 12px !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .qa-left-card {
+    padding: 14px 12px !important;
+    gap: 10px !important;
+    border-radius: 14px !important;
+  }
+  .qa-left-title {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+  }
+  .qa-protocols-list {
+    gap: 10px !important;
+    margin-top: 2px !important;
+  }
+  .qa-protocol-item {
+    gap: 8px !important;
+  }
+  .qa-protocol-num {
+    padding: 3px 6px !important;
+    font-size: 9px !important;
+  }
+  .qa-protocol-title {
+    font-size: 10px !important;
+    margin-bottom: 2px !important;
+  }
+  .qa-protocol-desc {
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
+  .qa-right-content {
+    padding: 0 !important;
+  }
+  .qa-headline {
+    font-size: 20px !important;
+    margin-bottom: 6px !important;
+    line-height: 1.2 !important;
+  }
+  .qa-paragraph {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 6px !important;
+  }
+  .qa-paragraph:last-of-type {
+    display: none !important;
+  }
+  .qa-metrics-row {
+    margin-top: 6px !important;
+    gap: 8px !important;
+  }
+  .qa-metric-col {
+    flex: 1;
+  }
+  .qa-metric-value {
+    font-size: 22px !important;
+    line-height: 1.1 !important;
+  }
+  .qa-metric-label {
+    font-size: 10px !important;
+  }
+  .qa-metric-sub {
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+  }
 
+  /* Slide 5: Bulk Sales Mobile Compression */
+  .bulk-act {
+    padding: 16px 12px !important;
+  }
+  .bulk-container {
+    padding: 0 !important;
+    gap: 12px !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .bulk-headline {
+    font-size: 20px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.2 !important;
+  }
+  .bulk-sub {
+    font-size: 11px !important;
+    margin-bottom: 0 !important;
+  }
+  .bulk-card {
+    padding: 14px !important;
+    border-radius: 14px !important;
+  }
+  .bulk-form {
+    gap: 10px !important;
+  }
+  .bulk-form-grid {
+    gap: 10px !important;
+  }
+  .bulk-field {
+    gap: 3px !important;
+  }
+  .bulk-label {
+    font-size: 8px !important;
+    letter-spacing: 0.02em !important;
+  }
+  .bulk-input {
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+    height: 36px !important;
+  }
+  .bulk-textarea {
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
+  }
+  .bulk-form-action button {
+    height: 38px !important;
+    font-size: 11px !important;
+  }
 
+  /* Slide 6: FAQ Mobile Compression */
+  .faq-act {
+    padding: 16px 12px 12px !important;
+  }
+  .faq-heading {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+  .faq-act-header {
+    margin-bottom: 10px !important;
+  }
+  .faq-deck,
+  .faq-list {
+    gap: 8px !important;
+  }
+  .faq-trigger {
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    gap: 10px !important;
+  }
+  .faq-chev {
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 9px !important;
+  }
+  .faq-body-inner p {
+    padding: 0 14px 10px !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+  .editorial-foot {
+    margin-top: 12px !important;
+  }
+  .editorial-foot .wordmark {
+    font-size: 12px !important;
+  }
+  .editorial-foot .wordmark-sub {
+    font-size: 9px !important;
+    margin-top: 1px !important;
+  }
+  .editorial-foot .copyright {
+    margin-top: 4px !important;
+    font-size: 8px !important;
+  }
+}
