@@ -3042,3 +3042,118 @@ body[data-route="category"] .app-aurora {
   }
 }
 
+/* ══════════════════════════════════════════════════════════════
+   2A-1. HERO TRUST BAR SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+.hero-trust-bar {
+  margin-top: 48px;
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 18px 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  box-shadow: var(--shadow-hair);
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.hero-trust-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.hero-trust-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.hero-trust-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-trust-title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-title);
+}
+
+.hero-trust-desc {
+  margin: 4px 0 0 0;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--text-mute);
+  line-height: 1.4;
+}
+
+/* ── Hero Trust Bar Media Overrides for Phone Screens (width under 768px) ── */
+@media (max-width: 768px) {
+  .hero-trust-bar {
+    margin-top: 16px !important;
+    padding: 10px 12px !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    border-radius: 12px !important;
+  }
+
+  .hero-trust-card {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .hero-trust-icon {
+    font-size: 15px !important;
+  }
+
+  .hero-trust-title {
+    font-size: 9px !important;
+    letter-spacing: 0.01em !important;
+    text-align: left !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-trust-desc {
+    display: none !important; /* Hide long description to maximize vertical breathing room */
+  }
+}
+
+/* ── Defensive override for short screens (immunity from viewport clip) ── */
+@media (max-height: 740px) and (max-width: 860px) {
+  .hero-trust-bar {
+    margin-top: 10px !important;
+    padding: 6px 8px !important;
+    gap: 4px !important;
+  }
+
+  .hero-trust-card {
+    flex-direction: row !important;
+    gap: 4px !important;
+  }
+
+  .hero-trust-icon {
+    font-size: 13px !important;
+  }
+
+  .hero-trust-title {
+    font-size: 8px !important;
+  }
+}
+

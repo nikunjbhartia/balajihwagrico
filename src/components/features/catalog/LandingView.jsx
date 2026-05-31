@@ -1255,9 +1255,6 @@ export default function LandingView({
           GST invoicing, MSME credit terms, project-grade pricing.
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center', marginTop: 20, zIndex: 10 }}>
-          <a className="hero-tollfree" href="tel:+918100448052" style={{ textDecoration: 'none' }}>
-            📞 +91-8100448052 · Mon–Sat 9am–7pm
-          </a>
           <button 
             type="button"
             className="bh-btn bh-btn-primary"
@@ -1304,47 +1301,28 @@ export default function LandingView({
         </div>
 
         {/* Dynamic Premium B2B Trust Bar */}
-        <div 
-          style={{
-            marginTop: 48,
-            width: '100%',
-            maxWidth: 1400,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            background: 'rgba(255, 255, 255, 0.55)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            border: '1px solid var(--border-soft)',
-            borderRadius: 'var(--radius-xl, 20px)',
-            padding: '18px 24px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: 20,
-            boxShadow: 'var(--shadow-hair)',
-            zIndex: 5
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 8 }}>
-            <span style={{ fontSize: 24, color: 'var(--accent)', lineHeight: 1 }}>🏆</span>
-            <div>
-              <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>30+ Years Legacy</h4>
-              <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>Manufacturing &amp; distribution excellence.</p>
+        <div className="hero-trust-bar">
+          <div className="hero-trust-card">
+            <span className="hero-trust-icon">🏆</span>
+            <div className="hero-trust-text">
+              <h4 className="hero-trust-title">30+ Years Legacy</h4>
+              <p className="hero-trust-desc">Manufacturing &amp; distribution excellence.</p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 8 }}>
-            <span style={{ fontSize: 24, color: 'var(--accent)', lineHeight: 1 }}>🚛</span>
-            <div>
-              <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Pan-India Logistics</h4>
-              <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>Timely delivery &amp; reliable supply network.</p>
+          <div className="hero-trust-card">
+            <span className="hero-trust-icon">🚛</span>
+            <div className="hero-trust-text">
+              <h4 className="hero-trust-title">Pan-India Logistics</h4>
+              <p className="hero-trust-desc">Timely delivery &amp; reliable supply network.</p>
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 8 }}>
-            <span style={{ fontSize: 24, color: 'var(--accent)', lineHeight: 1 }}>🛡️</span>
-            <div>
-              <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Verified B2B Compliance</h4>
-              <p style={{ margin: '4px 0 0 0', fontSize: 11, color: 'var(--text-mute)', lineHeight: 1.4 }}>GST Compliant Enterprise &amp; MSME credentials.</p>
+          <div className="hero-trust-card">
+            <span className="hero-trust-icon">🛡️</span>
+            <div className="hero-trust-text">
+              <h4 className="hero-trust-title">Verified B2B Compliance</h4>
+              <p className="hero-trust-desc">GST Compliant Enterprise &amp; MSME credentials.</p>
             </div>
           </div>
         </div>
