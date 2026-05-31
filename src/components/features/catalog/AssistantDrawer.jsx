@@ -184,64 +184,49 @@ export default function AssistantDrawer({
           { role: 'user', content: userText }
         ];
 
-        const models = [
-          "nvidia/nemotron-3-super-120b-a12b:free",
-          "poolside/laguna-m.1:free",
-          "openai/gpt-oss-120b:free",
-          "z-ai/glm-4.5-air:free",
-          "google/gemma-4-31b-it:free",
-          "google/gemini-2.5-flash:free",
-          "meta-llama/llama-3-8b-instruct:free",
-          "mistralai/mistral-7b-instruct:free"
-        ];
-
         let replyText = null;
         let parseSuggestions = [];
 
-        for (const modelName of models) {
-          try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 6000);
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 6000);
 
-            const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-              method: 'POST',
-              headers: {
-                "Authorization": `Bearer ${apiKey}`,
-                "HTTP-Referer": "https://balajihwagrico.in",
-                "X-Title": "Balaji Hardware Digital Showroom",
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                model: modelName,
-                messages: contextMessages,
-                temperature: 0.3,
-                max_tokens: 350
-              }),
-              signal: controller.signal
-            });
+          const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+            method: 'POST',
+            headers: {
+              "Authorization": `Bearer ${apiKey}`,
+              "HTTP-Referer": "https://balajihwagrico.in",
+              "X-Title": "Balaji Hardware Digital Showroom",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              model: "openrouter/free",
+              messages: contextMessages,
+              temperature: 0.3,
+              max_tokens: 350
+            }),
+            signal: controller.signal
+          });
 
-            clearTimeout(timeoutId);
+          clearTimeout(timeoutId);
 
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const resData = await response.json();
-            if (resData?.error) {
-              console.warn(`OpenRouter Model ${modelName} failed:`, resData.error);
-              continue;
-            }
-
-            const content = resData?.choices?.[0]?.message?.content;
-            if (content) {
-              replyText = content;
-              parseSuggestions = parseProductSuggestions(content);
-              break;
-            }
-          } catch (err) {
-            console.warn(`OpenRouter Model ${modelName} fetch error:`, err);
-            continue;
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
+
+          const resData = await response.json();
+          if (resData?.error) {
+            console.warn("OpenRouter free routing endpoint error:", resData.error);
+            throw new Error(resData.error.message || "OpenRouter error");
+          }
+
+          const content = resData?.choices?.[0]?.message?.content;
+          if (content) {
+            replyText = content;
+            parseSuggestions = parseProductSuggestions(content);
+          }
+        } catch (err) {
+          console.warn("OpenRouter fetch failed, falling back to mock replies:", err);
         }
 
         if (replyText) {
