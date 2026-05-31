@@ -197,7 +197,7 @@ export default function ShellHeader({
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'hsl(240, 5%, 91%)'}
           >
             <span>🌐</span>
-            <span style={{ textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <span className="hidden sm:inline" style={{ textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               {language === 'en' ? 'English' : language === 'hi' ? 'हिंदी' : 'বাংলা'}
             </span>
           </button>

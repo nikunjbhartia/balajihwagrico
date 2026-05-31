@@ -3,7 +3,7 @@ import { Send, Sparkles, ArrowLeft, ShieldCheck, HelpCircle, Plus, Trash2 } from
 import productsData from '../../../data/productsData';
 import { TOKENS as T } from '../../../data/tokens.js';
 
-const generateSystemPrompt = (products) => {
+const generateSystemPrompt = (products, activeView = 'landing', selectedProduct = null, selectedCategory = null) => {
   const catalogSummary = products.map((p) => {
     const specs = p.specifications || {};
     const specSummary = Object.entries(specs)
@@ -13,6 +13,37 @@ const generateSystemPrompt = (products) => {
     return `- ${p.prodname || p.name} (ID: ${p.id}, Category: ${p.category}, Specs: ${specSummary})`;
   }).join('\n');
 
+  let pageContextStr = "";
+  if (activeView === 'product' && selectedProduct) {
+    const pSpecs = Object.entries(selectedProduct.specifications || {})
+      .map(([k, v]) => `- ${k}: ${v}`)
+      .join('\n');
+    pageContextStr = `
+CURRENTLY VIEWED PRODUCT DETAILS:
+The user is currently viewing the detail page for this specific product:
+- Name: ${selectedProduct.prodname || selectedProduct.name}
+- ID: ${selectedProduct.id}
+- Category: ${selectedProduct.category}
+- HSN Code: ${selectedProduct.hsn || '7314'}
+- Full Specifications:
+${pSpecs}
+- Wholesale Price: ${selectedProduct.specifications?.wholesale_price || 'Request Quote'}
+
+IMPORTANT: If the user asks questions like "what is this product?", "tell me about this mesh?", "explain the thickness", or requests pricing/freight for "this item", they are referring strictly to the product listed above. Address this product directly in your response!`;
+  } else if (activeView === 'category' && selectedCategory) {
+    pageContextStr = `
+CURRENTLY VIEWED CATEGORY DETAILS:
+The user is currently browsing this catalog category:
+- Category Name: ${selectedCategory.name}
+- Category Slug: ${selectedCategory.slug}
+
+IMPORTANT: If the user asks "what products are here?" or "suggest a mesh from this category", you should recommend products belonging strictly to the viewed category listed above!`;
+  } else {
+    pageContextStr = `
+CURRENTLY VIEWED PAGE:
+The user is currently browsing the main landing showroom catalog of Balaji Hardware & Agrico.`;
+  }
+
   return `You are the Balaji Hardware & Agrico AI Sourcing Assistant, an expert on industrial perimeters, agricultural screens, waterproofing membranes, and site equipment in Kolkata, India.
 Your business details:
 - Legal Entity: Balaji Hardware & Agrico
@@ -20,6 +51,9 @@ Your business details:
 - Logistics Corridor: Pan-India delivery from our central Kolkata warehouse corridor.
 - Credentials: MSME Registered, TrustSEAL Verified, ISO 9001:2015 compliant dispatches.
 - Invoices: Every dispatch includes a valid 18% GST tax invoice and Mill Test Certificates.
+
+Active Page Context:
+${pageContextStr}
 
 Here is your active product inventory catalog (use this data strictly to suggest product matches):
 ${catalogSummary}
@@ -47,6 +81,9 @@ export default function AssistantDrawer({
   inquiry = [],
   onAddToInquiry = () => {},
   tokens = null,
+  activeView = 'landing',
+  selectedProduct = null,
+  selectedCategory = null,
 }) {
   const [messages, setMessages] = useState([
     {
@@ -94,7 +131,7 @@ export default function AssistantDrawer({
     try {
       if (apiKey && !apiKey.includes('placeholder')) {
         const contextMessages = [
-          { role: 'system', content: generateSystemPrompt(productsData) },
+          { role: 'system', content: generateSystemPrompt(productsData, activeView, selectedProduct, selectedCategory) },
           ...messages.map(m => ({
             role: m.sender === 'ai' ? 'assistant' : 'user',
             content: m.text

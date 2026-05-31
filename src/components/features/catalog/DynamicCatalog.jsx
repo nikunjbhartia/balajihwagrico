@@ -300,6 +300,9 @@ export default function DynamicCatalog() {
         inquiry={inquiry}
         onAddToInquiry={onAddToInquiry}
         tokens={TOKENS}
+        activeView={route.view}
+        selectedProduct={selectedProduct}
+        selectedCategory={selectedCategory}
       />
 
       {/* Floating Sourcing AI Button */}

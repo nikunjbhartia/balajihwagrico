@@ -366,25 +366,24 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
    to allow natural long-form scrolling. This solves all flow breaking
    and element clipping issues on small screens! */
 @media (max-width: 860px) {
-  .landing-shell {
-    height: auto !important;
-    min-height: 100vh !important;
-    overflow-y: visible !important;
-    scroll-snap-type: none !important;
-    scroll-behavior: smooth !important;
+  /* Restore premium slide-snapping scroll locks on mobile viewports
+     while making individual slides vertically scrollable internally if
+     their content exceeds the phone's screen height. This prevents overlaps! */
+  .hero-band,
+  .bento-act,
+  .qa-act,
+  .bulk-act,
+  .faq-act {
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    padding: 40px 20px 80px 20px !important;
   }
-  .act-snap {
-    height: auto !important;
-    min-height: auto !important;
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    overflow: visible !important;
-    padding: 80px 20px !important; /* Spacious padding for mobile sections */
-  }
-  
-  /* Specific Mobile adjustments */
+
+  /* Specific Mobile adjustments for Slide 1 (Hero) */
   .hero-band {
-    padding: 120px 20px 80px 20px !important;
+    padding: 80px 20px 80px 20px !important;
   }
   .hero-headline {
     font-size: 34px !important;
@@ -1149,11 +1148,14 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
   .bento-act { padding: 24px 16px; gap: 16px; }
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto !important;
+    grid-auto-rows: auto !important;
     gap: 10px;
-    aspect-ratio: auto;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: auto !important;
   }
-  .bento-card { padding: 16px; border-radius: 18px; aspect-ratio: auto; }
+  .bento-card { padding: 16px; border-radius: 18px; aspect-ratio: auto !important; min-height: 130px !important; }
   .bento-card[data-span="hero"]   { grid-column: span 2; grid-row: span 2; }
   .bento-card[data-span="tall"]   { grid-column: span 2; grid-row: span 1; }
   .bento-card[data-span="wide"]   { grid-column: span 2; grid-row: span 1; }
@@ -1379,7 +1381,14 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
   .faq-act { padding: 24px 16px 16px; }
   .faq-act-header { width: 92vw; margin-bottom: 18px; }
   .faq-deck,
-  .faq-list { width: 92vw; gap: 12px; }
+  .faq-list {
+    width: 92vw;
+    gap: 12px;
+    height: auto !important;
+    min-height: auto !important;
+    overflow-y: visible !important;
+    flex: none !important;
+  }
   .faq-trigger { padding: 20px 22px; font-size: 17px; gap: 18px; }
   .faq-chev   { width: 32px; height: 32px; font-size: 14px; }
   .faq-body-inner p { padding: 0 22px 20px; font-size: 15px; }
@@ -2332,16 +2341,17 @@ body[data-route="category"] .app-aurora {
 
 .bulk-headline {
   font-family: var(--font-display);
-  font-size: 40px;
-  font-weight: 300;
-  line-height: 1.2;
+  font-size: clamp(36px, 4.2vw, 52px);
+  font-weight: 500;
+  line-height: 1.15;
   color: var(--text-title);
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
 }
 
 .bulk-sub {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-mute);
   margin: 0;
 }
@@ -2352,10 +2362,80 @@ body[data-route="category"] .app-aurora {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 24px;
-  padding: 40px;
+  padding: 44px 48px;
   box-shadow: var(--shadow-luxe);
   position: relative;
   overflow: hidden;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── B2B trust bar underneath the card to occupy spatial height beautifully ── */
+.bulk-trust-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 16px auto 0;
+  box-sizing: border-box;
+}
+
+.bulk-trust-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: var(--shadow-hair);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bulk-trust-card:hover {
+  transform: translateY(-2px);
+  background: #FFFFFF;
+  border-color: rgba(27, 94, 63, 0.2);
+  box-shadow: var(--shadow-sm);
+}
+
+.bulk-trust-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.bulk-trust-text {
+  text-align: left;
+}
+
+.bulk-trust-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-title);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.bulk-trust-desc {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .bulk-trust-bar {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
 }
 
 .bulk-form {
@@ -2527,6 +2607,8 @@ body[data-route="category"] .app-aurora {
     grid-template-columns: 1fr;
     gap: 36px;
     padding: 32px 24px;
+    height: auto !important;
+    min-height: auto !important;
   }
   .qa-left-card {
     padding: 36px 28px;
@@ -2537,6 +2619,8 @@ body[data-route="category"] .app-aurora {
   .bulk-container {
     max-width: 100%;
     padding: 32px 24px;
+    height: auto !important;
+    min-height: auto !important;
   }
   .bulk-card {
     padding: 28px;

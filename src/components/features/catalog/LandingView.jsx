@@ -1557,6 +1557,31 @@ export default function LandingView({
               </div>
             )}
           </div>
+
+          {/* B2B trust pillars under custom form to utilize space beautifully */}
+          <div className="bulk-trust-bar">
+            <div className="bulk-trust-card">
+              <span className="bulk-trust-icon">🛡️</span>
+              <div className="bulk-trust-text">
+                <h4 className="bulk-trust-title">MSME Registered &amp; TrustSEAL Verified</h4>
+                <p className="bulk-trust-desc">Pan-India delivery network with direct Corridor dispatch from Kolkata Hub.</p>
+              </div>
+            </div>
+            <div className="bulk-trust-card">
+              <span className="bulk-trust-icon">📋</span>
+              <div className="bulk-trust-text">
+                <h4 className="bulk-trust-title">ISO 9001:2015 Compliance Dispatches</h4>
+                <p className="bulk-trust-desc">Includes Mill Test Certificates (MTC) and complete dimensional inspection reports.</p>
+              </div>
+            </div>
+            <div className="bulk-trust-card">
+              <span className="bulk-trust-icon">🧾</span>
+              <div className="bulk-trust-text">
+                <h4 className="bulk-trust-title">100% GST Tax Invoice Enclosed</h4>
+                <p className="bulk-trust-desc">All orders dispatched with valid 18% GST tax invoices for full input tax credit claim.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
