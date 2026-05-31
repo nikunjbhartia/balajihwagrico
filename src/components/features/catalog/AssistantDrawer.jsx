@@ -107,8 +107,8 @@ export default function AssistantDrawer({
       const idMatch = m.match(/ID:\s*(\d+)/i);
       if (idMatch && idMatch[1]) {
         const prodId = Number(idMatch[1]);
-        const match = productsData.find(p => p.id === prodId);
-        if (match && !list.some(p => p.id === prodId)) {
+        const match = productsData.find(p => Number(p.id) === prodId);
+        if (match && !list.some(p => Number(p.id) === prodId)) {
           list.push(match);
         }
       }
@@ -319,40 +319,130 @@ export default function AssistantDrawer({
 
               {/* AI Product Quick-Add Suggestions */}
               {m.suggestions && m.suggestions.length > 0 && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 4 }}>
-                  <span style={{ fontSize: 10, fontFamily: 'var(--font-mono)', fontWeight: 'bold', color: 'var(--text-mute)', textTransform: 'uppercase' }}>
-                    Quick-Add Sourced Items:
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 }}>
+                  <span style={{ fontSize: 10, fontFamily: 'var(--font-mono)', fontWeight: 'bold', color: 'var(--text-mute)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    Matched Catalog Products:
                   </span>
-                  {m.suggestions.map(p => (
-                    <button
-                      key={p.id}
-                      type="button"
-                      onClick={() => {
-                        onAddToInquiry(p);
-                        // Add feedback message in chat
-                        setMessages(prev => [...prev, { sender: 'ai', text: `Added "${p.name || p.prodname}" to your Inquiry Basket at the top right!` }]);
-                      }}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 8,
-                        padding: '8px 12px',
-                        background: 'var(--accent-glow)',
-                        color: 'var(--accent)',
-                        border: '1px solid rgba(27,94,63,0.15)',
-                        borderRadius: 8,
-                        fontSize: 12,
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s',
-                        textAlign: 'left'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = '#FFF'}
-                      onMouseLeave={(e) => e.currentTarget.style.background = 'var(--accent-glow)'}
-                    >
-                      <Plus size={13} /> Add {p.name || p.prodname}
-                    </button>
-                  ))}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {m.suggestions.map(p => {
+                      const displayName = p.prodname || p.name || 'Catalog Item';
+                      const thumb = p.images?.thumbnail || p.images?.medium || p.image;
+                      const price = p.specifications?.wholesale_price || 'Request Price';
+                      
+                      return (
+                        <div 
+                          key={p.id}
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            background: '#FFFFFF',
+                            border: '1px solid var(--border)',
+                            borderRadius: 12,
+                            overflow: 'hidden',
+                            boxShadow: '0 4px 12px rgba(10, 10, 11, 0.03)',
+                            transition: 'all 0.2s ease'
+                          }}
+                        >
+                          {/* Card Main Details */}
+                          <div style={{ display: 'flex', gap: 12, padding: 12, alignItems: 'center' }}>
+                            {/* Thumbnail */}
+                            <div style={{ 
+                              width: 52, 
+                              height: 52, 
+                              background: 'var(--surface-2, #F4F4F0)', 
+                              border: '1px solid var(--border-soft)', 
+                              borderRadius: 8, 
+                              display: 'grid', 
+                              placeItems: 'center', 
+                              flexShrink: 0,
+                              overflow: 'hidden'
+                            }}>
+                              {thumb ? (
+                                <img src={`/${thumb}`} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                              ) : (
+                                <div style={{ width: '100%', height: '100%', background: 'var(--border)' }} />
+                              )}
+                            </div>
+                            
+                            {/* Info */}
+                            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+                              <span style={{ fontSize: 10, fontFamily: 'var(--font-mono)', color: 'var(--text-mute)', textTransform: 'uppercase', fontWeight: 'bold' }}>
+                                {p.category}
+                              </span>
+                              <span style={{ fontSize: 13, fontWeight: '800', color: 'var(--text-title)', marginTop: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                {displayName}
+                              </span>
+                              <span style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontWeight: 'bold', marginTop: 2 }}>
+                                {price}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          {/* Action Row */}
+                          <div style={{ 
+                            display: 'grid', 
+                            gridTemplateColumns: '1fr 1fr', 
+                            borderTop: '1px solid var(--border-soft)',
+                            background: 'hsl(60, 14%, 98%)'
+                          }}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                onAddToInquiry(p);
+                                // Add feedback message in chat
+                                setMessages(prev => [...prev, { sender: 'ai', text: `Added "${displayName}" to your Inquiry Basket at the top right!` }]);
+                              }}
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 6,
+                                padding: '8px 10px',
+                                background: 'transparent',
+                                color: 'var(--accent)',
+                                border: 0,
+                                borderRight: '1px solid var(--border-soft)',
+                                fontSize: 11,
+                                fontWeight: 'bold',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s'
+                              }}
+                              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--accent-glow)'}
+                              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                            >
+                              <Plus size={12} /> Add to Basket
+                            </button>
+                            
+                            <button
+                              type="button"
+                              onClick={() => {
+                                onClose(); // close drawer
+                                window.location.hash = `#/product/${p.id}`; // navigate to product detail view
+                              }}
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 6,
+                                padding: '8px 10px',
+                                background: 'transparent',
+                                color: 'var(--text-body)',
+                                border: 0,
+                                fontSize: 11,
+                                fontWeight: 'bold',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s'
+                              }}
+                              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.03)'}
+                              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                            >
+                              View Details ↗
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
             </div>
