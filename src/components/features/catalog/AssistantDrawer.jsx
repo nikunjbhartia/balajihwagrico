@@ -185,6 +185,11 @@ export default function AssistantDrawer({
         ];
 
         const models = [
+          "nvidia/nemotron-3-super-120b-a12b:free",
+          "poolside/laguna-m.1:free",
+          "openai/gpt-oss-120b:free",
+          "z-ai/glm-4.5-air:free",
+          "google/gemma-4-31b-it:free",
           "google/gemini-2.5-flash:free",
           "meta-llama/llama-3-8b-instruct:free",
           "mistralai/mistral-7b-instruct:free"
