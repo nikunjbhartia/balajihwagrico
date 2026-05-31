@@ -18,8 +18,9 @@
       "handle_length": "900 mm",
       "size/dimension": "4no, 5no, 6no",
       "weight": "1.4kg, 1.6kg, 1.8kg",
-      "wholesale_price": "\u20b9 175/Piece",
-      "minimum_order_qty": "24 Piece"
+      "wholesale_price": "₹ 175/Piece",
+      "minimum_order_qty": "24 Piece",
+      "hsn_code": "HSN 8201"
     },
     "images": {
       "thumbnail": "assets/agriculture_powrah/kudal/image_250.jpg",
@@ -39,8 +40,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -58,10 +59,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "8201"
   },
   {
     "id": "2859130004791",
@@ -78,8 +80,9 @@
       "shade_rate": "50 %",
       "net_type": "HDPE",
       "gsm": "60 gsm",
-      "wholesale_price": "\u20b9 15/Square Meter",
-      "minimum_order_qty": "10 Rolls"
+      "wholesale_price": "₹ 15/Square Meter",
+      "minimum_order_qty": "10 Rolls",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/agro_shade_net/farmer_agro_net/image_250.jpg",
@@ -99,8 +102,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -118,10 +121,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2858932396162",
@@ -139,8 +143,9 @@
       "net_type": "HDPE",
       "built_type": "Knitted",
       "gsm": "60 gsm",
-      "wholesale_price": "\u20b9 30/Square Meter",
-      "minimum_order_qty": "500 Square Meter"
+      "wholesale_price": "₹ 30/Square Meter",
+      "minimum_order_qty": "500 Square Meter",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/agro_shade_net/agro_shade_net/image_250.jpg",
@@ -160,8 +165,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -179,10 +184,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2857645905955",
@@ -202,8 +208,9 @@
       "style": "Woven",
       "width": "3m",
       "country_of_origin": "Made in India",
-      "wholesale_price": "\u20b9 10/Square Meter",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹ 10/Square Meter",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/agro_shade_net/outdoor_shade_net/image_250.jpg",
@@ -223,8 +230,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -242,10 +249,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2855231408455",
@@ -266,8 +274,9 @@
       "strand_width": "0.8 mm",
       "short_way_mesh": "5 mm",
       "long_way_mesh": "5mm",
-      "wholesale_price": "\u20b9 10/sq ft",
-      "minimum_order_qty": "300 sq ft"
+      "wholesale_price": "₹ 10/sq ft",
+      "minimum_order_qty": "300 sq ft",
+      "hsn_code": "HSN 7616"
     },
     "images": {
       "thumbnail": "assets/aluminium_net/expanded_aluminium_mesh/image_250.jpg",
@@ -287,8 +296,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -306,10 +315,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7616"
   },
   {
     "id": "2851585472773",
@@ -330,8 +340,9 @@
       "opening_size": "1/2 Inch",
       "mesh_count_/_opening_shape": "Diamond (Barfi)",
       "wire_/_sheet_thickness": "1mm",
-      "wholesale_price": "\u20b9 16/sq ft",
-      "minimum_order_qty": "300 sq ft"
+      "wholesale_price": "₹ 16/sq ft",
+      "minimum_order_qty": "300 sq ft",
+      "hsn_code": "HSN 7616"
     },
     "images": {
       "thumbnail": "assets/aluminium_net/aluminium_barfi_jali/image_250.jpg",
@@ -351,8 +362,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -370,10 +381,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7616"
   },
   {
     "id": "2855736009473",
@@ -392,10 +404,11 @@
       "reinforcement": "Polyester",
       "usage/application": "Waterproofing",
       "roll_size": "1x10 m",
-      "softening_point": "&gt;150 \u00b0C",
+      "softening_point": "&gt;150 °C",
       "color": "Black",
-      "wholesale_price": "\u20b9 2,100/Roll",
-      "minimum_order_qty": "10 Roll"
+      "wholesale_price": "₹ 2,100/Roll",
+      "minimum_order_qty": "10 Roll",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/app_membrane_sheet/app_membrane_sheet/image_250.jpg",
@@ -442,8 +455,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -462,10 +475,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2853650423733",
@@ -485,8 +499,9 @@
       "gsm": "40 GSM",
       "bundle_weight": "35 kg",
       "wire_diameter": "2.5 mm",
-      "wholesale_price": "\u20b9 68/Kg",
-      "minimum_order_qty": "300 Kg"
+      "wholesale_price": "₹ 68/Kg",
+      "minimum_order_qty": "300 Kg",
+      "hsn_code": "HSN 7313"
     },
     "images": {
       "thumbnail": "assets/barbed_wire/barbed_wire_kanta_taar/image_250.jpg",
@@ -506,8 +521,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -525,10 +540,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7313"
   },
   {
     "id": "2855461343612",
@@ -548,8 +564,9 @@
       "wire_diameter": "2.5 mm",
       "barb_distance": "75mm",
       "barb_length": "1&quot;",
-      "wholesale_price": "\u20b9 3,800/Roll",
-      "minimum_order_qty": "100 Roll"
+      "wholesale_price": "₹ 3,800/Roll",
+      "minimum_order_qty": "100 Roll",
+      "hsn_code": "HSN 7313"
     },
     "images": {
       "thumbnail": "assets/barbed_wire/polyester_barbed_wire/image_250.jpg",
@@ -569,8 +586,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -588,10 +605,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7313"
   },
   {
     "id": "2851093320855",
@@ -612,8 +630,9 @@
       "roll_length": "50 ft (15 m)",
       "length": "100 m",
       "zinc_coating": "40-60 gsm",
-      "wholesale_price": "\u20b9 80/Kg",
-      "minimum_order_qty": "750 Kg"
+      "wholesale_price": "₹ 80/Kg",
+      "minimum_order_qty": "750 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/chain_link_fencing/galvanized_iron_chain_link_fencing_mesh/image_250.jpg",
@@ -633,8 +652,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -652,10 +671,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2857645901873",
@@ -676,8 +696,9 @@
       "coating_type": "Hot-dip Galvanized",
       "roll_length": "50 ft (15 m)",
       "size": "5 Feet",
-      "wholesale_price": "\u20b9 70/Kg",
-      "minimum_order_qty": "10 Bundles"
+      "wholesale_price": "₹ 70/Kg",
+      "minimum_order_qty": "10 Bundles",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/chain_link_fencing/galvanized_chain_link_fence/image_250.jpg",
@@ -697,8 +718,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -716,10 +737,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854584573112",
@@ -740,8 +762,9 @@
       "fence_color": "Green",
       "surface_finish": "PVC Coated",
       "thickness": "3 mm",
-      "wholesale_price": "\u20b9 18/sq ft",
-      "minimum_order_qty": "200 sq ft"
+      "wholesale_price": "₹ 18/sq ft",
+      "minimum_order_qty": "200 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/chain_link_fencing/pvc_coated_gi_chain_link_fencing_mesh/image_250.jpg",
@@ -775,8 +798,8 @@
       "roi": {
         "balaji_lifespan": "35 Years",
         "generic_lifespan": "3 Years",
-        "balaji_cost_per_year": "\u20b918/meter/year",
-        "generic_cost_per_year": "\u20b9110/meter/year",
+        "balaji_cost_per_year": "₹18/meter/year",
+        "generic_cost_per_year": "₹110/meter/year",
         "rationale": "Balaji double-shield PVC coated GI wires block moisture via hot-zinc alloys and soil chemistry via 0.85mm UV-stabilised polymers, outlasting cheap electro-galvanised wires by 11 times."
       },
       "labor_blueprint": {
@@ -794,10 +817,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A++ (Double-shielded zero corrosion)",
-        "high_uv_heat": "UV-stabilised polymer resists up to 60\u00b0C",
+        "high_uv_heat": "UV-stabilised polymer resists up to 60°C",
         "heavy_rain_damp": "10/10 outstanding acid soil resistance"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2855281973362",
@@ -817,8 +841,9 @@
       "wire_diameter": "1.2 mm",
       "height": "4 Feet",
       "color": "Silver",
-      "wholesale_price": "\u20b9 125/Kg",
-      "minimum_order_qty": "1000 Kg"
+      "wholesale_price": "₹ 125/Kg",
+      "minimum_order_qty": "1000 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/chain_link_fencing/tata_wiron_chain_link_fencing/image_250.jpg",
@@ -838,8 +863,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -857,10 +882,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859304317255",
@@ -878,8 +904,9 @@
       "height": "5 ft",
       "coating_type": "Galvanized (GI)",
       "roll_length": "50 ft (15 m)",
-      "wholesale_price": "\u20b9 15/sq ft",
-      "minimum_order_qty": "12 Bundles"
+      "wholesale_price": "₹ 15/sq ft",
+      "minimum_order_qty": "12 Bundles",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/chain_link_fencing/chain_link_fencing_solution/image_250.jpg",
@@ -899,8 +926,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -918,10 +945,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854212869030",
@@ -942,8 +970,9 @@
       "roll_length": "30 m (100 ft)",
       "application": "Garden Fencing, Plastering, Construction, Poultry Farming",
       "hole_shape": "Hexagonal",
-      "wholesale_price": "\u20b9 300/Roll",
-      "minimum_order_qty": "10 Roll"
+      "wholesale_price": "₹ 300/Roll",
+      "minimum_order_qty": "10 Roll",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/chicken_mesh/murga_jali/image_250.jpg",
@@ -963,8 +992,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -982,10 +1011,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854333679133",
@@ -1005,9 +1035,10 @@
       "water_content": "&gt;3%",
       "type": "Bituminous Coal",
       "application": "Waterproofing, Road Construction",
-      "flash_point": "70\u201390\u00b0C",
-      "wholesale_price": "\u20b9 85/Kg",
-      "minimum_order_qty": "150 Kg"
+      "flash_point": "70–90°C",
+      "wholesale_price": "₹ 85/Kg",
+      "minimum_order_qty": "150 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/coal_tar/bitumen_coal_tar/image_250.jpg",
@@ -1027,8 +1058,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1046,10 +1077,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853416651055",
@@ -1070,8 +1102,9 @@
       "gsm": "60 GSM",
       "blade_type": "BTO-12",
       "stretched_length": "6 m",
-      "wholesale_price": "\u20b9 850/Roll",
-      "minimum_order_qty": "10 Roll"
+      "wholesale_price": "₹ 850/Roll",
+      "minimum_order_qty": "10 Roll",
+      "hsn_code": "HSN 7313"
     },
     "images": {
       "thumbnail": "assets/concertina_coil/razor_wire_concertina_coils/image_250.jpg",
@@ -1091,8 +1124,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1110,10 +1143,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7313"
   },
   {
     "id": "2853425127591",
@@ -1134,8 +1168,9 @@
       "hole_shape": "Square",
       "crimp_style": "Inter-crimp",
       "crimp_type": "Double Crimp",
-      "wholesale_price": "\u20b9 45/sq ft",
-      "minimum_order_qty": "1000 sq ft"
+      "wholesale_price": "₹ 45/sq ft",
+      "minimum_order_qty": "1000 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/crimped_netting/crimp_netting/image_250.jpg",
@@ -1155,8 +1190,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1174,10 +1209,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2855422700997",
@@ -1198,8 +1234,9 @@
       "opening_size": "40/75",
       "hole_shape": "Diamond",
       "strand_width": "2 mm",
-      "wholesale_price": "\u20b9 35/sq ft",
-      "minimum_order_qty": "10 Rolls"
+      "wholesale_price": "₹ 35/sq ft",
+      "minimum_order_qty": "10 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/expandable_mesh/expanded_metal_barfi_jali/image_250.jpg",
@@ -1219,8 +1256,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1238,10 +1275,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2851585322988",
@@ -1261,8 +1299,9 @@
       "wire_thickness": "2.5 mm",
       "thickness": "2mm",
       "length": "50 Feet",
-      "wholesale_price": "\u20b9 18/sq ft",
-      "minimum_order_qty": "50 sq ft"
+      "wholesale_price": "₹ 18/sq ft",
+      "minimum_order_qty": "50 sq ft",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/fencing_net/pet_fencing_net/image_250.jpg",
@@ -1282,8 +1321,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1301,10 +1340,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2851585393491",
@@ -1324,8 +1364,9 @@
       "coating_material": "PVC",
       "mesh_size": "1 inch",
       "surface_finish": "PVC",
-      "wholesale_price": "\u20b9 6/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 6/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/fencing_net/pvc_fencing_net/image_250.jpg",
@@ -1345,8 +1386,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1364,10 +1405,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2859129879055",
@@ -1384,8 +1426,9 @@
       "material": "Galvanized Iron (GI)",
       "wire_gauge": "12 SWG (2.5mm)",
       "zinc_coating": "Medium (60-90 gsm)",
-      "wholesale_price": "\u20b9 105/Kg",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹ 105/Kg",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/fencing_net/fencing_wire/image_250.jpeg",
@@ -1405,8 +1448,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1424,10 +1467,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2857645905088",
@@ -1448,8 +1492,9 @@
       "mesh_size": "1 inch",
       "wire_diameter": "1.20 mm (18G)",
       "material": "Stainless Steel (SS)",
-      "wholesale_price": "\u20b9 190/Kg",
-      "minimum_order_qty": "15 Bundles"
+      "wholesale_price": "₹ 190/Kg",
+      "minimum_order_qty": "15 Bundles",
+      "hsn_code": "HSN 7313"
     },
     "images": {
       "thumbnail": "assets/fencing_wire/stainless_steel_s_s_wire_mesh_fence/image_250.jpg",
@@ -1469,8 +1514,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1488,10 +1533,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7313"
   },
   {
     "id": "2857645903548",
@@ -1507,8 +1553,9 @@
       "length": "15 m",
       "material": "Iron",
       "gsm": "60 GSM",
-      "wholesale_price": "\u20b9 75/Kg",
-      "minimum_order_qty": "10 Bundles"
+      "wholesale_price": "₹ 75/Kg",
+      "minimum_order_qty": "10 Bundles",
+      "hsn_code": "HSN 7313"
     },
     "images": {
       "thumbnail": "assets/fencing_wire/fencing_wire_roll/image_250.jpeg",
@@ -1528,8 +1575,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1547,10 +1594,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7313"
   },
   {
     "id": "2853416637433",
@@ -1563,7 +1611,7 @@
       "brand": "Balaji Premium",
       "origin": "Made in India",
       "warranty": "1 Year Manufacturer Warranty",
-      "mesh_size": "4\u00d74 mm",
+      "mesh_size": "4×4 mm",
       "gsm": "45 gsm",
       "roll_width": "1000 mm",
       "pattern": "Plain",
@@ -1571,8 +1619,9 @@
       "roll_length": "50 Meter",
       "color": "White",
       "material": "Fiberglass",
-      "wholesale_price": "\u20b9 700/Roll",
-      "minimum_order_qty": "10 Roll"
+      "wholesale_price": "₹ 700/Roll",
+      "minimum_order_qty": "10 Roll",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/fibreglass_mesh/fiberglass_net/image_250.jpg",
@@ -1584,7 +1633,7 @@
       "zoom_factor": "4.0x",
       "specs_annotation": {
         "wire_gauge": "12 SWG (2.6 mm)",
-        "aperture": "4\u00d74 mm",
+        "aperture": "4×4 mm",
         "zinc_density": "240 g/sqm"
       }
     },
@@ -1592,8 +1641,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1611,10 +1660,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853368635791",
@@ -1635,8 +1685,9 @@
       "usage": "Used For Construction Purpose",
       "shape": "Round (Base)",
       "upper_diameter": "18 Inch",
-      "wholesale_price": "\u20b9 88/Piece",
-      "minimum_order_qty": "300 Piece"
+      "wholesale_price": "₹ 88/Piece",
+      "minimum_order_qty": "300 Piece",
+      "hsn_code": "HSN 7326"
     },
     "images": {
       "thumbnail": "assets/galvanized_iron_ghamela/18_inch_dhama/image_250.jpeg",
@@ -1656,8 +1707,8 @@
       "roi": {
         "balaji_lifespan": "6 Years",
         "generic_lifespan": "0.5 Years",
-        "balaji_cost_per_year": "\u20b915/piece/year",
-        "generic_cost_per_year": "\u20b9160/piece/year",
+        "balaji_cost_per_year": "₹15/piece/year",
+        "generic_cost_per_year": "₹160/piece/year",
         "rationale": "Balaji Ghamelas utilize 100% recycled, high-density thick-walled PVC, making them drop-proof and hammer-resilient, whereas cheap brittle plastic tagaris crack within months on-site."
       },
       "labor_blueprint": {
@@ -1677,7 +1728,8 @@
         "high_uv_heat": "Anti-UV stabilizers prevent summer cracking",
         "heavy_rain_damp": "Completely waterproof wet-mix pans"
       }
-    }
+    },
+    "hsn": "7326"
   },
   {
     "id": "2853943391455",
@@ -1698,8 +1750,9 @@
       "surface_finish": "Galvanized",
       "width": "1200 mm",
       "length": "15 m",
-      "wholesale_price": "\u20b9 80/Kg",
-      "minimum_order_qty": "10 Kg"
+      "wholesale_price": "₹ 80/Kg",
+      "minimum_order_qty": "10 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/gi_wire_mesh_for_poultry/gi_welded_wire_mesh/image_250.jpg",
@@ -1719,8 +1772,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1738,10 +1791,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2855265078273",
@@ -1761,8 +1815,9 @@
       "tensile_strength": "350 MPa",
       "galvanization_technology": "Hot-Dip Galvanized",
       "coil_weight": "50 Kg",
-      "wholesale_price": "\u20b9 65/Kg",
-      "minimum_order_qty": "1000 Kg"
+      "wholesale_price": "₹ 65/Kg",
+      "minimum_order_qty": "1000 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/gi_wire/4mm_galvanized_iron_wire/image_250.jpg",
@@ -1782,8 +1837,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1801,10 +1856,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853368433362",
@@ -1825,8 +1881,9 @@
       "usage/application": "Agriculture",
       "blade_width": "110 mm",
       "blade_length": "180 mm",
-      "wholesale_price": "\u20b9 220/Piece",
-      "minimum_order_qty": "6 Piece"
+      "wholesale_price": "₹ 220/Piece",
+      "minimum_order_qty": "6 Piece",
+      "hsn_code": "HSN 8201"
     },
     "images": {
       "thumbnail": "assets/hand_shovel/agro_hand_shovel/image_250.jpg",
@@ -1846,8 +1903,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1865,10 +1922,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "8201"
   },
   {
     "id": "2853416618948",
@@ -1889,8 +1947,9 @@
       "roll_length": "25 m",
       "color": "Black",
       "usage/application": "Used To Bond Headliners Floor Mats And Speaker Covers.",
-      "wholesale_price": "\u20b9 155/Roll",
-      "minimum_order_qty": "40 Roll"
+      "wholesale_price": "₹ 155/Roll",
+      "minimum_order_qty": "40 Roll",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/hook_loop_tapes/velcro_tape/image_250.jpg",
@@ -1910,8 +1969,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1929,10 +1988,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853907670297",
@@ -1953,8 +2013,9 @@
       "roll_length": "25 m",
       "packaging_type": "Roll",
       "color": "White",
-      "wholesale_price": "\u20b9 550/Piece",
-      "minimum_order_qty": "100 Piece"
+      "wholesale_price": "₹ 550/Piece",
+      "minimum_order_qty": "100 Piece",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/hook_loop_tapes/adheshive_hook_loop_tape/image_250.jpg",
@@ -1974,8 +2035,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -1993,10 +2054,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2855840800673",
@@ -2017,8 +2079,9 @@
       "diameter": "4 mm",
       "coil_weight": "50 kg",
       "tensile_strength": "450 MPa",
-      "wholesale_price": "\u20b9 61/Kg",
-      "minimum_order_qty": "1000 Kg"
+      "wholesale_price": "₹ 61/Kg",
+      "minimum_order_qty": "1000 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/hot_dip_galvanized_wire/hot_dip_g_i_wire/image_250.jpg",
@@ -2038,8 +2101,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2057,10 +2120,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2851085275155",
@@ -2073,7 +2137,7 @@
       "brand": "Balaji Premium",
       "origin": "Made in India",
       "warranty": "1 Year Manufacturer Warranty",
-      "opening_size": "25\u00d725 mm",
+      "opening_size": "25×25 mm",
       "thickness": "12 Gauge (2.68 mm)",
       "wire_diameter": "2.5 mm",
       "roll_width": "1.2 m",
@@ -2081,8 +2145,9 @@
       "hole_shape": "Square",
       "roll_length": "15 m",
       "mesh_size": "25x25 mm",
-      "wholesale_price": "\u20b9 66/Kg",
-      "minimum_order_qty": "100 Kg"
+      "wholesale_price": "₹ 66/Kg",
+      "minimum_order_qty": "100 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/mild_steel_welded_mesh/ms_welded_wire_mesh/image_250.jpg",
@@ -2102,8 +2167,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2121,10 +2186,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859130085455",
@@ -2142,8 +2208,9 @@
       "roll_width": "4 ft",
       "roll_length": "15 m",
       "core_material": "PVC",
-      "wholesale_price": "\u20b9 5.50/sq ft",
-      "minimum_order_qty": "50 Units"
+      "wholesale_price": "₹ 5.50/sq ft",
+      "minimum_order_qty": "50 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/new_items/pvc_net_wire_mesh/image_250.jpg",
@@ -2177,8 +2244,8 @@
       "roi": {
         "balaji_lifespan": "35 Years",
         "generic_lifespan": "3 Years",
-        "balaji_cost_per_year": "\u20b918/meter/year",
-        "generic_cost_per_year": "\u20b9110/meter/year",
+        "balaji_cost_per_year": "₹18/meter/year",
+        "generic_cost_per_year": "₹110/meter/year",
         "rationale": "Balaji double-shield PVC coated GI wires block moisture via hot-zinc alloys and soil chemistry via 0.85mm UV-stabilised polymers, outlasting cheap electro-galvanised wires by 11 times."
       },
       "labor_blueprint": {
@@ -2196,10 +2263,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A++ (Double-shielded zero corrosion)",
-        "high_uv_heat": "UV-stabilised polymer resists up to 60\u00b0C",
+        "high_uv_heat": "UV-stabilised polymer resists up to 60°C",
         "heavy_rain_damp": "10/10 outstanding acid soil resistance"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859133386891",
@@ -2213,15 +2281,16 @@
       "origin": "Made in India",
       "warranty": "1 Year Manufacturer Warranty",
       "coating": "Uncoated",
-      "mesh_size": "20\u00d720 mesh",
+      "mesh_size": "20×20 mesh",
       "roll_width": "1.2 m",
       "roll_length": "30 m",
       "color": "Black",
       "usage": "Window Net",
       "uv_stabilization": "UV Stabilized",
       "fire_retardant": "No",
-      "wholesale_price": "\u20b9 4.50/sq ft",
-      "minimum_order_qty": "30 Units"
+      "wholesale_price": "₹ 4.50/sq ft",
+      "minimum_order_qty": "30 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/new_items/fiberglass_mosquito_net/image_250.jpg",
@@ -2233,7 +2302,7 @@
       "zoom_factor": "4.0x",
       "specs_annotation": {
         "wire_gauge": "12 SWG (2.6 mm)",
-        "aperture": "20\u00d720 mesh",
+        "aperture": "20×20 mesh",
         "zinc_density": "240 g/sqm"
       }
     },
@@ -2241,8 +2310,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2260,10 +2329,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2858326384262",
@@ -2280,8 +2350,9 @@
       "material": "Mild Steel (MS)",
       "weight_per_coil": "25 kg",
       "finish": "Annealed",
-      "wholesale_price": "\u20b9 58,000/Tonne",
-      "minimum_order_qty": "10 Tonne"
+      "wholesale_price": "₹ 58,000/Tonne",
+      "minimum_order_qty": "10 Tonne",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/new_items/binding_wire/image_250.jpg",
@@ -2301,8 +2372,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2320,10 +2391,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859299432391",
@@ -2344,8 +2416,9 @@
       "usage": "Road construction, Separation, Filtration, Landfill",
       "color": "White",
       "uv_resistance": "Yes",
-      "wholesale_price": "\u20b9 30/Square Meter",
-      "minimum_order_qty": "100 Units"
+      "wholesale_price": "₹ 30/Square Meter",
+      "minimum_order_qty": "100 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/new_items/non_woven_geotextile/image_250.jpg",
@@ -2365,8 +2438,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2384,10 +2457,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859240329288",
@@ -2403,8 +2477,9 @@
       "wire_diameter": "0.90 mm",
       "surface_finish": "Black",
       "coil_weight": "25 kg",
-      "wholesale_price": "\u20b9 58/Kg",
-      "minimum_order_qty": "100 Units"
+      "wholesale_price": "₹ 58/Kg",
+      "minimum_order_qty": "100 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/new_items/mild_steel_binding_wire/image_250.svg",
@@ -2424,8 +2499,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2443,10 +2518,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859140474097",
@@ -2459,8 +2535,9 @@
       "brand": "Balaji Premium",
       "origin": "Made in India",
       "warranty": "1 Year Manufacturer Warranty",
-      "wholesale_price": "\u20b9 150/Litre",
-      "minimum_order_qty": "100 Units"
+      "wholesale_price": "₹ 150/Litre",
+      "minimum_order_qty": "100 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/new_items/waterproofing_primer/image_250.svg",
@@ -2480,8 +2557,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2499,10 +2576,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859140477391",
@@ -2515,8 +2593,9 @@
       "brand": "Balaji Premium",
       "origin": "Made in India",
       "warranty": "1 Year Manufacturer Warranty",
-      "wholesale_price": "\u20b9 1.50/sq ft",
-      "minimum_order_qty": "100 Units"
+      "wholesale_price": "₹ 1.50/sq ft",
+      "minimum_order_qty": "100 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/new_items/safety_net/image_250.jpg",
@@ -2536,8 +2615,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2555,10 +2634,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2856524147373",
@@ -2579,8 +2659,9 @@
       "material_grade": "1100",
       "alloy_grade": "1100",
       "sheet_size_(w_x_l)": "4 X 8 feet",
-      "wholesale_price": "\u20b9 3,500/Piece",
-      "minimum_order_qty": "50 Units"
+      "wholesale_price": "₹ 3,500/Piece",
+      "minimum_order_qty": "50 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/perforated_aluminium_sheet_facade/aluminium_perforated_sheet/image_250.jpg",
@@ -2600,8 +2681,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2619,10 +2700,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2856524305612",
@@ -2643,8 +2725,9 @@
       "pitch": "Square , 13",
       "open_area": "30%",
       "sheet_size_(w_x_l)": "3 X 8 feet",
-      "wholesale_price": "\u20b9 1,500/Piece",
-      "minimum_order_qty": "5 Piece"
+      "wholesale_price": "₹ 1,500/Piece",
+      "minimum_order_qty": "5 Piece",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/perforated_sheet/ms_perforated_sheet/image_250.jpg",
@@ -2664,8 +2747,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2683,10 +2766,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859129874948",
@@ -2707,8 +2791,9 @@
       "surface_finish": "Mill Finish",
       "hole_size": "2 mm",
       "pitch": "2 mm",
-      "wholesale_price": "\u20b9 1,600/sq ft",
-      "minimum_order_qty": "50 Units"
+      "wholesale_price": "₹ 1,600/sq ft",
+      "minimum_order_qty": "50 Units",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/perforated_sheets/perforated_sheets/image_250.jpg",
@@ -2728,8 +2813,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2747,10 +2832,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2851585323062",
@@ -2771,8 +2857,9 @@
       "color": "Black",
       "usage/application": "Agriculture",
       "length_per_roll": "500 m",
-      "wholesale_price": "\u20b9 370/Kg",
-      "minimum_order_qty": "10 Kg"
+      "wholesale_price": "₹ 370/Kg",
+      "minimum_order_qty": "10 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/pet_wire/agrosia_pet_wire/image_250.jpg",
@@ -2792,8 +2879,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -2811,10 +2898,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853993323362",
@@ -2835,8 +2923,9 @@
       "diameter": "18 Inch  (Upper)",
       "thickness": "1.5mm",
       "country_of_origin": "Made in India",
-      "wholesale_price": "\u20b9 70/Piece",
-      "minimum_order_qty": "140 Piece"
+      "wholesale_price": "₹ 70/Piece",
+      "minimum_order_qty": "140 Piece",
+      "hsn_code": "HSN 3926"
     },
     "images": {
       "thumbnail": "assets/plastic_ghamela/18_inch_red_plastic_ghamela/image_250.jpeg",
@@ -2856,8 +2945,8 @@
       "roi": {
         "balaji_lifespan": "6 Years",
         "generic_lifespan": "0.5 Years",
-        "balaji_cost_per_year": "\u20b915/piece/year",
-        "generic_cost_per_year": "\u20b9160/piece/year",
+        "balaji_cost_per_year": "₹15/piece/year",
+        "generic_cost_per_year": "₹160/piece/year",
         "rationale": "Balaji Ghamelas utilize 100% recycled, high-density thick-walled PVC, making them drop-proof and hammer-resilient, whereas cheap brittle plastic tagaris crack within months on-site."
       },
       "labor_blueprint": {
@@ -2877,7 +2966,8 @@
         "high_uv_heat": "Anti-UV stabilizers prevent summer cracking",
         "heavy_rain_damp": "Completely waterproof wet-mix pans"
       }
-    }
+    },
+    "hsn": "3926"
   },
   {
     "id": "2853368650497",
@@ -2897,8 +2987,9 @@
       "diameter": "19 Inch (Base)",
       "colour": "Green",
       "usage": "Used For Lifting Construction Material Like Cement, Dust, Stones.",
-      "wholesale_price": "\u20b9 140/Piece",
-      "minimum_order_qty": "100 Piece"
+      "wholesale_price": "₹ 140/Piece",
+      "minimum_order_qty": "100 Piece",
+      "hsn_code": "HSN 3926"
     },
     "images": {
       "thumbnail": "assets/plastic_ghamela/18_inch_green_pvc_dhama/image_250.jpeg",
@@ -2918,8 +3009,8 @@
       "roi": {
         "balaji_lifespan": "6 Years",
         "generic_lifespan": "0.5 Years",
-        "balaji_cost_per_year": "\u20b915/piece/year",
-        "generic_cost_per_year": "\u20b9160/piece/year",
+        "balaji_cost_per_year": "₹15/piece/year",
+        "generic_cost_per_year": "₹160/piece/year",
         "rationale": "Balaji Ghamelas utilize 100% recycled, high-density thick-walled PVC, making them drop-proof and hammer-resilient, whereas cheap brittle plastic tagaris crack within months on-site."
       },
       "labor_blueprint": {
@@ -2939,7 +3030,8 @@
         "high_uv_heat": "Anti-UV stabilizers prevent summer cracking",
         "heavy_rain_damp": "Completely waterproof wet-mix pans"
       }
-    }
+    },
+    "hsn": "3926"
   },
   {
     "id": "2854166534288",
@@ -2960,8 +3052,9 @@
       "handle_type": "Without Handle",
       "usage/application": "Used For Gardening, Farming, Agriculture And Construction.",
       "color": "Red",
-      "wholesale_price": "\u20b9 125/Piece",
-      "minimum_order_qty": "60 Piece"
+      "wholesale_price": "₹ 125/Piece",
+      "minimum_order_qty": "60 Piece",
+      "hsn_code": "HSN 3926"
     },
     "images": {
       "thumbnail": "assets/plastic_ghamela/green_pvc_ghamela/image_250.jpeg",
@@ -2981,8 +3074,8 @@
       "roi": {
         "balaji_lifespan": "6 Years",
         "generic_lifespan": "0.5 Years",
-        "balaji_cost_per_year": "\u20b915/piece/year",
-        "generic_cost_per_year": "\u20b9160/piece/year",
+        "balaji_cost_per_year": "₹15/piece/year",
+        "generic_cost_per_year": "₹160/piece/year",
         "rationale": "Balaji Ghamelas utilize 100% recycled, high-density thick-walled PVC, making them drop-proof and hammer-resilient, whereas cheap brittle plastic tagaris crack within months on-site."
       },
       "labor_blueprint": {
@@ -3002,7 +3095,8 @@
         "high_uv_heat": "Anti-UV stabilizers prevent summer cracking",
         "heavy_rain_damp": "Completely waterproof wet-mix pans"
       }
-    }
+    },
+    "hsn": "3926"
   },
   {
     "id": "2851585401362",
@@ -3019,12 +3113,13 @@
       "material": "Polyester",
       "net_type": "Fixed Frame",
       "usage/application": "Window",
-      "mesh_size": "20\u00d720 mesh",
+      "mesh_size": "20×20 mesh",
       "color": "Yellow , Blue, Green",
       "use_for": "Used For Insect Protection",
       "packaging_type": "Roll",
-      "wholesale_price": "\u20b9 600/Piece",
-      "minimum_order_qty": "1000 Piece"
+      "wholesale_price": "₹ 600/Piece",
+      "minimum_order_qty": "1000 Piece",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/plastic_net/pvc_mosquito_net/image_250.jpeg",
@@ -3036,7 +3131,7 @@
       "zoom_factor": "4.0x",
       "specs_annotation": {
         "wire_gauge": "12 SWG (2.6 mm)",
-        "aperture": "20\u00d720 mesh",
+        "aperture": "20×20 mesh",
         "zinc_density": "240 g/sqm"
       }
     },
@@ -3044,8 +3139,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3063,10 +3158,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859130085530",
@@ -3083,8 +3179,9 @@
       "net_type": "Fencing Net",
       "gsm": "50 GSM",
       "roll_width": "1.5 m",
-      "wholesale_price": "\u20b9 90/Kg",
-      "minimum_order_qty": "5 Rolls"
+      "wholesale_price": "₹ 90/Kg",
+      "minimum_order_qty": "5 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/plastic_net/pvc_wire_netting/image_250.jpeg",
@@ -3118,8 +3215,8 @@
       "roi": {
         "balaji_lifespan": "35 Years",
         "generic_lifespan": "3 Years",
-        "balaji_cost_per_year": "\u20b918/meter/year",
-        "generic_cost_per_year": "\u20b9110/meter/year",
+        "balaji_cost_per_year": "₹18/meter/year",
+        "generic_cost_per_year": "₹110/meter/year",
         "rationale": "Balaji double-shield PVC coated GI wires block moisture via hot-zinc alloys and soil chemistry via 0.85mm UV-stabilised polymers, outlasting cheap electro-galvanised wires by 11 times."
       },
       "labor_blueprint": {
@@ -3137,10 +3234,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A++ (Double-shielded zero corrosion)",
-        "high_uv_heat": "UV-stabilised polymer resists up to 60\u00b0C",
+        "high_uv_heat": "UV-stabilised polymer resists up to 60°C",
         "heavy_rain_damp": "10/10 outstanding acid soil resistance"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853286085873",
@@ -3161,8 +3259,9 @@
       "wire_gauge": "18 Gauge",
       "coating_type": "Hot Dip Galvanized",
       "material": "Galvanized Iron (GI)",
-      "wholesale_price": "\u20b9 8/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 8/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/poultry_weld_mesh/gi_poultry_wire_mesh/image_250.jpg",
@@ -3182,8 +3281,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3201,10 +3300,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859129871755",
@@ -3225,8 +3325,9 @@
       "net_color": "Green",
       "primary_application": "Nursery, Greenhouse, Net House",
       "uv_stabilized": "Yes",
-      "wholesale_price": "\u20b9 20/Square Meter",
-      "minimum_order_qty": "10 Rolls"
+      "wholesale_price": "₹ 20/Square Meter",
+      "minimum_order_qty": "10 Rolls",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/shade_net/green_shade_nets/image_250.jpg",
@@ -3246,8 +3347,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3265,10 +3366,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2859129874055",
@@ -3286,8 +3388,9 @@
       "net_type": "Woven",
       "width": "3 m",
       "gsm": "50 gsm",
-      "wholesale_price": "\u20b9 30/Square Meter",
-      "minimum_order_qty": "5 Rolls"
+      "wholesale_price": "₹ 30/Square Meter",
+      "minimum_order_qty": "5 Rolls",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/shade_net/nursery_shade_net/image_250.jpeg",
@@ -3307,8 +3410,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3326,10 +3429,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2853942992755",
@@ -3350,8 +3454,9 @@
       "built_type": "Neting",
       "length": "50 m",
       "thickness": "1 mm",
-      "wholesale_price": "\u20b9 3/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 3/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/shading_net/greenhouse_shade_net/image_250.jpg",
@@ -3371,8 +3476,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3390,10 +3495,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2853942994233",
@@ -3414,8 +3520,9 @@
       "built_type": "Knitted",
       "shading_type": "Net Type",
       "length": "50 m",
-      "wholesale_price": "\u20b9 16/Square Meter",
-      "minimum_order_qty": "1200 Square Meter"
+      "wholesale_price": "₹ 16/Square Meter",
+      "minimum_order_qty": "1200 Square Meter",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/shading_net/agro_shade_nets/image_250.jpg",
@@ -3435,8 +3542,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3454,10 +3561,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2851085275397",
@@ -3478,8 +3586,9 @@
       "net_width": "3 m",
       "length": "50 m",
       "net_length": "50 m",
-      "wholesale_price": "\u20b9 1.50/sq ft",
-      "minimum_order_qty": "10 sq ft"
+      "wholesale_price": "₹ 1.50/sq ft",
+      "minimum_order_qty": "10 sq ft",
+      "hsn_code": "HSN 5608"
     },
     "images": {
       "thumbnail": "assets/shading_net/green_shading_net/image_250.jpg",
@@ -3499,8 +3608,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3518,10 +3627,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   },
   {
     "id": "2855578921791",
@@ -3542,8 +3652,9 @@
       "usage/application": "Window",
       "packaging_type": "Roll",
       "type": "Foldable",
-      "wholesale_price": "\u20b9 15/sq ft",
-      "minimum_order_qty": "300 sq ft"
+      "wholesale_price": "₹ 15/sq ft",
+      "minimum_order_qty": "300 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/square_wire_mesh/aluminium_mosquito_mesh/image_250.jpg",
@@ -3563,8 +3674,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3582,10 +3693,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854031373673",
@@ -3606,8 +3718,9 @@
       "thickness": "2mm",
       "roll_width": "1.2 m",
       "roll_length": "15 m",
-      "wholesale_price": "\u20b9 85/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 85/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/ss_welded_mesh/stainless_steel_welded_mesh/image_250.jpg",
@@ -3627,8 +3740,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3646,10 +3759,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854038137491",
@@ -3670,8 +3784,9 @@
       "hole_shape": "Square",
       "roll_width": "1.2 m",
       "roll_length": "15 m",
-      "wholesale_price": "\u20b9 280/Kg",
-      "minimum_order_qty": "100 Kg"
+      "wholesale_price": "₹ 280/Kg",
+      "minimum_order_qty": "100 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/stainless_steel_welded_mesh/stainless_steel_welded_mesh/image_250.jpg",
@@ -3691,8 +3806,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3710,10 +3825,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2851585496388",
@@ -3734,8 +3850,9 @@
       "mesh_size": "12*14",
       "weave_type": "Plain Weave",
       "hole_shape": "Square",
-      "wholesale_price": "\u20b9 12/sq ft",
-      "minimum_order_qty": "500 sq ft"
+      "wholesale_price": "₹ 12/sq ft",
+      "minimum_order_qty": "500 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/stainless_steel_wire_mesh/stainless_steel_mosquito_net/image_250.jpg",
@@ -3755,8 +3872,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3774,10 +3891,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2855699854591",
@@ -3798,8 +3916,9 @@
       "usage/application": "Fencing purpose",
       "gsm": "40 GSM",
       "length": "100 m",
-      "wholesale_price": "\u20b9 700/Roll",
-      "minimum_order_qty": "20 Roll"
+      "wholesale_price": "₹ 700/Roll",
+      "minimum_order_qty": "20 Roll",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/steel_rbt_wire/rbt_fencing_wire/image_250.jpg",
@@ -3819,8 +3938,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -3838,10 +3957,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853574977173",
@@ -3860,10 +3980,11 @@
       "reinforcement_type": "Hessian Based",
       "application_area": "Water Tank, Terrace, Basement, Roof",
       "roll_length": "20 m",
-      "roll_size": "1 m \u00d7 20 m",
+      "roll_size": "1 m × 20 m",
       "surface_finish": "Plain",
-      "wholesale_price": "\u20b9 15/sq ft",
-      "minimum_order_qty": "5 sq ft"
+      "wholesale_price": "₹ 15/sq ft",
+      "minimum_order_qty": "5 sq ft",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/tar_felt/bitumen_tar_felt/image_250.jpg",
@@ -3898,8 +4019,8 @@
       "roi": {
         "balaji_lifespan": "12 Years",
         "generic_lifespan": "1.5 Years",
-        "balaji_cost_per_year": "\u20b910/sqm/year",
-        "generic_cost_per_year": "\u20b965/sqm/year",
+        "balaji_cost_per_year": "₹10/sqm/year",
+        "generic_cost_per_year": "₹65/sqm/year",
         "rationale": "Balaji Type 3 Tar Felts employ premium 350g/sqm woven jute carriers fully saturated with oxidized bitumen, resisting rot 8 times longer than cheap unreinforced tar papers."
       },
       "labor_blueprint": {
@@ -3910,17 +4031,18 @@
           "Flat steel wire cleaning brushes"
         ],
         "steps": [
-          "Melt industrial bitumen to 180\u00b0C in boiler.",
+          "Melt industrial bitumen to 180°C in boiler.",
           "Pour hot bitumen on concrete deck, spread evenly.",
           "Press Jute Tar Felt rolls directly onto hot asphalt layers."
         ]
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A (BIS-marked anti-rot damp barrier)",
-        "high_uv_heat": "Resistant to 80\u00b0C under roof tiles",
+        "high_uv_heat": "Resistant to 80°C under roof tiles",
         "heavy_rain_damp": "Excellent sub-slab water seal"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2856422511848",
@@ -3938,11 +4060,12 @@
       "top_finish": "Plain",
       "usage/application": "Waterproofing",
       "roll_size": "1x10 m",
-      "softening_point": "&gt;150 \u00b0C",
+      "softening_point": "&gt;150 °C",
       "application_area": "Roof, Terrace, Water tank",
       "color": "Grey",
-      "wholesale_price": "\u20b9 2,250/Roll",
-      "minimum_order_qty": "30 Units"
+      "wholesale_price": "₹ 2,250/Roll",
+      "minimum_order_qty": "30 Units",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/tar_felt/sika_app_membrane/image_250.jpg",
@@ -3989,8 +4112,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -4009,10 +4132,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2856408660355",
@@ -4030,11 +4154,12 @@
       "thickness": "1.5mm",
       "application_area": "Roof, Terrace",
       "roll_length": "20 meter",
-      "roll_size": "1 m \u00d7 20 m",
+      "roll_size": "1 m × 20 m",
       "surface_finish": "Plain",
-      "softening_point": "80\u201390\u00b0C",
-      "wholesale_price": "\u20b9 20/sq ft",
-      "minimum_order_qty": "10 sq ft"
+      "softening_point": "80–90°C",
+      "wholesale_price": "₹ 20/sq ft",
+      "minimum_order_qty": "10 sq ft",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/tar_felt/waterproofing_tarfelt_sheet/image_250.jpg",
@@ -4069,8 +4194,8 @@
       "roi": {
         "balaji_lifespan": "12 Years",
         "generic_lifespan": "1.5 Years",
-        "balaji_cost_per_year": "\u20b910/sqm/year",
-        "generic_cost_per_year": "\u20b965/sqm/year",
+        "balaji_cost_per_year": "₹10/sqm/year",
+        "generic_cost_per_year": "₹65/sqm/year",
         "rationale": "Balaji Type 3 Tar Felts employ premium 350g/sqm woven jute carriers fully saturated with oxidized bitumen, resisting rot 8 times longer than cheap unreinforced tar papers."
       },
       "labor_blueprint": {
@@ -4081,17 +4206,18 @@
           "Flat steel wire cleaning brushes"
         ],
         "steps": [
-          "Melt industrial bitumen to 180\u00b0C in boiler.",
+          "Melt industrial bitumen to 180°C in boiler.",
           "Pour hot bitumen on concrete deck, spread evenly.",
           "Press Jute Tar Felt rolls directly onto hot asphalt layers."
         ]
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A (BIS-marked anti-rot damp barrier)",
-        "high_uv_heat": "Resistant to 80\u00b0C under roof tiles",
+        "high_uv_heat": "Resistant to 80°C under roof tiles",
         "heavy_rain_damp": "Excellent sub-slab water seal"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2859066639491",
@@ -4110,8 +4236,9 @@
       "closure_strength": "Light Duty",
       "roll_length": "25 m",
       "color": "White",
-      "wholesale_price": "\u20b9 185/Roll",
-      "minimum_order_qty": "20 Roll"
+      "wholesale_price": "₹ 185/Roll",
+      "minimum_order_qty": "20 Roll",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/velcro_tape/velcro_hook_and_loop/image_250.jpg",
@@ -4131,8 +4258,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -4150,10 +4277,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2858909614788",
@@ -4173,8 +4301,9 @@
       "screen_width": "4 ft",
       "mesh_type": "Crimped",
       "application": "Coal Screening, Sand Screening, Vibrating Screen",
-      "wholesale_price": "\u20b9 50/sq ft",
-      "minimum_order_qty": "100 sq ft"
+      "wholesale_price": "₹ 50/sq ft",
+      "minimum_order_qty": "100 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/vibrating_wire_mesh/vibrating_screen_mesh/image_250.jpg",
@@ -4194,8 +4323,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -4213,10 +4342,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854784615230",
@@ -4237,8 +4367,9 @@
       "adhesive_type": "Self Adhesive",
       "adhesive_sidedness": "Single Sided",
       "tape_thickness": "1.5 mm",
-      "wholesale_price": "\u20b9 300/Piece",
-      "minimum_order_qty": "20 Piece"
+      "wholesale_price": "₹ 300/Piece",
+      "minimum_order_qty": "20 Piece",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/waterproof_tape/leakage_protection_tape/image_250.jpeg",
@@ -4258,8 +4389,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -4277,10 +4408,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859304299462",
@@ -4299,8 +4431,9 @@
       "adhesive_type": "Self Adhesive",
       "color": "Silver",
       "thickness": "1 mm",
-      "wholesale_price": "\u20b9 100/Piece",
-      "minimum_order_qty": "36 Piece"
+      "wholesale_price": "₹ 100/Piece",
+      "minimum_order_qty": "36 Piece",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/waterproof_tape/leakage_repair_waterproof_tape/image_250.jpg",
@@ -4320,8 +4453,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -4339,10 +4472,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2856838974788",
@@ -4360,11 +4494,12 @@
       "top_finish": "Plain",
       "roll_size": "1x10 m",
       "reinforcement": "Polyester",
-      "softening_point": "&gt;150 \u00b0C",
+      "softening_point": "&gt;150 °C",
       "material": "HDPE",
       "width": "1mtr",
-      "wholesale_price": "\u20b9 1,800/Roll",
-      "minimum_order_qty": "50 Units"
+      "wholesale_price": "₹ 1,800/Roll",
+      "minimum_order_qty": "50 Units",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing_membrane/asian_paints_app_membrane/image_250.jpg",
@@ -4411,8 +4546,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -4431,10 +4566,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2858400802555",
@@ -4454,8 +4590,9 @@
       "service_location": "Pan India",
       "building_type": "Institutional, Warehouse, Industrial, Commercial",
       "roof_type": "Slope Roof, Concrete Roof, Terrace Slab, Flat Roof, Metal Roof, Asbestos Sheet Roof, Tiled Roof",
-      "wholesale_price": "\u20b9 15/sq ft",
-      "minimum_order_qty": "1000 sq ft"
+      "wholesale_price": "₹ 15/sq ft",
+      "minimum_order_qty": "1000 sq ft",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing_service/roof_waterproofing_services/image_250.svg",
@@ -4475,8 +4612,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -4494,10 +4631,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2858400787562",
@@ -4513,12 +4651,13 @@
       "service_application": "Roof, Terrace",
       "waterproofing_system": "APP Membrane",
       "service_type": "Repair Waterproofing, New Waterproofing",
-      "service_area": "1001\u20133000 sq ft",
+      "service_area": "1001–3000 sq ft",
       "building_type": "Commercial, Residential, Institutional",
       "brand_used": "Sika, STP, Berger, Asian Paints",
       "work_type": "Material And Labour",
-      "wholesale_price": "\u20b9 65/sq ft",
-      "minimum_order_qty": "1000 sq ft"
+      "wholesale_price": "₹ 65/sq ft",
+      "minimum_order_qty": "1000 sq ft",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing_service/water_proofing_service/image_250.jpg",
@@ -4538,8 +4677,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -4557,10 +4696,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2855578585833",
@@ -4581,8 +4721,9 @@
       "thickness": "1mm",
       "roll_length": "20 m",
       "application_area": "Terrace, Roof",
-      "wholesale_price": "\u20b9 1,000/Roll",
-      "minimum_order_qty": "10 Roll"
+      "wholesale_price": "₹ 1,000/Roll",
+      "minimum_order_qty": "10 Roll",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing/plastic_tar_felt/image_250.jpg",
@@ -4629,8 +4770,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -4649,10 +4790,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2856408492397",
@@ -4672,9 +4814,10 @@
       "type": "STP Primer",
       "base_type": "Water Based",
       "pack_size": "20 L",
-      "coverage_area": "8\u201310 m\u00b2/L",
-      "wholesale_price": "\u20b9 80/Litre",
-      "minimum_order_qty": "100 Litre"
+      "coverage_area": "8–10 m²/L",
+      "wholesale_price": "₹ 80/Litre",
+      "minimum_order_qty": "100 Litre",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing/water_based_primer/image_250.jpg",
@@ -4721,8 +4864,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -4741,10 +4884,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2856408670573",
@@ -4762,10 +4906,11 @@
       "finish": "Smooth",
       "base_type": "Water Based",
       "pack_size": "20 L",
-      "coverage_area": "10\u201312 m\u00b2/L",
+      "coverage_area": "10–12 m²/L",
       "packaging_size": "20 L",
-      "wholesale_price": "\u20b9 1,200/Bucket",
-      "minimum_order_qty": "10 Bucket"
+      "wholesale_price": "₹ 1,200/Bucket",
+      "minimum_order_qty": "10 Bucket",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing/water_based_primer/image_250.jpg",
@@ -4812,8 +4957,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -4832,10 +4977,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2856784684273",
@@ -4855,8 +5001,9 @@
       "base_material": "Polyester",
       "application_method": "Torch Applied",
       "packaging_size": "Roll",
-      "wholesale_price": "\u20b9 2,050/Roll",
-      "minimum_order_qty": "10 Roll"
+      "wholesale_price": "₹ 2,050/Roll",
+      "minimum_order_qty": "10 Roll",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing/waterproofing_bitumen_sheet/image_250.jpg",
@@ -4903,8 +5050,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -4923,10 +5070,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2856784684588",
@@ -4947,8 +5095,9 @@
       "top_finish": "Plain",
       "usage/application": "Waterproofing/ Plain surface",
       "color": "Black",
-      "wholesale_price": "\u20b9 1,450/Roll",
-      "minimum_order_qty": "100 Units"
+      "wholesale_price": "₹ 1,450/Roll",
+      "minimum_order_qty": "100 Units",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing/waterproof_membranes/image_250.jpg",
@@ -4995,8 +5144,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -5015,10 +5164,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2857861694312",
@@ -5039,8 +5189,9 @@
       "usage": "Road construction",
       "usage/application": "WATERPROOFING",
       "fabric_type": "Non Woven, Non woven",
-      "wholesale_price": "\u20b9 20/Square Meter",
-      "minimum_order_qty": "100 Square Meter"
+      "wholesale_price": "₹ 20/Square Meter",
+      "minimum_order_qty": "100 Square Meter",
+      "hsn_code": "HSN 6807"
     },
     "images": {
       "thumbnail": "assets/waterproofing/nonwoven_geotextile_fabric/image_250.jpg",
@@ -5087,8 +5238,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -5107,10 +5258,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2855530537262",
@@ -5131,8 +5283,9 @@
       "wire_diameter": "2.50 mm",
       "thickness": "12 Gauge (2.68 mm)",
       "coating_type": "Hot Dip Galvanized",
-      "wholesale_price": "\u20b9 78/Kg",
-      "minimum_order_qty": "200 Kg"
+      "wholesale_price": "₹ 78/Kg",
+      "minimum_order_qty": "200 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/welded_wire_mesh/galvanized_iron_welded_mesh/image_250.jpg",
@@ -5152,8 +5305,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5171,10 +5324,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854330276948",
@@ -5195,8 +5349,9 @@
       "brush_size": "10 Inch, 10 inch",
       "usage/application": "Cleaning",
       "color": "Black",
-      "wholesale_price": "\u20b9 45/Piece",
-      "minimum_order_qty": "20 Piece"
+      "wholesale_price": "₹ 45/Piece",
+      "minimum_order_qty": "20 Piece",
+      "hsn_code": "HSN 9603"
     },
     "images": {
       "thumbnail": "assets/wire_brush/tar_brush_pvc_and_wooden/image_250.jpeg",
@@ -5216,8 +5371,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5235,10 +5390,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "9603"
   },
   {
     "id": "2854492720255",
@@ -5259,8 +5415,9 @@
       "usage/application": "Industrial",
       "color": "Black",
       "wire_type": "Straight Wire",
-      "wholesale_price": "\u20b9 30/Piece",
-      "minimum_order_qty": "20 Piece"
+      "wholesale_price": "₹ 30/Piece",
+      "minimum_order_qty": "20 Piece",
+      "hsn_code": "HSN 9603"
     },
     "images": {
       "thumbnail": "assets/wire_brush/laltu_wire_brush/image_250.jpg",
@@ -5280,8 +5437,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5299,10 +5456,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "9603"
   },
   {
     "id": "2853622543233",
@@ -5323,8 +5481,9 @@
       "handle_material": "Plastic",
       "usage/application": "Cleaning",
       "wire_type": "Straight Wire",
-      "wholesale_price": "\u20b9 25/Piece",
-      "minimum_order_qty": "15 Piece"
+      "wholesale_price": "₹ 25/Piece",
+      "minimum_order_qty": "15 Piece",
+      "hsn_code": "HSN 9603"
     },
     "images": {
       "thumbnail": "assets/wire_brush/tar_brush/image_250.jpg",
@@ -5344,8 +5503,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5363,10 +5522,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "9603"
   },
   {
     "id": "2854080444488",
@@ -5385,8 +5545,9 @@
       "weave_type": "Plain",
       "surface_treatment": "Hot Dipped Galvanized",
       "color": "Black",
-      "wholesale_price": "\u20b9 25/sq ft",
-      "minimum_order_qty": "300 sq ft"
+      "wholesale_price": "₹ 25/sq ft",
+      "minimum_order_qty": "300 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/stainless_steel_wire_mesh_80_mesh/image_250.jpg",
@@ -5406,8 +5567,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5425,10 +5586,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854080444373",
@@ -5449,8 +5611,9 @@
       "weave_type": "Plain Weave",
       "hole_shape": "Square",
       "color": "Silver",
-      "wholesale_price": "\u20b9 25/sq ft",
-      "minimum_order_qty": "300 sq ft"
+      "wholesale_price": "₹ 25/sq ft",
+      "minimum_order_qty": "300 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/ss_40mesh_wire_mesh/image_250.jpg",
@@ -5470,8 +5633,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5489,10 +5652,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854038074633",
@@ -5513,8 +5677,9 @@
       "weave_type": "Plain Weave",
       "hole_shape": "Square",
       "color": "Silver",
-      "wholesale_price": "\u20b9 22/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 22/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/stainless_steel_fine_wire_mesh/image_250.jpg",
@@ -5534,8 +5699,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5553,10 +5718,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854057745588",
@@ -5577,8 +5743,9 @@
       "weave_type": "Plain Weave",
       "hole_shape": "Square",
       "roll_width": "1.2 m (4 ft)",
-      "wholesale_price": "\u20b9 16/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 16/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/ss_black_wire_mesh/image_250.jpg",
@@ -5598,8 +5765,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5617,10 +5784,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853416621597",
@@ -5639,8 +5807,9 @@
       "diameter": "4 Inch",
       "usage/application": "Used For Removing Contaminants And Solids From Fluids.",
       "color": "Silver",
-      "wholesale_price": "\u20b9 30/Piece",
-      "minimum_order_qty": "200 Piece"
+      "wholesale_price": "₹ 30/Piece",
+      "minimum_order_qty": "200 Piece",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/ss_wire_mesh_filter/image_250.jpg",
@@ -5660,8 +5829,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5679,10 +5848,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854360002373",
@@ -5703,8 +5873,9 @@
       "coating_type": "PVC Coated, PVC coated",
       "hole_shape": "Square",
       "roll_width": "4 ft",
-      "wholesale_price": "\u20b9 6/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 6/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/green_galvanized_iron_wire_mesh/image_250.jpg",
@@ -5724,8 +5895,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5743,10 +5914,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2851085275233",
@@ -5767,8 +5939,9 @@
       "opening_size": "1/2 Inch",
       "mesh_size": "1/2x1/2 inch",
       "surface_treatment": "PVC Coated",
-      "wholesale_price": "\u20b9 7/sq ft",
-      "minimum_order_qty": "150 sq ft"
+      "wholesale_price": "₹ 7/sq ft",
+      "minimum_order_qty": "150 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/pvc_coated_iron_wire_mesh/image_250.jpg",
@@ -5802,8 +5975,8 @@
       "roi": {
         "balaji_lifespan": "35 Years",
         "generic_lifespan": "3 Years",
-        "balaji_cost_per_year": "\u20b918/meter/year",
-        "generic_cost_per_year": "\u20b9110/meter/year",
+        "balaji_cost_per_year": "₹18/meter/year",
+        "generic_cost_per_year": "₹110/meter/year",
         "rationale": "Balaji double-shield PVC coated GI wires block moisture via hot-zinc alloys and soil chemistry via 0.85mm UV-stabilised polymers, outlasting cheap electro-galvanised wires by 11 times."
       },
       "labor_blueprint": {
@@ -5821,10 +5994,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A++ (Double-shielded zero corrosion)",
-        "high_uv_heat": "UV-stabilised polymer resists up to 60\u00b0C",
+        "high_uv_heat": "UV-stabilised polymer resists up to 60°C",
         "heavy_rain_damp": "10/10 outstanding acid soil resistance"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853416622855",
@@ -5845,8 +6019,9 @@
       "surface_treatment": "Mill Finish",
       "weave_type": "Plain",
       "color": "Silver",
-      "wholesale_price": "\u20b9 150/Kg",
-      "minimum_order_qty": "150 Kg"
+      "wholesale_price": "₹ 150/Kg",
+      "minimum_order_qty": "150 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/gi_wire_mesh/image_250.jpg",
@@ -5866,8 +6041,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5885,10 +6060,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2854080444562",
@@ -5909,8 +6085,9 @@
       "opening_size": "2mm",
       "hole_shape": "Square",
       "roll_width": "1.2 m",
-      "wholesale_price": "\u20b9 12/sq ft",
-      "minimum_order_qty": "300 sq ft"
+      "wholesale_price": "₹ 12/sq ft",
+      "minimum_order_qty": "300 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/s_s_mosquito_mesh/image_250.jpg",
@@ -5930,8 +6107,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -5949,10 +6126,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853960733812",
@@ -5973,8 +6151,9 @@
       "weave_type": "Plain Weave",
       "roll_width": "1.2 m",
       "surface_treatment": "Mill Finish",
-      "wholesale_price": "\u20b9 55/sq ft",
-      "minimum_order_qty": "200 sq ft"
+      "wholesale_price": "₹ 55/sq ft",
+      "minimum_order_qty": "200 sq ft",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/brass_wire_mesh/image_250.jpg",
@@ -5994,8 +6173,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6013,10 +6192,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2857645900612",
@@ -6037,8 +6217,9 @@
       "opening_size": "40/75",
       "long_way_mesh": "75 mm",
       "hole_shape": "Hexagonal",
-      "wholesale_price": "\u20b9 16/sq ft",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹ 16/sq ft",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/expanded_metal_mesh/image_250.jpg",
@@ -6058,8 +6239,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6077,10 +6258,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2857645903197",
@@ -6101,8 +6283,9 @@
       "material": "Galvanized Iron (GI)",
       "height": "4 ft",
       "finish_/_coating": "Galvanized",
-      "wholesale_price": "\u20b9 85/Kg",
-      "minimum_order_qty": "200 Kg"
+      "wholesale_price": "₹ 85/Kg",
+      "minimum_order_qty": "200 Kg",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/iron_wire_mesh/image_250.jpeg",
@@ -6122,8 +6305,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6141,10 +6324,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859129881362",
@@ -6165,8 +6349,9 @@
       "width": "900 mm",
       "length": "15 m",
       "aperture_size": "2.0 mm",
-      "wholesale_price": "\u20b9 7/sq ft",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹ 7/sq ft",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/wire_mesh/image_250.jpeg",
@@ -6186,8 +6371,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6205,10 +6390,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2857645901030",
@@ -6229,8 +6415,9 @@
       "surface_treatment": "Hot Dipped Galvanized",
       "colors": "Silver",
       "usage/application": "Cages, Grills, Fences",
-      "wholesale_price": "\u20b9 10/sq ft",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹ 10/sq ft",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/steel_wire_mesh/image_250.jpg",
@@ -6250,8 +6437,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6269,10 +6456,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859129875688",
@@ -6287,12 +6475,13 @@
       "warranty": "1 Year Manufacturer Warranty",
       "material_grade": "Mild Steel",
       "wire_diameter": "2 mm",
-      "mesh_opening": "75\u00d775 mm",
+      "mesh_opening": "75×75 mm",
       "roll_height": "1200 mm",
       "roll_length": "15 m",
       "application": "Boundary Fence, Industrial Fence",
-      "wholesale_price": "\u20b9 90/Kg",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹ 90/Kg",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/diamond_wire_mesh/image_250.jpg",
@@ -6312,8 +6501,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6331,10 +6520,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859130085362",
@@ -6353,8 +6543,9 @@
       "mesh_type": "Square",
       "color": "Green",
       "length": "15 m (50 ft)",
-      "wholesale_price": "\u20b9 8/sq ft",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹ 8/sq ft",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_mesh/pvc_wire_mesh/image_250.jpeg",
@@ -6388,8 +6579,8 @@
       "roi": {
         "balaji_lifespan": "35 Years",
         "generic_lifespan": "3 Years",
-        "balaji_cost_per_year": "\u20b918/meter/year",
-        "generic_cost_per_year": "\u20b9110/meter/year",
+        "balaji_cost_per_year": "₹18/meter/year",
+        "generic_cost_per_year": "₹110/meter/year",
         "rationale": "Balaji double-shield PVC coated GI wires block moisture via hot-zinc alloys and soil chemistry via 0.85mm UV-stabilised polymers, outlasting cheap electro-galvanised wires by 11 times."
       },
       "labor_blueprint": {
@@ -6407,10 +6598,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A++ (Double-shielded zero corrosion)",
-        "high_uv_heat": "UV-stabilised polymer resists up to 60\u00b0C",
+        "high_uv_heat": "UV-stabilised polymer resists up to 60°C",
         "heavy_rain_damp": "10/10 outstanding acid soil resistance"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2859129879433",
@@ -6423,8 +6615,9 @@
       "brand": "Balaji Premium",
       "origin": "Made in India",
       "warranty": "1 Year Manufacturer Warranty",
-      "wholesale_price": "\u20b9 125/Kg",
-      "minimum_order_qty": "10 Rolls"
+      "wholesale_price": "₹ 125/Kg",
+      "minimum_order_qty": "10 Rolls",
+      "hsn_code": "HSN 7314"
     },
     "images": {
       "thumbnail": "assets/wire_net/wire_netting/image_250.jpg",
@@ -6444,8 +6637,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6463,10 +6656,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2853368592033",
@@ -6487,8 +6681,9 @@
       "design_/_shape": "Straight",
       "usage": "Used To Move The Blade Forward And Cultivate The Soil",
       "colour": "Brown",
-      "wholesale_price": "\u20b9 40/Piece",
-      "minimum_order_qty": "50 Piece"
+      "wholesale_price": "₹ 40/Piece",
+      "minimum_order_qty": "50 Piece",
+      "hsn_code": "HSN 4417"
     },
     "images": {
       "thumbnail": "assets/wooden_handle/kudal_handle/image_250.jpg",
@@ -6508,8 +6703,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6527,10 +6722,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "4417"
   },
   {
     "id": "2850000401855",
@@ -6553,10 +6749,11 @@
       "carrier_material": "Polyester Reinforced Fleece",
       "coverage": "100 sq ft per roll",
       "application_method": "Torch-on application",
-      "operating_temp": "-10\u00b0C to +60\u00b0C",
+      "operating_temp": "-10°C to +60°C",
       "best_suited": "Concrete slabs, terrace gardens, basement retaining walls",
-      "wholesale_price": "\u20b94,319/roll",
-      "minimum_order_qty": "20 Rolls"
+      "wholesale_price": "₹4,319/roll",
+      "minimum_order_qty": "20 Rolls",
+      "hsn_code": "HSN 6807"
     },
     "visual_blueprint": {
       "typology": "layered_sheet",
@@ -6598,8 +6795,8 @@
       "roi": {
         "balaji_lifespan": "18 Years",
         "generic_lifespan": "2 Years",
-        "balaji_cost_per_year": "\u20b914/sqm/year",
-        "generic_cost_per_year": "\u20b998/sqm/year",
+        "balaji_cost_per_year": "₹14/sqm/year",
+        "generic_cost_per_year": "₹98/sqm/year",
         "rationale": "Balaji 4mm APP torched membranes utilize 120g/sqm non-woven glass fiber cores. They stand strong against 18 monsoon cycles without cracking, compared to cheap unreinforced brush bitumen overlays that peel after 2 years."
       },
       "labor_blueprint": {
@@ -6618,10 +6815,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (Seepage-Proof under high humidity)",
-        "high_uv_heat": "Heat resistant up to 120\u00b0C (Zero flow)",
+        "high_uv_heat": "Heat resistant up to 120°C (Zero flow)",
         "heavy_rain_damp": "10/10 rot-proof damp proof course"
       }
-    }
+    },
+    "hsn": "6807"
   },
   {
     "id": "2850000601855",
@@ -6646,8 +6844,9 @@
       "packing_weight": "28 kg",
       "zinc_coating": "220 GSM Extreme",
       "durability": "Lifetime rust-protection, extreme tension hold",
-      "wholesale_price": "\u20b915,426/roll",
-      "minimum_order_qty": "10 Bundles"
+      "wholesale_price": "₹15,426/roll",
+      "minimum_order_qty": "10 Bundles",
+      "hsn_code": "HSN 7314"
     },
     "visual_blueprint": {
       "typology": "woven_mesh",
@@ -6662,8 +6861,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6681,10 +6880,11 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "7314"
   },
   {
     "id": "2850002701855",
@@ -6709,8 +6909,9 @@
       "color": "Emerald Green",
       "flexibility": "Semi-flexible shatterproof design with extra-grip handles",
       "usage": "Mortar mixing, concrete carrying, agricultural harvesting",
-      "wholesale_price": "\u20b965/piece",
-      "minimum_order_qty": "100 Pieces"
+      "wholesale_price": "₹65/piece",
+      "minimum_order_qty": "100 Pieces",
+      "hsn_code": "HSN 3926"
     },
     "visual_blueprint": {
       "typology": "solid_form",
@@ -6725,8 +6926,8 @@
       "roi": {
         "balaji_lifespan": "6 Years",
         "generic_lifespan": "0.5 Years",
-        "balaji_cost_per_year": "\u20b915/piece/year",
-        "generic_cost_per_year": "\u20b9160/piece/year",
+        "balaji_cost_per_year": "₹15/piece/year",
+        "generic_cost_per_year": "₹160/piece/year",
         "rationale": "Balaji Ghamelas utilize 100% recycled, high-density thick-walled PVC, making them drop-proof and hammer-resilient, whereas cheap brittle plastic tagaris crack within months on-site."
       },
       "labor_blueprint": {
@@ -6746,7 +6947,8 @@
         "high_uv_heat": "Anti-UV stabilizers prevent summer cracking",
         "heavy_rain_damp": "Completely waterproof wet-mix pans"
       }
-    }
+    },
+    "hsn": "3926"
   },
   {
     "id": "2850003001855",
@@ -6771,8 +6973,9 @@
       "roll_length": "50 Meters",
       "uv_stabilized": "Yes (3% UV Stabilizer Additive)",
       "features": "Tear-resistant lock-stitch pattern, heat reduction, water permeable",
-      "wholesale_price": "\u20b95,800/roll",
-      "minimum_order_qty": "8 Rolls"
+      "wholesale_price": "₹5,800/roll",
+      "minimum_order_qty": "8 Rolls",
+      "hsn_code": "HSN 5608"
     },
     "visual_blueprint": {
       "typology": "woven_mesh",
@@ -6787,8 +6990,8 @@
       "roi": {
         "balaji_lifespan": "25 Years",
         "generic_lifespan": "2.5 Years",
-        "balaji_cost_per_year": "\u20b912/meter/year",
-        "generic_cost_per_year": "\u20b980/meter/year",
+        "balaji_cost_per_year": "₹12/meter/year",
+        "generic_cost_per_year": "₹80/meter/year",
         "rationale": "Balaji woven GI meshes feature heavy 240g/sqm hot-dip zinc coating layers, outlasting cheap 30g/sqm electro-galvanised boundaries by 10 times."
       },
       "labor_blueprint": {
@@ -6806,9 +7009,10 @@
       },
       "environmental_rating": {
         "coastal_humidity": "Grade A+ (High corrosion zinc layer resistance)",
-        "high_uv_heat": "Thermal expansive tolerance up to 85\u00b0C",
+        "high_uv_heat": "Thermal expansive tolerance up to 85°C",
         "heavy_rain_damp": "Excellent anti-sag structure in wet soils"
       }
-    }
+    },
+    "hsn": "5608"
   }
 ]

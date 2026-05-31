@@ -3,10 +3,12 @@ import LandingView from './LandingView.jsx';
 import CategoryView from './CategoryView.jsx';
 import ProductView from './ProductView.jsx';
 import RfqDrawer from './RfqDrawer.jsx';
+import AssistantDrawer from './AssistantDrawer.jsx';
 import Lightbox from './Lightbox.jsx';
 import ShellHeader from '../../../layout/ShellHeader.jsx';
 import productsData from '../../../data/productsData.js';
 import { TOKENS } from '../../../data/tokens.js';
+import { Sparkles } from 'lucide-react';
 
 /* ────────────────────────────────────────────────────────────────────────────
    HASH ROUTING — single source of truth is window.location.hash
@@ -112,7 +114,22 @@ export default function DynamicCatalog() {
   const [route, setRoute]             = useState(() => parseHash());
   const [inquiry, setInquiry]         = useState([]);
   const [rfqOpen, setRfqOpen]         = useState(false);
+  const [assistantOpen, setAssistantOpen] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState(null);
+  const [activeAct, setActiveAct]     = useState(1);
+
+  const handleNavigateToAct = useCallback((actId) => {
+    if (route.view !== 'landing') {
+      window.__pendingScrollAct = actId;
+      navigate('#/');
+    } else {
+      const container = document.querySelector('.landing-shell');
+      const element = container?.querySelector(`[data-act="${actId}"]`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [route.view]);
 
   /* Load product database once statically */
   useEffect(() => {
@@ -127,6 +144,16 @@ export default function DynamicCatalog() {
     window.addEventListener('hashchange', onChange);
     return () => window.removeEventListener('hashchange', onChange);
   }, []);
+
+  /* Sync body/html route attribute for bulletproof CSS scroll unlocking */
+  useEffect(() => {
+    document.documentElement.setAttribute('data-route', route.view);
+    document.body.setAttribute('data-route', route.view);
+    return () => {
+      document.documentElement.removeAttribute('data-route');
+      document.body.removeAttribute('data-route');
+    };
+  }, [route.view]);
 
   /* Derived selections — categories are sorted by product count (desc),
      guaranteeing the bento grid's slugs resolve to live catalog routes. */
@@ -172,6 +199,7 @@ export default function DynamicCatalog() {
   }, []);
 
   const openRfq = useCallback(() => setRfqOpen(true), []);
+  const openAssistant = useCallback(() => setAssistantOpen(true), []);
 
   /* ─────────────────── RENDER ─────────────────── */
   if (loading) {
@@ -203,8 +231,10 @@ export default function DynamicCatalog() {
       <ShellHeader
         inquiryCount={inquiry.length}
         onOpenRfq={openRfq}
-        onOpenAssistant={openRfq}
+        onOpenAssistant={openAssistant}
         activeView={route.view}
+        activeAct={activeAct}
+        onNavigateToAct={handleNavigateToAct}
       />
 
       {route.view === 'landing' && (
@@ -218,13 +248,15 @@ export default function DynamicCatalog() {
             onAddToInquiry={onAddToInquiry}
             onOpenRfq={openRfq}
             onOpenLightbox={setLightboxSrc}
+            onActChange={setActiveAct}
           />
         </div>
       )}
 
       {route.view === 'category' && selectedCategory && (
-        <div data-testid="route-category">
+        <div data-testid="route-category" style={{ minHeight: 'calc(100vh - 68px)' }}>
           <CategoryView
+            slug={selectedCategory.slug}
             category={selectedCategory}
             products={categoryProducts}
             tokens={TOKENS}
@@ -240,13 +272,14 @@ export default function DynamicCatalog() {
       )}
 
       {route.view === 'product' && selectedProduct && (
-        <div data-testid="route-product">
+        <div data-testid="route-product" style={{ minHeight: 'calc(100vh - 68px)' }}>
           <ProductView
             product={selectedProduct}
             tokens={TOKENS}
             navigate={navigate}
             onAddToInquiry={onAddToInquiry}
             onOpenLightbox={setLightboxSrc}
+            onOpenRfq={openRfq}
           />
         </div>
       )}
@@ -260,6 +293,47 @@ export default function DynamicCatalog() {
         onGSTINSubmit={onGSTINSubmit}
         tokens={TOKENS}
       />
+
+      <AssistantDrawer
+        open={assistantOpen}
+        onClose={() => setAssistantOpen(false)}
+        inquiry={inquiry}
+        onAddToInquiry={onAddToInquiry}
+        tokens={TOKENS}
+      />
+
+      {/* Floating Sourcing AI Button */}
+      <button
+        onClick={openAssistant}
+        title="Ask Balaji AI Assistant"
+        style={{
+          position: 'fixed',
+          bottom: 28,
+          right: 28,
+          width: 56,
+          height: 56,
+          borderRadius: '50%',
+          background: 'linear-gradient(135deg, hsl(151, 56%, 28%) 0%, hsl(151, 56%, 20%) 100%)',
+          color: '#FFFFFF',
+          border: 'none',
+          boxShadow: '0 8px 24px rgba(27, 94, 63, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+          cursor: 'pointer',
+          display: 'grid',
+          placeItems: 'center',
+          zIndex: 90,
+          transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.1) translateY(-2px)';
+          e.currentTarget.style.boxShadow = '0 12px 32px rgba(27, 94, 63, 0.45), 0 4px 12px rgba(0, 0, 0, 0.15)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1) translateY(0)';
+          e.currentTarget.style.boxShadow = '0 8px 24px rgba(27, 94, 63, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1)';
+        }}
+      >
+        <Sparkles size={24} />
+      </button>
 
       <Lightbox
         open={lightboxSrc !== null}

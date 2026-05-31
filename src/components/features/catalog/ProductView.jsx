@@ -61,6 +61,7 @@ export default function ProductView({
   onAddToInquiry,
   onOpenLightbox,
   navigate,
+  onOpenRfq,
 }) {
   const go = typeof navigate === 'function' ? navigate : fallbackNavigate;
 
@@ -78,7 +79,22 @@ export default function ProductView({
   const [swg, setSwg] = useState(12);
   const [shade, setShade] = useState(75);
   const [width, setWidth] = useState('4 Feet');
-  const [qty] = useState(10);
+  const parsedMinQty = useMemo(() => {
+    const raw = specs.minimum_order_qty || '1';
+    const num = parseInt(raw.replace(/[^\d]/g, ''), 10);
+    const unitMatch = raw.match(/[a-zA-Z]+/g);
+    const unit = unitMatch ? unitMatch.join(' ') : 'Units';
+    return {
+      value: Number.isFinite(num) ? num : 1,
+      unit: unit || 'Units'
+    };
+  }, [specs.minimum_order_qty]);
+
+  const [qty, setQty] = useState(1);
+
+  useEffect(() => {
+    setQty(parsedMinQty.value);
+  }, [parsedMinQty]);
 
   const [rfqOpen, setRfqOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -116,10 +132,10 @@ export default function ProductView({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [product]);
 
-  /* ---------------- CRITICAL: SCROLLABLE OUTER CONTAINER ---------------- */
-  /* Snap + height blockers fully neutralised for the PDP route. */
+
+
   const scrollableSectionStyle = {
-    overflowY: 'auto',
+    overflowY: 'visible',
     overflowX: 'hidden',
     height: 'auto',
     minHeight: '100vh',
@@ -128,9 +144,9 @@ export default function ProductView({
     scrollSnapStop: 'normal',
     scrollSnapType: 'none',
     // Layout
-    maxWidth: 1440,
+    maxWidth: 1600,
     margin: '0 auto',
-    padding: '32px 32px 96px',
+    padding: '32px clamp(24px, 4vw, 48px) 96px',
     background: 'var(--surface-0, #FAFAF7)',
     boxSizing: 'border-box',
   };
@@ -193,7 +209,7 @@ export default function ProductView({
       finalPrice: Math.round(priceModel.finalValue),
       tier: priceModel.tier,
     });
-    setRfqOpen(true);
+    onOpenRfq?.();
   };
 
   const handleOpenLightbox = () => {
@@ -365,7 +381,7 @@ export default function ProductView({
                   textTransform: 'uppercase',
                 }}
               >
-                SKU-{String(product.id || '').slice(-6)} · ID {product.id}
+                SKU-{String(product.id || '').slice(-6)} · HSN {product.hsn || '7314'} · ID {product.id}
               </span>
             </div>
 
@@ -536,6 +552,99 @@ export default function ProductView({
               />
             </div>
 
+            {/* ============ QUANTITY & UNIT SELECTOR ============ */}
+            <div 
+              style={{ 
+                display: 'flex', 
+                flexDirection: 'column',
+                gap: 8, 
+                borderTop: '1px solid var(--surface-2)', 
+                paddingTop: 20,
+                paddingBottom: 20,
+                textAlign: 'left'
+              }}
+            >
+              <label 
+                style={{ 
+                  display: 'block', 
+                  fontFamily: 'var(--font-mono)', 
+                  fontSize: 12, 
+                  fontWeight: 900, 
+                  letterSpacing: '0.08em', 
+                  textTransform: 'uppercase', 
+                  color: 'var(--text-body)', 
+                  margin: 0 
+                }}
+              >
+                Select B2B Quantity ({parsedMinQty.unit})
+              </label>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <button
+                  type="button"
+                  onClick={() => setQty(prev => Math.max(parsedMinQty.value, prev - 1))}
+                  style={{ 
+                    width: 36, 
+                    height: 36, 
+                    borderRadius: '50%', 
+                    border: '1px solid var(--border)', 
+                    background: '#fff', 
+                    cursor: 'pointer', 
+                    fontSize: 18, 
+                    fontWeight: 900, 
+                    display: 'grid', 
+                    placeItems: 'center',
+                    color: 'var(--accent)',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                  }}
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  min={parsedMinQty.value}
+                  value={qty}
+                  onChange={(e) => setQty(Math.max(parsedMinQty.value, parseInt(e.target.value, 10) || parsedMinQty.value))}
+                  style={{ 
+                    width: 80, 
+                    height: 36, 
+                    border: '1px solid var(--border)', 
+                    borderRadius: 'var(--radius-md, 8px)', 
+                    textAlign: 'center', 
+                    fontFamily: 'var(--font-mono)', 
+                    fontSize: 15, 
+                    fontWeight: 900,
+                    color: 'var(--text-title)'
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setQty(prev => prev + 1)}
+                  style={{ 
+                    width: 36, 
+                    height: 36, 
+                    borderRadius: '50%', 
+                    border: '1px solid var(--border)', 
+                    background: '#fff', 
+                    cursor: 'pointer', 
+                    fontSize: 18, 
+                    fontWeight: 900, 
+                    display: 'grid', 
+                    placeItems: 'center',
+                    color: 'var(--accent)',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                  }}
+                >
+                  +
+                </button>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: 900, color: 'var(--text-mute)', marginLeft: 4 }}>
+                  {parsedMinQty.unit}
+                </span>
+              </div>
+              <p style={{ fontSize: 11, color: 'var(--text-mute)', margin: 0 }}>
+                * Minimum wholesale MOQ: {specs.minimum_order_qty || '1 Unit'}
+              </p>
+            </div>
+
             {/* ============ PRIMARY RFQ BUTTON ============ */}
             <button
               className="bh-btn bh-btn-primary"
@@ -561,7 +670,7 @@ export default function ProductView({
                 cursor: 'pointer',
               }}
             >
-              <FileText size={18} /> Initiate B2B RFQ Inquiry
+              <FileText size={18} /> Add to Inquiry
             </button>
 
             <ul
@@ -597,24 +706,7 @@ export default function ProductView({
       {/* ============ B2B ROI PLAYBOOK ============ */}
       <RoiPlaybookBento product={product} />
 
-      <RfqDrawer
-        open={rfqOpen}
-        onClose={() => setRfqOpen(false)}
-        inquiry={[
-          {
-            ...product,
-            selectedSwg: swg,
-            selectedShade: shade,
-            selectedWidth: width,
-            qty,
-            finalPrice: Math.round(priceModel.finalValue),
-          },
-        ]}
-        onRemoveFromInquiry={() => {}}
-        onClearInquiry={() => {}}
-        onGSTINSubmit={(gst) => ({ ok: true, gstin: gst })}
-        tokens={T}
-      />
+
 
       <Lightbox
         open={lightboxOpen}

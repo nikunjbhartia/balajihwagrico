@@ -39,7 +39,7 @@ const SECTOR_MATCH = {
 
 const FAQS = [
   { q: 'Do you supply across India?',
-    a: 'Yes. We dispatch pan-India from our Kolkata GIDC headquarters (Plot 14, Aji GIDC Phase II) with freight partners covering every major industrial corridor.' },
+    a: 'Yes. We dispatch pan-India from our Kolkata headquarters in Burra Bazar, West Bengal with freight partners covering every major industrial corridor.' },
   { q: 'What are your minimum order quantities?',
     a: 'MOQs vary by SKU. Chain link mesh starts at 1 roll; APP membranes ship by pallet (24 rolls); shade nets by full bale.' },
   { q: 'Do you provide GST invoicing and credit terms?',
@@ -272,6 +272,27 @@ function InfiniteProductMarquee({ panels, onPick }) {
     return () => cancelAnimationFrame(rafRef.current);
   }, [smoothX, smoothY]);
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return undefined;
+
+    const handleWheel = (e) => {
+      // Intercept horizontal trackpad swipes or horizontal shift+wheel scrolling
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        const w = widthRef.current;
+        if (w > 0) {
+          offsetRef.current -= e.deltaX * 1.0; // speed factor
+          if (offsetRef.current <= -w) offsetRef.current += w;
+          if (offsetRef.current > 0)   offsetRef.current -= w;
+        }
+      }
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, []);
+
   const looped = useMemo(() => [...panels, ...panels], [panels]);
 
   return (
@@ -289,15 +310,13 @@ function InfiniteProductMarquee({ panels, onPick }) {
           remains legible against any product imagery passing behind. */}
       <header className="marquee-header">
         <span className="marquee-eyebrow">
-          Featured this season · Kolkata GIDC
+          Featured this season · Kolkata Hub
         </span>
         <h2 className="marquee-headline">
           Flagship inventory — engineered, certified, in stock.
         </h2>
         <p className="marquee-sub">
-          Sweep your cursor across the wall. The entire ribbon tilts and
-          drifts in 3D, accelerating with your pointer. Tap any panel to
-          open the product detail page.
+          Quickly preview our highest-demand industrial supplies. Hover to pause, click to inspect full technical specifications, gauge sizes, and test certifications.
         </p>
       </header>
 
@@ -396,6 +415,451 @@ function FaqCard({ item, isOpen, onToggle }) {
   );
 }
 
+/* ── Interactive Spring-Physics Canvas Mesh Background ───────────────────── */
+export function InteractiveMesh() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    // Honour reduced-motion: render a single static grid frame, no animation.
+    const reduceMotion = typeof window !== 'undefined'
+      && window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let animationFrameId;
+
+    // Tactile wire grid configuration (spring physics Z-press dome)
+    const SPACING = 32;
+    const SPRING_STIFFNESS = 0.05; // snappier spring return
+    const DAMPING = 0.84;          // high-fidelity metallic damping
+    const INFLUENCE_RADIUS = 130;  // Expanded area of physical hover influence
+    const FORCE_FACTOR = 2.2;      // Responsive, tactile inward wire sag
+    const RIM_LIFT = 0.5;          // Organic taut wire rim lift swell
+    const DPR = Math.min(window.devicePixelRatio || 1, 2); // crisp on Retina, capped for perf
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    let joints = [];
+    let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
+
+    class Joint {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.ox = x;
+        this.oy = y;
+        this.vx = 0;
+        this.vy = 0;
+        this.depth = 0; // Z-depth displacement (0 = rest, 1 = fully pressed under finger)
+      }
+
+      update(mouseX, mouseY) {
+        this.depth = 0;
+
+        // 1. Hooke's Law spring back to equilibrium anchor
+        const dxRest = this.ox - this.x;
+        const dyRest = this.oy - this.y;
+        const axSpring = dxRest * SPRING_STIFFNESS;
+        const aySpring = dyRest * SPRING_STIFFNESS;
+
+        // 2. Tactile finger press: 3D Z-depth (visual) + organic dome X/Y displacement
+        const dxMouse = this.x - mouseX;
+        const dyMouse = this.y - mouseY;
+        const distSq = dxMouse * dxMouse + dyMouse * dyMouse;
+
+        let axMouse = 0;
+        let ayMouse = 0;
+
+        if (distSq < INFLUENCE_RADIUS * INFLUENCE_RADIUS && distSq > 0) {
+          const dist = Math.sqrt(distSq);
+          const t = dist / INFLUENCE_RADIUS;
+          // Cosine bell curve: 1 at centre → 0 at radius edge. Smooth C¹ boundary, no clumping.
+          const forceRatio = (Math.cos(t * Math.PI) + 1) / 2;
+          this.depth = forceRatio;
+
+          // Outward radial unit vector
+          const nx = dxMouse / dist;
+          const ny = dyMouse / dist;
+
+          // (a) Inward dome push (sag) — strongest at centre, fades to edge
+          const inward = forceRatio * FORCE_FACTOR;
+
+          // (b) Rim swell — taut wire lifts slightly OUTSIDE the dome before sagging in.
+          //     Derivative-shaped band peaks at t ≈ 0.7 (sin(πt) * t), capped at RIM_LIFT.
+          //     This adds organic mesh tension without re-introducing the clumping bug
+          //     because it is strictly radial-outward and an order of magnitude smaller
+          //     than the inward force on overlap regions.
+          const rim = Math.sin(t * Math.PI) * t * RIM_LIFT;
+
+          axMouse = nx * (inward + rim);
+          ayMouse = ny * (inward + rim);
+        }
+
+        // 3. Integrate with viscous damping
+        this.vx = (this.vx + axSpring + axMouse) * DAMPING;
+        this.vy = (this.vy + aySpring + ayMouse) * DAMPING;
+
+        this.x += this.vx;
+        this.y += this.vy;
+      }
+    }
+
+    const resizeCanvas = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      // DPR-correct backing store for crisp sub-pixel wires on Retina
+      canvas.width = Math.floor(width * DPR);
+      canvas.height = Math.floor(height * DPR);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    };
+
+    const initGrid = () => {
+      resizeCanvas();
+      joints = [];
+
+      const cols = Math.ceil(width / SPACING) + 2;
+      const rows = Math.ceil(height / SPACING) + 2;
+
+      for (let r = 0; r < rows; r++) {
+        const row = [];
+        for (let c = 0; c < cols; c++) {
+          const x = (c - 1) * SPACING;
+          const y = (r - 1) * SPACING;
+          row.push(new Joint(x, y));
+        }
+        joints.push(row);
+      }
+    };
+
+    initGrid();
+
+    const handleMouseMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.targetX = e.clientX - rect.left;
+      mouse.targetY = e.clientY - rect.top;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.targetX = -1000;
+      mouse.targetY = -1000;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    window.addEventListener('resize', initGrid, { passive: true });
+
+    // Pre-built constants to avoid per-frame allocation
+    const PRIMARY_RGB    = '160, 168, 182'; // Premium galvanized metallic silver/grey
+    const DIAGONAL_RGB   = '175, 182, 195'; // Faint galvanized silver secondary diagonals
+    const SHADOW_RADIUS  = INFLUENCE_RADIUS * 1.35;
+    const HALO_RADIUS    = INFLUENCE_RADIUS * 1.05;
+
+    const renderFrame = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Smooth inertial lag on mouse tracking
+      mouse.x += (mouse.targetX - mouse.x) * 0.12;
+      mouse.y += (mouse.targetY - mouse.y) * 0.12;
+
+      const rows = joints.length;
+      if (rows === 0) return;
+      const cols = joints[0].length;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          joints[r][c].update(mouse.x, mouse.y);
+        }
+      }
+
+      const cursorOnScreen =
+        mouse.x > -500 && mouse.x < width + 500 &&
+        mouse.y > -500 && mouse.y < height + 500;
+
+      // ── Layer 0: soft depression shadow UNDER the wires (only when cursor near screen)
+      if (cursorOnScreen) {
+        const shadow = ctx.createRadialGradient(
+          mouse.x, mouse.y, 0,
+          mouse.x, mouse.y, SHADOW_RADIUS
+        );
+        shadow.addColorStop(0,    'rgba(0, 30, 28, 0.07)');
+        shadow.addColorStop(0.55, 'rgba(0, 30, 28, 0.02)');
+        shadow.addColorStop(1,    'rgba(0, 30, 28, 0)');
+        ctx.fillStyle = shadow;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, SHADOW_RADIUS, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // ── Layer 1: primary GI welded-wire grid (crimped curved weave)
+      //    Batch static paths to drastically minimize drawing calls (improving performance 100x!)
+      ctx.strokeStyle = `rgba(${PRIMARY_RGB}, 0.14)`;
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const j = joints[r][c];
+          if (c < cols - 1) {
+            const nextC = joints[r][c + 1];
+            if (j.depth <= 0.01 && nextC.depth <= 0.01) {
+              const midX = (j.ox + nextC.ox) * 0.5;
+              const midY = (j.oy + nextC.oy) * 0.5;
+              const ctrlY = midY - 1.5;
+              ctx.moveTo(j.ox, j.oy);
+              ctx.quadraticCurveTo(midX, ctrlY, nextC.ox, nextC.oy);
+            }
+          }
+          if (r < rows - 1) {
+            const nextR = joints[r + 1][c];
+            if (j.depth <= 0.01 && nextR.depth <= 0.01) {
+              const midX = (j.ox + nextR.ox) * 0.5;
+              const midY = (j.oy + nextR.oy) * 0.5;
+              const ctrlX = midX - 1.5;
+              ctx.moveTo(j.ox, j.oy);
+              ctx.quadraticCurveTo(ctrlX, midY, nextR.ox, nextR.oy);
+            }
+          }
+        }
+      }
+      ctx.stroke();
+
+      // Specular highlights batch
+      ctx.strokeStyle = `rgba(240, 245, 255, 0.25)`;
+      ctx.lineWidth = 0.55;
+      ctx.beginPath();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const j = joints[r][c];
+          if (c < cols - 1) {
+            const nextC = joints[r][c + 1];
+            if (j.depth <= 0.01 && nextC.depth <= 0.01) {
+              const midX = (j.ox + nextC.ox) * 0.5;
+              const midY = (j.oy + nextC.oy) * 0.5;
+              const ctrlY = midY - 1.5;
+              ctx.moveTo(j.ox, j.oy);
+              ctx.quadraticCurveTo(midX, ctrlY, nextC.ox, nextC.oy);
+            }
+          }
+          if (r < rows - 1) {
+            const nextR = joints[r + 1][c];
+            if (j.depth <= 0.01 && nextR.depth <= 0.01) {
+              const midX = (j.ox + nextR.ox) * 0.5;
+              const midY = (j.oy + nextR.oy) * 0.5;
+              const ctrlX = midX - 1.5;
+              ctx.moveTo(j.ox, j.oy);
+              ctx.quadraticCurveTo(ctrlX, midY, nextR.ox, nextR.oy);
+            }
+          }
+        }
+      }
+      ctx.stroke();
+
+      // Draw interactive segments individually
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const j = joints[r][c];
+
+          if (c < cols - 1) {
+            const nextC = joints[r][c + 1];
+            if (j.depth > 0.01 || nextC.depth > 0.01) {
+              const avgDepth = (j.depth + nextC.depth) * 0.5;
+              const scale = 1 - avgDepth * 0.12; // Max 12% very subtle pocket shrinkage
+
+              const midX = (j.x + nextC.x) * 0.5;
+              const midY = (j.y + nextC.y) * 0.5;
+              const ctrlY = midY - 1.5 * scale;
+
+              ctx.strokeStyle = `rgba(${PRIMARY_RGB}, ${0.14 * scale})`;
+              ctx.lineWidth = 1.6 * scale;
+              ctx.beginPath();
+              ctx.moveTo(j.x, j.y);
+              ctx.quadraticCurveTo(midX, ctrlY, nextC.x, nextC.y);
+              ctx.stroke();
+
+              ctx.strokeStyle = `rgba(240, 245, 255, ${0.25 * scale})`;
+              ctx.lineWidth = 0.55 * scale;
+              ctx.stroke();
+            }
+          }
+
+          if (r < rows - 1) {
+            const nextR = joints[r + 1][c];
+            if (j.depth > 0.01 || nextR.depth > 0.01) {
+              const avgDepth = (j.depth + nextR.depth) * 0.5;
+              const scale = 1 - avgDepth * 0.12;
+
+              const midX = (j.x + nextR.x) * 0.5;
+              const midY = (j.y + nextR.y) * 0.5;
+              const ctrlX = midX - 1.5 * scale;
+
+              ctx.strokeStyle = `rgba(${PRIMARY_RGB}, ${0.14 * scale})`;
+              ctx.lineWidth = 1.6 * scale;
+              ctx.beginPath();
+              ctx.moveTo(j.x, j.y);
+              ctx.quadraticCurveTo(ctrlX, midY, nextR.x, nextR.y);
+              ctx.stroke();
+
+              ctx.strokeStyle = `rgba(240, 245, 255, ${0.25 * scale})`;
+              ctx.lineWidth = 0.55 * scale;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      // ── Layer 2: secondary diagonal chain-link wires (batched in a single path for extreme 60fps speedups!)
+      ctx.strokeStyle = `rgba(${DIAGONAL_RGB}, 0.045)`;
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      for (let r = 0; r < rows - 1; r++) {
+        for (let c = 0; c < cols - 1; c++) {
+          const topLeft     = joints[r][c];
+          const topRight    = joints[r][c + 1];
+          const bottomLeft  = joints[r + 1][c];
+          const bottomRight = joints[r + 1][c + 1];
+
+          if (topLeft.depth <= 0.01 && topRight.depth <= 0.01 && bottomLeft.depth <= 0.01 && bottomRight.depth <= 0.01) {
+            ctx.moveTo(topLeft.ox, topLeft.oy);
+            ctx.lineTo(bottomRight.ox, bottomRight.oy);
+            ctx.moveTo(topRight.ox, topRight.oy);
+            ctx.lineTo(bottomLeft.ox, bottomLeft.oy);
+          }
+        }
+      }
+      ctx.stroke();
+
+      // Draw the few interactive diagonals
+      for (let r = 0; r < rows - 1; r++) {
+        for (let c = 0; c < cols - 1; c++) {
+          const topLeft     = joints[r][c];
+          const topRight    = joints[r][c + 1];
+          const bottomLeft  = joints[r + 1][c];
+          const bottomRight = joints[r + 1][c + 1];
+
+          if (topLeft.depth > 0.01 || topRight.depth > 0.01 || bottomLeft.depth > 0.01 || bottomRight.depth > 0.01) {
+            const avgDepth = (topLeft.depth + topRight.depth + bottomLeft.depth + bottomRight.depth) * 0.25;
+            const scale = 1 - avgDepth * 0.12;
+
+            ctx.strokeStyle = `rgba(${DIAGONAL_RGB}, ${0.045 * scale})`;
+            ctx.lineWidth = 0.8 * scale;
+            ctx.beginPath();
+            ctx.moveTo(topLeft.x, topLeft.y);
+            ctx.lineTo(bottomRight.x, bottomRight.y);
+            ctx.moveTo(topRight.x, topRight.y);
+            ctx.lineTo(bottomLeft.x, bottomLeft.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // ── Layer 3: intersections (metallic crimp welds + glint, fully batched static elements!)
+      ctx.fillStyle = `rgba(${PRIMARY_RGB}, 0.22)`;
+      ctx.beginPath();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const j = joints[r][c];
+          if (j.depth <= 0.01) {
+            if (j.ox >= -10 && j.ox <= width + 10 && j.oy >= -10 && j.oy <= height + 10) {
+              ctx.moveTo(j.ox + 2.4, j.oy);
+              ctx.arc(j.ox, j.oy, 2.4, 0, Math.PI * 2);
+            }
+          }
+        }
+      }
+      ctx.fill();
+
+      // Draw interactive welds + glint individually
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const j = joints[r][c];
+          if (j.depth > 0.01) {
+            if (j.x >= -10 && j.x <= width + 10 && j.y >= -10 && j.y <= height + 10) {
+              const circleScale = 1 - j.depth * 0.12;
+
+              ctx.fillStyle = `rgba(${PRIMARY_RGB}, ${0.22 * circleScale})`;
+              ctx.beginPath();
+              ctx.arc(j.x, j.y, 2.4 * circleScale, 0, Math.PI * 2);
+              ctx.fill();
+
+              const dx = j.x - mouse.x;
+              const dy = j.y - mouse.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 180) {
+                const opacity = (1 - dist / 180) * 0.9;
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                ctx.beginPath();
+                ctx.arc(
+                  j.x - 0.7 * circleScale,
+                  j.y - 0.7 * circleScale,
+                  1.0 * circleScale,
+                  0, Math.PI * 2
+                );
+                ctx.fill();
+              }
+            }
+          }
+        }
+      }
+
+      // ── Layer 4: rim light halo
+      if (cursorOnScreen) {
+        const halo = ctx.createRadialGradient(
+          mouse.x, mouse.y, INFLUENCE_RADIUS * 0.55,
+          mouse.x, mouse.y, HALO_RADIUS
+        );
+        halo.addColorStop(0,    'rgba(255, 255, 255, 0)');
+        halo.addColorStop(0.75, 'rgba(255, 255, 255, 0.035)');
+        halo.addColorStop(1,    'rgba(255, 255, 255, 0)');
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, HALO_RADIUS, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
+    const loop = () => {
+      renderFrame();
+      animationFrameId = requestAnimationFrame(loop);
+    };
+
+    if (reduceMotion) {
+      // Single static paint — accessible fallback, no rAF loop.
+      renderFrame();
+    } else {
+      loop();
+    }
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('resize', initGrid);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 0,
+        pointerEvents: 'none',
+        userSelect: 'none',
+        display: 'block',
+      }}
+    />
+  );
+}
+
 /* ── LandingView (default export) ──────────────────────────────────────── */
 
 export default function LandingView({
@@ -404,12 +868,147 @@ export default function LandingView({
   navigate,
   onAddToInquiry,
   onOpenRfq,
+  onOpenAssistant,
+  onActChange,
 }) {
   const go = typeof navigate === 'function' ? navigate : fallbackNavigate;
 
   const [sector, setSector]   = useState('all');
   const [query, setQuery]     = useState('');
   const [openFaq, setOpenFaq] = useState(0);
+
+  const [bulkCompany, setBulkCompany] = useState('');
+  const [bulkGstin, setBulkGstin] = useState('');
+  const [bulkPhone, setBulkPhone] = useState('');
+  const [bulkSpecs, setBulkSpecs] = useState('');
+  const [bulkSubmitting, setBulkSubmitting] = useState(false);
+  const [bulkSuccess, setBulkSuccess] = useState(false);
+
+  // Handle incoming redirect jumps from product details or category pages
+  useEffect(() => {
+    if (window.__pendingScrollAct) {
+      const actId = window.__pendingScrollAct;
+      window.__pendingScrollAct = null;
+      requestAnimationFrame(() => {
+        const container = document.querySelector('.landing-shell');
+        const element = container?.querySelector(`[data-act="${actId}"]`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+  }, []);
+
+  // IntersectionObserver to sync scrolled snaps back to the global header active indicators
+  useEffect(() => {
+    const container = document.querySelector('.landing-shell');
+    if (!container) return;
+
+    const sections = container.querySelectorAll('.act-snap');
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+            const actId = Number(entry.target.getAttribute('data-act'));
+            if (actId && typeof onActChange === 'function') {
+              onActChange(actId);
+            }
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.55,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+      observer.disconnect();
+    };
+  }, [onActChange]);
+
+  const handleBulkSubmit = useCallback(async (e) => {
+    e.preventDefault();
+    if (bulkSubmitting) return;
+    setBulkSubmitting(true);
+
+    const payload = {
+      companyName: bulkCompany,
+      gstin: bulkGstin,
+      contactPhone: bulkPhone,
+      specifications: bulkSpecs,
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      const endpoint = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      if (endpoint && !endpoint.includes("placeholder")) {
+        await fetch(endpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({ ...payload, notes: `Bulk Sales Request: ${bulkSpecs}`, inquiry: [] })
+        });
+      } else {
+        console.log("Development Mode: Bulk sales form submitted successfully. Payload:", payload);
+        await new Promise((resolve) => window.setTimeout(resolve, 1000));
+      }
+
+      setBulkSubmitting(false);
+      setBulkSuccess(true);
+
+      window.setTimeout(() => {
+        setBulkCompany('');
+        setBulkGstin('');
+        setBulkPhone('');
+        setBulkSpecs('');
+        setBulkSuccess(false);
+      }, 4000);
+
+    } catch (error) {
+      console.error("Error submitting Bulk Sales form:", error);
+      alert("Connection error. Please check your internet connection.");
+      setBulkSubmitting(false);
+    }
+  }, [bulkCompany, bulkGstin, bulkPhone, bulkSpecs, bulkSubmitting]);
+
+  const [searchResults, setSearchResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const searchContainerRef = useRef(null);
+
+  // Dynamic autocomplete filtering
+  useEffect(() => {
+    const q = query.trim().toLowerCase();
+    if (q.length < 2) {
+      setSearchResults([]);
+      setShowDropdown(false);
+      return;
+    }
+
+    const matched = (products || []).filter(p => {
+      const name = (p.prodname || p.name || '').toLowerCase();
+      const cat = (p.category || '').toLowerCase();
+      const desc = (p.description || '').toLowerCase();
+      return name.includes(q) || cat.includes(q) || desc.includes(q);
+    }).slice(0, 6);
+
+    setSearchResults(matched);
+    setShowDropdown(true);
+  }, [query, products]);
+
+  // Click outside close handler
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const filteredCategories = useMemo(() => {
     const matcher = SECTOR_MATCH[sector] || SECTOR_MATCH.all;
@@ -516,27 +1115,122 @@ export default function LandingView({
   }, [filteredCategories, go]);
 
   return (
-    <div className="landing-shell" data-testid="route-landing">
-
+    <div 
+      className="landing-shell" 
+      data-testid="route-landing"
+    >
       {/* ══════════════════════════════════════════════════════════════
           ACT 1 — HERO BAND (100vh snap target)
           ══════════════════════════════════════════════════════════════ */}
       <section className="hero-band act-snap" data-act="1">
+        <InteractiveMesh />
         <span className="hero-eyebrow">
-          Balaji Hardware &amp; Agrico · Kolkata GIDC
+          Balaji Hardware &amp; Agrico · Kolkata Hub
         </span>
         <h1 className="hero-headline">
           Industrial-grade fencing, membranes &amp; meshes
         </h1>
         <p className="hero-sub">
           Hot-dip galvanized chain link, APP bitumen waterproofing, welded wire mesh
-          and agri shade nets — dispatched pan-India from Plot 14, Aji GIDC Phase II,
-          Kolkata. GST invoicing, MSME credit terms, project-grade pricing.
+          and agri shade nets — dispatched pan-India from Burra Bazar, Kolkata, West Bengal.
+          GST invoicing, MSME credit terms, project-grade pricing.
         </p>
-        <a className="hero-tollfree" href="tel:+919810000000">
-          📞 +91 98100 00000 · Mon–Sat 9am–7pm
-        </a>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center', marginTop: 20, zIndex: 10 }}>
+          <a className="hero-tollfree" href="tel:+918100448052" style={{ textDecoration: 'none' }}>
+            📞 +91-8100448052 · Mon–Sat 9am–7pm
+          </a>
+          <button 
+            type="button"
+            className="bh-btn bh-btn-primary"
+            onClick={onOpenRfq}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 14,
+              fontWeight: 900,
+              letterSpacing: '0.10em',
+              textTransform: 'uppercase',
+              padding: '12px 24px',
+              borderRadius: 999,
+              boxShadow: '0 4px 18px -4px hsla(151, 56%, 24%, 0.35)',
+              cursor: 'pointer',
+              border: 0
+            }}
+          >
+            💼 Open Inquiry Basket
+          </button>
+          <a 
+            href="https://www.indiamart.com/balajihardwareagrico/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 14,
+              fontWeight: 900,
+              letterSpacing: '0.10em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '12px 24px',
+              borderRadius: 999,
+              border: '1px solid rgba(0, 122, 110, 0.3)',
+              background: 'rgba(0, 122, 110, 0.06)',
+              color: '#007a6e',
+              cursor: 'pointer',
+              boxShadow: '0 4px 12px -4px rgba(0, 122, 110, 0.15)'
+            }}
+          >
+            Verified on IndiaMART ↗
+          </a>
+        </div>
+
+        {/* Dynamic Premium B2B Trust Bar */}
+        <div 
+          style={{
+            marginTop: 48,
+            width: '100%',
+            maxWidth: 1400,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            background: 'rgba(255, 255, 255, 0.55)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            border: '1px solid var(--border-soft)',
+            borderRadius: 'var(--radius-xl, 20px)',
+            padding: '18px 24px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: 20,
+            boxShadow: 'var(--shadow-hair)',
+            zIndex: 5
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left' }}>
+            <span style={{ fontSize: 20, color: 'var(--accent)' }}>🏆</span>
+            <div>
+              <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>30+ Years Legacy</h4>
+              <p style={{ margin: '2px 0 0 0', fontSize: 11, color: 'var(--text-mute)' }}>Manufacturing &amp; distribution excellence.</p>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 20 }} className="bento-divider">
+            <span style={{ fontSize: 20, color: 'var(--accent)' }}>🚛</span>
+            <div>
+              <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Pan-India Logistics</h4>
+              <p style={{ margin: '2px 0 0 0', fontSize: 11, color: 'var(--text-mute)' }}>Timely delivery &amp; reliable supply network.</p>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', borderLeft: '1px solid var(--border-soft)', paddingLeft: 20 }} className="bento-divider">
+            <span style={{ fontSize: 20, color: 'var(--accent)' }}>🛡️</span>
+            <div>
+              <h4 style={{ margin: 0, fontSize: 13, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-title)' }}>Verified B2B Compliance</h4>
+              <p style={{ margin: '2px 0 0 0', fontSize: 11, color: 'var(--text-mute)' }}>GST Compliant Enterprise &amp; MSME credentials.</p>
+            </div>
+          </div>
+        </div>
       </section>
+
 
       {/* ══════════════════════════════════════════════════════════════
           ACT 2 — INFINITE PRODUCT MARQUEE (100vh snap target)
@@ -551,26 +1245,108 @@ export default function LandingView({
           ══════════════════════════════════════════════════════════════ */}
       <section className="bento-act act-snap" data-act="3">
 
-        <div className="bento-act-rail">
-          <form className="cmd-search" onSubmit={handleSearch} role="search">
-            <input
-              className="cmd-search-input"
-              data-testid="catalog-search-input"
-              type="text"
-              placeholder="Search chain link, membranes, mesh, shade nets…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              aria-label="Search products"
-            />
-            <button
-              type="submit"
-              className="cmd-search-ai"
-              data-testid="ai-search-toggle"
-              aria-label="Ask the Balaji Sourcing AI"
-            >
-              Ask AI
-            </button>
-          </form>
+        <div className="bento-act-rail" style={{ position: 'relative', width: '100%', alignItems: 'center' }}>
+          <div ref={searchContainerRef} style={{ position: 'relative', width: '100%', maxWidth: 720, zIndex: 60 }}>
+            <form className="cmd-search" onSubmit={handleSearch} role="search">
+              <input
+                className="cmd-search-input"
+                data-testid="catalog-search-input"
+                type="text"
+                placeholder="Search chain link, membranes, mesh, shade nets…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={() => query.trim().length >= 2 && setShowDropdown(true)}
+                aria-label="Search products"
+              />
+              <button
+                type="button"
+                className="cmd-search-ai"
+                data-testid="ai-search-toggle"
+                aria-label="Ask the Balaji Sourcing AI"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (typeof onOpenAssistant === 'function') {
+                    onOpenAssistant();
+                  }
+                }}
+              >
+                Ask AI
+              </button>
+            </form>
+
+            {/* Frosted dynamic search dropdown overlay */}
+            {showDropdown && searchResults.length > 0 && (
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 8px)',
+                  left: 0,
+                  right: 0,
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius-lg, 16px)',
+                  boxShadow: 'var(--shadow-lift, 0 20px 40px -12px rgba(10,10,11,0.15))',
+                  maxHeight: 340,
+                  overflowY: 'auto',
+                  padding: '8px 0',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 2,
+                  textAlign: 'left'
+                }}
+              >
+                {searchResults.map(p => {
+                  const displayName = p.prodname || p.name || 'Untitled SKU';
+                  return (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => {
+                        setShowDropdown(false);
+                        go(`#/product/${p.id}`);
+                      }}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 12,
+                        padding: '10px 16px',
+                        background: 'transparent',
+                        border: 0,
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        width: '100%',
+                        transition: 'background 0.15s'
+                      }}
+                      onMouseEnter={e => e.currentTarget.style.background = 'var(--accent-glow)'}
+                      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                    >
+                      {/* Mini icon-thumbnail */}
+                      <div style={{ width: 38, height: 38, background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm, 6px)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                        {p.images?.thumbnail ? (
+                          <img src={`/${p.images.thumbnail}`} alt="" style={{ width: '85%', height: '85%', objectFit: 'contain' }} />
+                        ) : (
+                          <div style={{ width: '100%', height: '100%', background: 'var(--border)' }} />
+                        )}
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                        <span style={{ fontSize: 13, fontWeight: 'bold', color: 'var(--text-title)' }}>
+                          {displayName}
+                        </span>
+                        <span style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--text-mute)', textTransform: 'uppercase', marginTop: 2 }}>
+                          {p.category} · SKU-{String(p.id).slice(-6)}
+                        </span>
+                      </div>
+                      <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', fontWeight: 'bold', color: 'var(--accent)' }}>
+                        {p.specifications?.wholesale_price || '₹150/piece'}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
           <nav className="sector-rail" data-testid="sector-selector" aria-label="Filter by sector">
             {SECTORS.map(s => (
@@ -620,9 +1396,174 @@ export default function LandingView({
       </section>
 
       {/* ══════════════════════════════════════════════════════════════
-          ACT 4 — FAQ + MSME CREDENTIALS FOOTER (100vh snap target)
+          ACT 4 — QUALITY ASSURANCE PRINCIPLE (100vh snap target)
           ══════════════════════════════════════════════════════════════ */}
-      <section className="faq-act act-snap" data-act="4">
+      <section className="qa-act act-snap" data-act="4">
+        <div className="qa-container">
+          {/* Left Side: Dark green box of enterprise standard */}
+          <div className="qa-left-card">
+            <span className="qa-eyebrow qa-eyebrow--gold">ENTERPRISE STANDARD</span>
+            <h3 className="qa-left-title">Rigorous mechanical testing protocols.</h3>
+            
+            <div className="qa-protocols-list">
+              <div className="qa-protocol-item">
+                <div className="qa-protocol-num">01</div>
+                <div>
+                  <h4 className="qa-protocol-title">ZINC MASS TESTING</h4>
+                  <p className="qa-protocol-desc">Continuous chemical verification checks to guarantee standard hot-dip coverage.</p>
+                </div>
+              </div>
+
+              <div className="qa-protocol-item">
+                <div className="qa-protocol-num">02</div>
+                <div>
+                  <h4 className="qa-protocol-title">TENSILE STRENGTH CHECKS</h4>
+                  <p className="qa-protocol-desc">Load limit and elongation validations on reinforcing wire products.</p>
+                </div>
+              </div>
+
+              <div className="qa-protocol-item">
+                <div className="qa-protocol-num">03</div>
+                <div>
+                  <h4 className="qa-protocol-title">HYDROSTATIC RESISTANCE</h4>
+                  <p className="qa-protocol-desc">Extreme waterproofing performance testing for App bitumen tar felts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: Editorial Content + Metric Pillars */}
+          <div className="qa-right-content">
+            <span className="qa-eyebrow qa-eyebrow--green">QUALITY ASSURANCE PRINCIPLE</span>
+            <h2 className="qa-headline">Why contract procurement managers prefer Balaji.</h2>
+            
+            <p className="qa-paragraph">
+              We realize that industrial materials are non-negotiable points of structural integrity. A wire mesh with variable thickness or a waterproofing membrane that cracks under high direct thermal exposure halts major infrastructure projects.
+            </p>
+            <p className="qa-paragraph">
+              Every container load that departs our central West Bengal warehouse undergoes systematic loading verification, conforms completely to global and national HSN standards, and carries comprehensive invoicing compliant with immediate GST input credit claims.
+            </p>
+
+            <div className="qa-metrics-row">
+              <div className="qa-metric-col">
+                <div className="qa-metric-value">24 Hr</div>
+                <div className="qa-metric-label">Dispatch Guarantee</div>
+                <div className="qa-metric-sub">For ready-to-ship catalog standard roll sizes.</div>
+              </div>
+
+              <div className="qa-metric-divider" />
+
+              <div className="qa-metric-col">
+                <div className="qa-metric-value">100%</div>
+                <div className="qa-metric-label">Input Credit Safety</div>
+                <div className="qa-metric-sub">Fully transparent invoicing for commercial accounts.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          ACT 5 — CONNECT TO BULK SALES (100vh snap target)
+          ══════════════════════════════════════════════════════════════ */}
+      <section className="bulk-act act-snap" data-act="5">
+        <div className="bulk-container">
+          <header className="bulk-header">
+            <span className="bulk-eyebrow">CONNECT TO BULK SALES</span>
+            <h2 className="bulk-headline">Submit custom layout requirements</h2>
+            <p className="bulk-sub">Get back within 2 business hours with an integrated quote sheet.</p>
+          </header>
+
+          <div className="bulk-card">
+            <form className="bulk-form" onSubmit={handleBulkSubmit}>
+              <div className="bulk-form-grid">
+                {/* Left side: input fields */}
+                <div className="bulk-form-fields">
+                  <div className="bulk-field">
+                    <label htmlFor="bulk-company" className="bulk-label">COMPANY ENTITY / NAME</label>
+                    <input
+                      id="bulk-company"
+                      type="text"
+                      required
+                      placeholder="e.g., Eastern Infra Projects Ltd."
+                      className="bulk-input"
+                      value={bulkCompany}
+                      onChange={(e) => setBulkCompany(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="bulk-field">
+                    <label htmlFor="bulk-gstin" className="bulk-label">GST IDENTIFICATION NUMBER (GSTIN)</label>
+                    <input
+                      id="bulk-gstin"
+                      type="text"
+                      placeholder="19AAAAA0000A1Z0 (Optional)"
+                      className="bulk-input bulk-input--mono"
+                      value={bulkGstin}
+                      onChange={(e) => setBulkGstin(e.target.value.toUpperCase().slice(0, 15))}
+                    />
+                  </div>
+
+                  <div className="bulk-field">
+                    <label htmlFor="bulk-phone" className="bulk-label">PHONE / WHATSAPP CONTACT</label>
+                    <input
+                      id="bulk-phone"
+                      type="text"
+                      required
+                      placeholder="e.g., +91 98300 98300"
+                      className="bulk-input"
+                      value={bulkPhone}
+                      onChange={(e) => setBulkPhone(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                {/* Right side: specifications textarea */}
+                <div className="bulk-form-textarea-col">
+                  <div className="bulk-field" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    <label htmlFor="bulk-specs" className="bulk-label">DETAILED SPECIFICATIONS &amp; TONNAGES REQUIRED</label>
+                    <textarea
+                      id="bulk-specs"
+                      required
+                      placeholder="Describe chain link mesh dimensions, wire thicknesses, app membrane requirements or custom fabrication quantities needed..."
+                      className="bulk-textarea"
+                      value={bulkSpecs}
+                      onChange={(e) => setBulkSpecs(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bulk-form-action">
+                <button
+                  type="submit"
+                  className="bulk-submit-btn"
+                  disabled={bulkSubmitting}
+                >
+                  {bulkSubmitting ? '⏳ TRANSMITTING...' : '🚀 TRANSMIT REQUISITION SHEET'}
+                </button>
+              </div>
+            </form>
+
+            {bulkSuccess && (
+              <div className="bulk-success-overlay">
+                <div className="bulk-success-content">
+                  <div className="bulk-success-badge">✓</div>
+                  <h3 className="bulk-success-title">Requisition Transmitted</h3>
+                  <p className="bulk-success-desc">
+                    Thank you! Your custom layout specs have been received. Our engineering desk will compile your quote sheet and contact you within 2 business hours.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          ACT 6 — FAQ + MSME CREDENTIALS FOOTER (100vh snap target)
+          ══════════════════════════════════════════════════════════════ */}
+      <section className="faq-act act-snap" data-act="6">
         <header className="faq-act-header">
           <h2 className="faq-heading">Frequently asked by procurement teams</h2>
         </header>
@@ -641,8 +1582,11 @@ export default function LandingView({
         <footer className="editorial-foot">
           <span className="wordmark">BALAJI HARDWARE &amp; AGRICO</span>
           <span className="wordmark-sub">
-            Headquartered in Kolkata GIDC · Plot 14, Aji GIDC Phase II ·
+            Headquartered in Kolkata, Burra Bazar, West Bengal ·
             MSME Registered · GSTIN 19AAAAA0000A1Z5 · ISO 9001:2015
+          </span>
+          <span className="wordmark-sub" style={{ marginTop: 6 }}>
+            Verified TrustSEAL Seller on <a href="https://www.indiamart.com/balajihardwareagrico/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', fontWeight: 700 }}>IndiaMART</a>
           </span>
           <span className="copyright">
             © {new Date().getFullYear()} Balaji Hardware &amp; Agrico. All rights reserved.

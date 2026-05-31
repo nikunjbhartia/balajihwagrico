@@ -67,7 +67,7 @@ export default function SectorSelector({ activeSector = 'all', onSelectSector = 
     <div
       data-testid="sector-selector"
       className="w-full mb-10"
-      style={{ maxWidth: 1240, margin: '0 auto', padding: '0 24px' }}
+      style={{ maxWidth: 1600, margin: '0 auto', padding: '0 24px' }}
     >
       <div
         className="scroll-hide"

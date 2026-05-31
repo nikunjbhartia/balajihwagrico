@@ -323,13 +323,14 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
    ============================================================ */
 
 .landing-shell {
-  height: 100vh;
+  height: calc(100vh - 68px);
+  height: calc(100dvh - 68px);
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  background: var(--canvas);
+  background-color: var(--canvas);
   position: relative;
   scrollbar-width: none;          /* Firefox */
   -ms-overflow-style: none;       /* IE/Edge legacy */
@@ -338,8 +339,10 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
 
 /* ── Universal act primitive — applies to all .act-snap sections ── */
 .act-snap {
-  height: 100vh;
-  min-height: 100vh;
+  height: calc(100vh - 68px);
+  height: calc(100dvh - 68px);
+  min-height: calc(100vh - 68px);
+  min-height: calc(100dvh - 68px);
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -359,9 +362,38 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
 
 /* On very small viewports, allow soft snap so users can read long
    FAQ content without being trapped. */
+/* On mobile/tablet viewports (< 860px), disable rigid 100vh snap-locks
+   to allow natural long-form scrolling. This solves all flow breaking
+   and element clipping issues on small screens! */
 @media (max-width: 860px) {
-  .landing-shell { scroll-snap-type: y proximity; }
-  .act-snap { scroll-snap-stop: normal; }
+  .landing-shell {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: visible !important;
+    scroll-snap-type: none !important;
+    scroll-behavior: smooth !important;
+  }
+  .act-snap {
+    height: auto !important;
+    min-height: auto !important;
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    overflow: visible !important;
+    padding: 80px 20px !important; /* Spacious padding for mobile sections */
+  }
+  
+  /* Specific Mobile adjustments */
+  .hero-band {
+    padding: 120px 20px 80px 20px !important;
+  }
+  .hero-headline {
+    font-size: 34px !important;
+    line-height: 1.2 !important;
+  }
+  .hero-sub {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
 }
 
 /* ============================================================
@@ -372,13 +404,29 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
   text-align: center;
   align-items: center;
   gap: 8px;
-  background: var(--canvas);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-band > * {
-  max-width: 1280px;
+  max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Defensively bypass the 1280px max-width constraint on the canvas
+   to allow the galvanized mesh to span the full viewport width! */
+.hero-band canvas {
+  max-width: none !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  pointer-events: none !important;
 }
 
 .hero-eyebrow {
@@ -762,7 +810,7 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
    bento headline above.
    ============================================================ */
 .bento-act {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 32px 24px 28px;
   gap: 20px;
@@ -1150,7 +1198,7 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
   background:
     radial-gradient(60vw 60vw at 12% 18%, hsla(151, 30%, 90%, 0.45) 0%, transparent 60%),
     radial-gradient(55vw 55vw at 88% 82%, hsla(33,  30%, 92%, 0.45) 0%, transparent 62%),
-    var(--canvas);
+    transparent;
 }
 
 .faq-act-header {
@@ -1347,57 +1395,62 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
    without lock blocks.
    ============================================================ */
 
-/* Top-level PDP route — drives the page scroll.
-   CRITICAL P0 CONTRACT: the triplet `overflow-y: auto; height: auto;
-   scroll-snap-type: none;` MUST be present and !important so the
-   browser's native vertical scroll is unblocked regardless of any
-   inherited rule from `.landing-shell` (which enforces y-mandatory
-   snap on the landing route). */
+/* Top-level PDP route — DOES NOT scroll itself; the WINDOW scrolls.
+   CRITICAL P0 CONTRACT: `overflow: visible` + `height: auto` means
+   the PDP participates in normal document flow and ALL wheel events
+   bubble straight to the window. We must NOT create a nested scroll
+   container anywhere in the PDP subtree, otherwise that container
+   will silently SWALLOW mouse-wheel / trackpad events (a well-known
+   browser behavior: any element with `overflow: auto/scroll` becomes
+   a wheel-event sink, even when it has zero scrollable range).
+
+   This is why keyboard scrolling worked (keyboard targets the
+   document scrolling element) but wheel/trackpad did not. */
 .pv,
 .route-product,
 .product-detail-view {
   display: block;
   width: 100%;
   /* ── unblock browser scrolling (P0 contract) ── */
-  overflow-y: auto !important;     /* standard browser scroll */
-  overflow-x: hidden;
-  height: auto !important;         /* never lock to a fixed viewport */
+  overflow: visible !important;       /* both axes — no wheel-sink */
+  height: auto !important;            /* never lock to a fixed viewport */
+  max-height: none !important;
   scroll-snap-type: none !important;  /* opt-out of any inherited snap */
   /* ── geometry & polish ── */
   min-height: 100vh;
-  max-height: none;
   scroll-snap-align: none;
   scroll-snap-stop: normal;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
+  /* NOTE: overscroll-behavior intentionally OMITTED — it only matters
+     on actual scroll containers and we are not one. */
   padding: clamp(20px, 3vw, 48px) clamp(16px, 3vw, 40px) 96px;
   background: var(--canvas);
   position: relative;
   isolation: isolate;
 }
 
-/* Any nested section/article/header inside the PDP must NOT lock
-   the viewport. Photos, specs, bento, configurators — all of them
-   flow naturally and can be reached by a normal scroll gesture. */
+/* Any nested section/article/header/div inside the PDP must NOT
+   become a scroll container. `overflow: visible` keeps wheel events
+   bubbling up to the window where the document actually scrolls. */
 .pv section,
 .pv article,
 .pv > header,
 .pv > div,
 .route-product section,
 .route-product article,
+.route-product > div,
 .product-detail-view section,
 .product-detail-view article,
+.product-detail-view > div,
 .pv-gallery-grid,
 .pv-buy-module,
 .pv-specs,
 .pv-bento,
 .pv-related {
-  overflow-y: auto;
-  overflow-x: visible;
-  height: auto;
-  max-height: none;
-  scroll-snap-type: none;
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  scroll-snap-type: none !important;
   scroll-snap-align: none;
   scroll-snap-stop: normal;
 }
@@ -1460,3 +1513,1070 @@ body { overflow: hidden; }   /* the landing-shell owns the scroll */
     position: static;
   }
 }
+
+/* ============================================================
+   5. PREMIUM B2B RFQ & AI ASSISTANT DRAWER STYLING
+   ============================================================ */
+
+/* Root wrapper - overlays entire viewport, hidden by default */
+.rfq-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.4s;
+}
+
+.rfq-drawer-root.is-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Backdrop scrim - blurs background and fades in */
+.rfq-drawer-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 11, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.rfq-drawer-root.is-open .rfq-drawer-scrim {
+  opacity: 1;
+}
+
+/* Drawer panel - slides out from right side */
+.rfq-drawer-panel {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 100%;
+  background: var(--card, #ffffff);
+  box-shadow: -8px 0 40px rgba(10, 10, 11, 0.08), 0 0 0 1px var(--border);
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+}
+
+.rfq-drawer-root.is-open .rfq-drawer-panel {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Drawer Header - macOS elegant window header */
+.rfq-drawer-header {
+  padding: 20px 24px;
+  background: var(--card, #ffffff);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 0 0 auto;
+}
+
+/* macOS Traffic lights */
+.rfq-drawer-traffic {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rfq-traffic {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.rfq-traffic--close {
+  background: #ff5f56;
+  border: 0.5px solid #e0443e;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.rfq-traffic--close:hover {
+  opacity: 0.8;
+}
+
+.rfq-traffic--min {
+  background: #ffbd2e;
+  border: 0.5px solid #dea123;
+}
+
+.rfq-traffic--max {
+  background: #27c93f;
+  border: 0.5px solid #1aab29;
+}
+
+.rfq-drawer-titleblock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rfq-drawer-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+.rfq-drawer-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-title);
+  margin: 0;
+}
+
+.rfq-drawer-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.rfq-count-num {
+  font-weight: 900;
+}
+
+.rfq-count-lbl {
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+/* Scrollable body */
+.rfq-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--canvas);
+}
+
+/* Section containers */
+.rfq-section {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 20px;
+  box-shadow: var(--shadow-hair);
+}
+
+.rfq-section--totals {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border);
+}
+
+.rfq-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.rfq-section-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--text-title);
+  margin: 0;
+}
+
+.rfq-link-btn {
+  background: none;
+  border: none;
+  color: var(--text-mute);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  padding: 0;
+}
+
+.rfq-link-btn:hover {
+  color: var(--accent);
+}
+
+/* Empty state */
+.rfq-empty {
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-mute);
+}
+
+.rfq-empty-mark {
+  color: var(--text-faint);
+}
+
+.rfq-empty-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--text-title);
+  margin: 0;
+}
+
+.rfq-empty-sub {
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 28ch;
+  margin: 0;
+}
+
+/* Basket List */
+.rfq-basket-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rfq-basket-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.rfq-basket-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rfq-basket-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--canvas);
+  flex: 0 0 64px;
+}
+
+.rfq-basket-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rfq-basket-thumb-fallback {
+  width: 100%;
+  height: 100%;
+  background: var(--card-inset);
+}
+
+.rfq-basket-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rfq-basket-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-title);
+  line-height: 1.3;
+}
+
+.rfq-basket-sku {
+  font-size: 11px;
+  color: var(--text-mute);
+}
+
+.rfq-basket-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.rfq-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  background: var(--card-inset);
+  color: var(--text-body);
+  border-radius: 6px;
+  border: 1px solid var(--border-soft);
+}
+
+.rfq-chip--shade {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(21, 128, 61, 0.12);
+}
+
+.rfq-basket-pricing {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-mute);
+  margin-top: 4px;
+}
+
+.rfq-tier-label {
+  font-weight: 500;
+}
+
+.rfq-tier-price {
+  font-weight: 700;
+  color: var(--text-body);
+}
+
+.rfq-tier-sep {
+  color: var(--text-faint);
+}
+
+.rfq-tier-qty {
+  font-size: 11px;
+}
+
+.rfq-basket-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: right;
+}
+
+.rfq-line-total {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.rfq-remove-btn {
+  background: none;
+  border: none;
+  color: var(--text-mute);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.rfq-remove-btn:hover {
+  color: #ef4444;
+}
+
+/* Totals block */
+.rfq-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.rfq-totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+
+.rfq-totals-row dt {
+  margin: 0;
+}
+
+.rfq-totals-row dd {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text-body);
+}
+
+.rfq-totals-row--grand {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--text-title);
+}
+
+.rfq-totals-row--grand dt {
+  font-weight: 900;
+}
+
+.rfq-totals-row--grand dd {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.rfq-mono {
+  font-family: var(--font-mono);
+}
+
+/* B2B Button and input styles */
+.rfq-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  outline: none;
+  font-size: 13px;
+  background: var(--card, #ffffff);
+  color: var(--text-title);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.rfq-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.rfq-input.is-invalid {
+  border-color: #ef4444;
+}
+
+.rfq-input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.bh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 24px;
+  border-radius: var(--r-md);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bh-btn-primary {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.2);
+}
+
+.bh-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(21, 128, 61, 0.28);
+}
+
+.bh-btn-primary:disabled {
+  background: var(--border);
+  color: var(--text-mute);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .bento-divider {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* ============================================================
+   UNLOCKED BODY/SHELL LAYOUT FOR PRODUCT & CATEGORY VIEWS
+   ─────────────────────────────────────────────────────────────
+   The default base rules (line ~100) intentionally pin html/body to
+   100% height and `body { overflow: hidden }` so the landing route's
+   `.landing-shell` can own the scroll-snap container. On the PDP /
+   category routes that lock has to be FULLY released — every ancestor
+   from <html> down to .app-viewport must allow natural document flow
+   AND must NOT introduce its own scroll container (which would steal
+   wheel events). `overflow: visible` everywhere guarantees that
+   mouse-wheel / trackpad gestures travel all the way up to the root
+   scrolling element (the documentElement) where they actually scroll
+   the page.
+   ============================================================ */
+html[data-route="product"],
+html[data-route="category"] {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;        /* <html> is the scroller */
+  scroll-snap-type: none !important;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: auto;        /* allow normal chaining */
+}
+
+body[data-route="product"],
+body[data-route="category"] {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow: visible !important;       /* DO NOT create a scroll sink */
+  scroll-snap-type: none !important;
+  position: static !important;
+  touch-action: auto !important;
+}
+
+html[data-route="product"] .app-shell,
+html[data-route="category"] .app-shell,
+body[data-route="product"] .app-shell,
+body[data-route="category"] .app-shell {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;       /* shell must not capture wheel */
+  position: relative !important;
+  touch-action: auto !important;
+}
+
+html[data-route="product"] .app-viewport,
+html[data-route="category"] .app-viewport,
+body[data-route="product"] .app-viewport,
+body[data-route="category"] .app-viewport {
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;       /* viewport must not capture wheel */
+  touch-action: auto !important;
+}
+
+html[data-route="product"] #root,
+html[data-route="category"] #root,
+body[data-route="product"] #root,
+body[data-route="category"] #root {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow: visible !important;
+}
+
+/* The aurora backdrop is `position: fixed; pointer-events: none;`
+   which is correct, but defensively re-assert it for the PDP so no
+   regression can turn it into a wheel-event blocker. */
+html[data-route="product"] .app-aurora,
+body[data-route="product"] .app-aurora,
+html[data-route="category"] .app-aurora,
+body[data-route="category"] .app-aurora {
+  pointer-events: none !important;
+}
+
+/* The route-product wrapper that DynamicCatalog renders with inline
+   `minHeight: calc(100vh - 68px)` — make doubly sure it never gets
+   an overflow lock from elsewhere in the cascade. */
+[data-testid="route-product"],
+[data-testid="route-category"] {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  touch-action: auto !important;
+}
+
+/* ============================================================
+   2D. ACT 4 — QUALITY ASSURANCE PRINCIPLE
+   ============================================================ */
+.qa-act {
+  background-color: var(--canvas);
+}
+
+.qa-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  gap: 48px;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.qa-left-card {
+  background-color: hsl(151, 56%, 12%);
+  border-radius: 24px;
+  padding: 48px 36px;
+  color: #ffffff;
+  box-shadow: var(--shadow-slab);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Grid dotted pattern background inside the green card */
+.qa-left-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.qa-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.qa-eyebrow--gold {
+  color: var(--brass-gold);
+}
+
+.qa-eyebrow--green {
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.qa-left-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.qa-protocols-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 12px;
+}
+
+.qa-protocol-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.qa-protocol-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 6px 10px;
+  line-height: 1;
+  text-align: center;
+  min-width: 20px;
+}
+
+.qa-protocol-title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.qa-protocol-desc {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.qa-right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.qa-headline {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-title);
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
+}
+
+.qa-paragraph {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-body);
+  margin: 0 0 18px 0;
+}
+
+.qa-metrics-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.qa-metric-col {
+  flex: 1;
+}
+
+.qa-metric-value {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.qa-metric-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--text-title);
+  margin-bottom: 4px;
+}
+
+.qa-metric-sub {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--text-mute);
+  line-height: 1.4;
+}
+
+.qa-metric-divider {
+  width: 1px;
+  height: 64px;
+  background-color: var(--border);
+  align-self: center;
+}
+
+/* ============================================================
+   2E. ACT 5 — CONNECT TO BULK SALES
+   ============================================================ */
+.bulk-act {
+  background-color: var(--canvas);
+}
+
+.bulk-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.bulk-header {
+  text-align: center;
+}
+
+.bulk-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.bulk-headline {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-title);
+  margin: 0 0 8px 0;
+}
+
+.bulk-sub {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+.bulk-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--shadow-luxe);
+  position: relative;
+  overflow: hidden;
+}
+
+.bulk-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.bulk-form-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 36px;
+}
+
+.bulk-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bulk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bulk-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+
+.bulk-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  font-size: 13px;
+  background-color: #ffffff;
+  color: var(--text-title);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.bulk-input--mono {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.bulk-input:focus,
+.bulk-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.bulk-textarea {
+  width: 100%;
+  flex: 1;
+  min-height: 180px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  font-size: 13px;
+  background-color: #ffffff;
+  color: var(--text-title);
+  resize: none;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.bulk-form-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.bulk-submit-btn {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 32px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 16px -4px hsla(151, 56%, 24%, 0.35);
+  transition: all 0.2s;
+}
+
+.bulk-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -4px hsla(151, 56%, 24%, 0.45);
+  background-color: hsl(151, 56%, 20%);
+}
+
+.bulk-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Success Overlay */
+.bulk-success-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.98);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 40px;
+  animation: fadeIn 0.3s ease;
+}
+
+.bulk-success-content {
+  text-align: center;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.bulk-success-badge {
+  width: 56px;
+  height: 56px;
+  background: var(--accent);
+  color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 14px rgba(151, 56, 24, 0.25);
+}
+
+.bulk-success-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-title);
+  margin: 0;
+}
+
+.bulk-success-desc {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-mute);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive overrides for QA and Bulk acts */
+@media (max-width: 1024px) {
+  .qa-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 32px 24px;
+  }
+  .qa-left-card {
+    padding: 36px 28px;
+  }
+  .qa-headline {
+    font-size: 36px;
+  }
+  .bulk-container {
+    max-width: 100%;
+    padding: 32px 24px;
+  }
+  .bulk-card {
+    padding: 28px;
+  }
+  .bulk-form-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .bulk-textarea {
+    min-height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .qa-metric-divider {
+    display: none;
+  }
+  .qa-metrics-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .qa-metric-value {
+    font-size: 38px;
+  }
+}
+
+/* ── Responsive Shell Header Navigation ── */
+.shell-nav {
+  display: flex !important;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .shell-nav {
+    display: none !important;
+  }
+}
+
+
+
+

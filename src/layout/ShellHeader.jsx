@@ -9,7 +9,9 @@ export default function ShellHeader({
   inquiryCount = 0, 
   onOpenRfq, 
   onOpenAssistant, 
-  activeView = 'landing' 
+  activeView = 'landing',
+  activeAct = 1,
+  onNavigateToAct = () => {}
 }) {
   const { language, setLanguage, t } = useLanguage();
 
@@ -33,9 +35,9 @@ export default function ShellHeader({
     >
       <div 
         style={{ 
-          maxWidth: 1240, 
+          maxWidth: 1600, 
           margin: '0 auto', 
-          padding: '14px 24px', 
+          padding: '14px 48px', 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'space-between',
@@ -45,45 +47,128 @@ export default function ShellHeader({
         
         {/* LEFT: Typographic Brandmark */}
         <button 
-          onClick={() => navigate('#/')} 
+          onClick={() => onNavigateToAct(1)} 
           style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', outline: 'none' }}
         >
           <Wordmark height={34} />
         </button>
 
         {/* CENTER: Clean Spacious Navigation Links */}
-        <nav style={{ display: 'none', gap: 8 }} className="md:flex">
+        <nav className="shell-nav">
           <button 
-            onClick={() => navigate('#/')}
-            className="bh-btn bh-btn-ghost"
+            onClick={() => onNavigateToAct(2)}
+            className={`bh-btn bh-btn-ghost ${activeView === 'landing' && activeAct === 2 ? 'is-active' : ''}`}
             style={{
               padding: '8px 16px',
               fontSize: 13,
-              borderColor: activeView === 'landing' ? 'hsl(240, 6%, 5%)' : 'transparent',
-              background: activeView === 'landing' ? '#FFFFFF' : 'transparent',
-              fontWeight: 'bold'
+              border: 'none',
+              background: 'transparent',
+              color: activeView === 'landing' && activeAct === 2 ? T.accent : 'var(--text-body)',
+              fontWeight: activeView === 'landing' && activeAct === 2 ? '900' : '500',
+              position: 'relative',
+              transition: 'all 0.2s',
+              cursor: 'pointer'
             }}
           >
-            <Store size={14} />
-            {language === 'hi' ? 'उत्पाद शोरूम' : language === 'bn' ? 'পণ্য শোরুম' : 'Solutions Showroom'}
+            {language === 'hi' ? 'फ्लैगशिप उत्पाद' : language === 'bn' ? 'ফ্ল্যাগশিপ পণ্য' : 'Flagship Products'}
+            {activeView === 'landing' && activeAct === 2 && (
+              <span style={{
+                position: 'absolute',
+                bottom: -4,
+                left: 16,
+                right: 16,
+                height: 2,
+                background: T.accent,
+                borderRadius: 999,
+              }} />
+            )}
           </button>
 
           <button 
-            onClick={onOpenRfq}
-            className="bh-btn bh-btn-ghost"
-            style={{ padding: '8px 16px', fontSize: 13, borderColor: 'transparent' }}
+            onClick={() => onNavigateToAct(3)}
+            className={`bh-btn bh-btn-ghost ${activeView === 'landing' && activeAct === 3 ? 'is-active' : ''}`}
+            style={{
+              padding: '8px 16px',
+              fontSize: 13,
+              border: 'none',
+              background: 'transparent',
+              color: activeView === 'landing' && activeAct === 3 ? T.accent : 'var(--text-body)',
+              fontWeight: activeView === 'landing' && activeAct === 3 ? '900' : '500',
+              position: 'relative',
+              transition: 'all 0.2s',
+              cursor: 'pointer'
+            }}
           >
-            <Calculator size={14} />
-            {t('navCalculator')}
+            {language === 'hi' ? 'सेक्टर्स और ग्रिड' : language === 'bn' ? 'সেক্টর ও গ্রিড' : 'Sectors & Grid'}
+            {activeView === 'landing' && activeAct === 3 && (
+              <span style={{
+                position: 'absolute',
+                bottom: -4,
+                left: 16,
+                right: 16,
+                height: 2,
+                background: T.accent,
+                borderRadius: 999,
+              }} />
+            )}
           </button>
 
           <button 
-            onClick={onOpenAssistant}
-            className="bh-btn bh-btn-ghost"
-            style={{ padding: '8px 16px', fontSize: 13, borderColor: 'transparent', color: T.accent }}
+            onClick={() => onNavigateToAct(4)}
+            className={`bh-btn bh-btn-ghost ${activeView === 'landing' && activeAct === 4 ? 'is-active' : ''}`}
+            style={{
+              padding: '8px 16px',
+              fontSize: 13,
+              border: 'none',
+              background: 'transparent',
+              color: activeView === 'landing' && activeAct === 4 ? T.accent : 'var(--text-body)',
+              fontWeight: activeView === 'landing' && activeAct === 4 ? '900' : '500',
+              position: 'relative',
+              transition: 'all 0.2s',
+              cursor: 'pointer'
+            }}
           >
-            <Sparkles size={14} />
-            {t('navChat')}
+            {language === 'hi' ? 'एंटरप्राइज विरासत' : language === 'bn' ? 'এন্টারপ্রাইজ ঐতিহ্য' : 'Enterprise Legacy'}
+            {activeView === 'landing' && activeAct === 4 && (
+              <span style={{
+                position: 'absolute',
+                bottom: -4,
+                left: 16,
+                right: 16,
+                height: 2,
+                background: T.accent,
+                borderRadius: 999,
+              }} />
+            )}
+          </button>
+
+          <button 
+            onClick={() => onNavigateToAct(5)}
+            className={`bh-btn bh-btn-ghost ${activeView === 'landing' && activeAct === 5 ? 'is-active' : ''}`}
+            style={{
+              padding: '8px 16px',
+              fontSize: 13,
+              border: 'none',
+              background: 'transparent',
+              color: activeView === 'landing' && activeAct === 5 ? T.accent : 'var(--text-body)',
+              fontWeight: activeView === 'landing' && activeAct === 5 ? '900' : '500',
+              position: 'relative',
+              transition: 'all 0.2s',
+              cursor: 'pointer'
+            }}
+          >
+            {language === 'hi' ? 'थोक ऑर्डर' : language === 'bn' ? 'পাইকারি অর্ডার' : 'Contact Specs'}
+            {activeView === 'landing' && activeAct === 5 && (
+              <span style={{
+                position: 'absolute',
+                bottom: -4,
+                left: 16,
+                right: 16,
+                height: 2,
+                background: T.accent,
+                borderRadius: 999,
+              }} />
+            )}
           </button>
         </nav>
 
@@ -115,6 +200,37 @@ export default function ShellHeader({
             <span style={{ textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               {language === 'en' ? 'English' : language === 'hi' ? 'हिंदी' : 'বাংলা'}
             </span>
+          </button>
+
+          {/* AI Sourcing Trigger Button */}
+          <button
+            onClick={onOpenAssistant}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '8px 14px',
+              borderRadius: 999,
+              border: '1px solid rgba(27, 94, 63, 0.15)',
+              background: 'rgba(27, 94, 63, 0.05)',
+              cursor: 'pointer',
+              fontSize: 12,
+              fontWeight: 'bold',
+              color: 'hsl(151, 56%, 24%)',
+              transition: 'all 0.2s',
+              boxShadow: T.shadowSm
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(27, 94, 63, 0.1)';
+              e.currentTarget.style.borderColor = 'rgba(27, 94, 63, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(27, 94, 63, 0.05)';
+              e.currentTarget.style.borderColor = 'rgba(27, 94, 63, 0.15)';
+            }}
+          >
+            <Sparkles size={14} style={{ color: 'hsl(151, 56%, 24%)' }} />
+            <span className="hidden md:inline">AI Sourcing</span>
           </button>
 
           {/* Inquiry Basket Counter Button */}

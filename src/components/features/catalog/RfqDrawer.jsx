@@ -136,7 +136,7 @@ const RfqDrawer = ({
             method: 'POST',
             mode: 'no-cors', // Bypasses redirect CORS preflights commonly returned by Google Script redirects
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'text/plain',
             },
             body: JSON.stringify(payload),
           });
@@ -192,6 +192,104 @@ const RfqDrawer = ({
     ]
   );
 
+  const handleWhatsAppSubmit = useCallback(
+    async (e) => {
+      if (e) e.preventDefault();
+      if (!formReady || submitting) return;
+      setSubmitting(true);
+
+      const payload = {
+        gstin,
+        companyName,
+        contactName,
+        contactPhone,
+        deliveryPincode,
+        notes,
+        inquiry,
+        totals,
+      };
+
+      // 1. Submit to Google Sheets in the background (non-blocking)
+      try {
+        const endpoint = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+        if (endpoint && !endpoint.includes("placeholder")) {
+          await fetch(endpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain',
+            },
+            body: JSON.stringify(payload),
+          });
+        }
+      } catch (error) {
+        console.error("Background Sheets Save Error:", error);
+      }
+
+      // 2. Construct formatted WhatsApp B2B inquiry message
+      const number = "918100448052";
+      
+      let itemLines = "";
+      inquiry.forEach((item, idx) => {
+        const specText = item.specifications 
+          ? `brand: ${item.specifications.brand || 'Balaji'}, price: ${item.specifications.wholesale_price || 'RFQ'}`
+          : 'Standard specs';
+        itemLines += `${idx + 1}. *${item.prodname || item.name}* (ID: ${item.id})\n   Specs: ${specText}\n`;
+      });
+
+      const text = `*BALAJI HARDWARE & AGRICO — B2B Inquiry*\n\n` +
+        `*Company:* ${companyName}\n` +
+        `*GSTIN:* ${gstin}\n` +
+        `*Contact:* ${contactName}\n` +
+        `*Phone:* ${contactPhone}\n` +
+        `*Delivery Pincode:* ${deliveryPincode}\n` +
+        `*Notes:* ${notes || 'None'}\n\n` +
+        `*Items Requested:*\n${itemLines}\n` +
+        `*Total Line Items:* ${totals.lineCount}\n\n` +
+        `Please send us the B2B proforma invoice with verified 18% GST tax and freight estimation.`;
+
+      const encodedText = encodeURIComponent(text);
+      const waUrl = `https://api.whatsapp.com/send?phone=${number}&text=${encodedText}`;
+
+      // Redirect to WhatsApp Web / App in a new tab
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      // Show success view
+      setSubmitting(false);
+      setVerified(true);
+
+      window.setTimeout(() => {
+        onClearInquiry();
+      }, 1500);
+
+      window.setTimeout(() => {
+        setGstin('');
+        setTouched(false);
+        setCompanyName('');
+        setContactName('');
+        setContactPhone('');
+        setDeliveryPincode('');
+        setNotes('');
+        setVerified(false);
+        onClose();
+      }, 2600);
+    },
+    [
+      formReady,
+      submitting,
+      gstin,
+      companyName,
+      contactName,
+      contactPhone,
+      deliveryPincode,
+      notes,
+      inquiry,
+      totals,
+      onClearInquiry,
+      onClose,
+    ]
+  );
+
   const tokenStyle = tokens && typeof tokens === 'object' ? tokens : undefined;
 
   return (
@@ -216,29 +314,42 @@ const RfqDrawer = ({
         aria-modal="true"
         aria-labelledby="rfq-drawer-title"
       >
-        <header className="rfq-drawer-header">
-          <div className="rfq-drawer-traffic" aria-hidden="true">
-            <button
-              type="button"
-              className="rfq-traffic rfq-traffic--close"
-              onClick={onClose}
-              tabIndex={open ? 0 : -1}
-              aria-label="Close"
-            />
-            <span className="rfq-traffic rfq-traffic--min" />
-            <span className="rfq-traffic rfq-traffic--max" />
-          </div>
+        <header className="rfq-drawer-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px 20px 24px', borderBottom: '1px solid var(--border-soft)', position: 'relative' }}>
           <div className="rfq-drawer-titleblock">
-            <p className="rfq-drawer-eyebrow">B2B Proforma · Wholesale Inquiry</p>
-            <h2 id="rfq-drawer-title" className="rfq-drawer-title">
+            <p className="rfq-drawer-eyebrow" style={{ margin: 0, color: 'var(--accent)' }}>B2B Proforma · Wholesale Inquiry</p>
+            <h2 id="rfq-drawer-title" className="rfq-drawer-title" style={{ margin: '4px 0 0 0' }}>
               Request for Quotation
             </h2>
           </div>
-          <div className="rfq-drawer-count" aria-live="polite">
-            <span className="rfq-count-num">{totals.lineCount}</span>
-            <span className="rfq-count-lbl">
-              {totals.lineCount === 1 ? 'line item' : 'line items'}
-            </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div className="rfq-drawer-count" aria-live="polite" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
+              <span className="rfq-count-num" style={{ fontSize: 16, fontWeight: 900 }}>{totals.lineCount}</span>
+              <span className="rfq-count-lbl" style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-mute)' }}>
+                {totals.lineCount === 1 ? 'item' : 'items'}
+              </span>
+            </div>
+            <button
+              type="button"
+              className="rfq-close-btn"
+              onClick={onClose}
+              tabIndex={open ? 0 : -1}
+              aria-label="Close inquiry drawer"
+              style={{
+                background: 'var(--surface-2, #F4F4F0)',
+                border: 'none',
+                width: 36,
+                height: 36,
+                borderRadius: '50%',
+                display: 'grid',
+                placeItems: 'center',
+                fontSize: 16,
+                color: 'var(--text-body)',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              ✕
+            </button>
           </div>
         </header>
 
@@ -453,14 +564,44 @@ const RfqDrawer = ({
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="bh-btn bh-btn-primary"
-                  disabled={!formReady || submitting}
-                  style={{ width: '100%', justifyContent: 'center', height: 48, textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 13, borderRadius: 'var(--radius-md)', marginTop: 12 }}
-                >
-                  {submitting ? 'Verifying…' : 'Submit RFQ Inquiry'}
-                </button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 12 }}>
+                  <button
+                    type="submit"
+                    className="bh-btn bh-btn-primary"
+                    disabled={!formReady || submitting}
+                    style={{ width: '100%', justifyContent: 'center', height: 48, textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 13, borderRadius: 'var(--radius-md)' }}
+                  >
+                    {submitting ? 'Verifying…' : 'Submit RFQ Inquiry'}
+                  </button>
+                  <button
+                    type="button"
+                    className="bh-btn"
+                    disabled={!formReady || submitting}
+                    onClick={handleWhatsAppSubmit}
+                    style={{
+                      width: '100%',
+                      justifyContent: 'center',
+                      height: 48,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      fontSize: 13,
+                      borderRadius: 'var(--radius-md)',
+                      background: '#25D366',
+                      color: '#ffffff',
+                      border: 'none',
+                      fontWeight: 900,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 8,
+                      cursor: submitting ? 'not-allowed' : 'pointer',
+                      boxShadow: '0 4px 12px rgba(37, 211, 102, 0.25)',
+                      opacity: submitting ? 0.7 : 1
+                    }}
+                  >
+                    {submitting ? '⏳ Preparing Inquiry...' : '💬 Inquire via WhatsApp'}
+                  </button>
+                </div>
               </form>
             </section>
           )}
@@ -472,7 +613,7 @@ const RfqDrawer = ({
               <div style={{ width: 56, height: 56, background: 'var(--accent)', color: '#FFF', borderRadius: '50%', display: 'grid', placeItems: 'center', margin: '0 auto', fontSize: 22 }}>✓</div>
               <p className="font-serif" style={{ fontSize: 20, color: 'var(--text-title)', margin: 0 }}>Inquiry verified</p>
               <p style={{ fontSize: 13, color: 'var(--text-mute)', margin: 0, lineHeight: 1.5 }}>
-                Your wholesale proforma inquiry has been queued successfully. We will contact you within 10 minutes!
+                Your wholesale proforma inquiry has been queued successfully. We will contact you soon!
               </p>
             </div>
           </div>

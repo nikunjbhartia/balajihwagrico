@@ -14,59 +14,48 @@ export default function Wordmark({ height = 46, activeColor = 'hsl(151, 56%, 24%
       style={{ display: 'flex', alignItems: 'center', gap: 14 }}
       className="select-none"
     >
-      {/* ============ Bespoke Monogram (Steel Wire Loop + Leaf Vein) ============ */}
       <svg
-        width={46}
-        height={46}
-        viewBox="0 0 40 40"
+        width={height}
+        height={height}
+        viewBox="0 0 120 120"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{ flexShrink: 0, display: 'block' }}
         aria-hidden="true"
       >
-        {/* Outer solid steel-wire ring (thicker, full opacity) */}
+        {/* Stylized thin circular boundary - responsive to color styles */}
         <circle
-          cx="20"
-          cy="20"
-          r="17.5"
-          stroke="hsl(240, 6%, 5%)"
-          strokeWidth="3.25"
-          opacity="0.95"
-        />
-        {/* Accent arc — forest-emerald quadrant */}
-        <circle
-          cx="20"
-          cy="20"
-          r="17.5"
+          cx="60"
+          cy="60"
+          r="48"
           stroke={activeColor}
-          strokeWidth="3.25"
-          strokeLinecap="round"
-          strokeDasharray="48 120"
-          style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }}
+          strokeWidth="4"
+          fill="none"
         />
-
-        {/* Bold leaf vein — agricultural heritage */}
+        
+        {/* Serif-style B letter path */}
         <path
-          d="M11 29C11 29 15 21 20 20C25 19 29 11 29 11"
-          stroke="hsl(240, 6%, 5%)"
-          strokeWidth="3.75"
-          strokeLinecap="round"
+          d="M28,80 L28,40 C28,40 35,39 39,43 C43,47 42,54 37,57 C43,59 44,69 39,74 C34,79 28,80 28,80 Z M35,53 L35,46 C37,46 38,48 38,50 C38,52 37,53 35,53 Z M35,73 L35,60 C37,60 38,62 38,66 C38,70 37,73 35,73 Z"
+          fill="hsl(240, 6%, 5%)"
         />
+        
+        {/* Serif-style H letter path (tall, prominent) */}
         <path
-          d="M20 20C22 16 26 15 26 15"
-          stroke={activeColor}
-          strokeWidth="3.25"
-          strokeLinecap="round"
+          d="M46,80 L46,40 L52,40 L52,56 L66,56 L66,40 L72,40 L72,80 L66,80 L66,62 L52,62 L52,80 Z"
+          fill="hsl(240, 6%, 5%)"
         />
+        
+        {/* Serif-style A letter path */}
         <path
-          d="M15 21C15 21 17 24 16 26"
-          stroke="hsl(240, 5%, 26%)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
+          d="M76,80 L85,40 L92,40 L101,80 L94,80 L92,70 L83,70 L81,80 Z M88,49 L84,64 L90,64 Z"
+          fill="hsl(240, 6%, 5%)"
         />
-
-        {/* Industrial brass tip */}
-        <circle cx="29" cy="11" r="3" fill="hsl(33, 39%, 54%)" />
+        
+        {/* Golden horizontal dynamic swoosh cutting across the A crossbar */}
+        <path
+          d="M75,63 Q92,52 108,57 Q92,65 83,65 Z"
+          fill="hsl(33, 39%, 54%)"
+        />
       </svg>
 
       {/* ============ Typographic Brandmark Lettering ============ */}

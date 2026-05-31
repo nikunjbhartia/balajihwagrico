@@ -45,7 +45,19 @@ const handleCalculateFreight = (distanceKm, weightKg) => {
   };
 };
 
-const CategoryView = ({ slug, onAddToInquiry, navigate }) => {
+const CategoryView = ({
+  slug,
+  category: passedCategory,
+  products: passedProducts,
+  tokens,
+  navigate,
+  inquiry,
+  onAddToInquiry,
+  onOpenRfq,
+  onOpenLightbox,
+  getCategoryBenefit,
+  handleCalculateFreight: passedCalculateFreight,
+}) => {
   const go = typeof navigate === 'function' ? navigate : fallbackNavigate;
 
   const allProducts = productsData;
@@ -62,13 +74,13 @@ const CategoryView = ({ slug, onAddToInquiry, navigate }) => {
   }, [allProducts]);
 
   const category = useMemo(
-    () => categories.find((c) => c?.slug === slug) || categories[0] || null,
-    [categories, slug]
+    () => passedCategory || categories.find((c) => c?.slug === slug) || categories[0] || null,
+    [passedCategory, categories, slug]
   );
 
   const products = useMemo(
-    () => allProducts.filter((p) => p?.category_slug === category?.slug),
-    [allProducts, category]
+    () => passedProducts || allProducts.filter((p) => p?.category_slug === category?.slug),
+    [passedProducts, allProducts, category]
   );
 
   const [sortKey, setSortKey] = useState('featured');
@@ -78,6 +90,8 @@ const CategoryView = ({ slug, onAddToInquiry, navigate }) => {
   const [distance, setDistance] = useState('');
   const [weight, setWeight] = useState('');
   const [freightResult, setFreightResult] = useState(null);
+
+
 
   const bannerRef = useRef(null);
   useTilt({ max: 4, perspective: 1400 });
@@ -231,7 +245,12 @@ const CategoryView = ({ slug, onAddToInquiry, navigate }) => {
       className="category-shell"
       data-testid="category-detail-view"
       data-route="route-category"
-      style={{ maxWidth: 1240, margin: '0 auto', padding: '32px 24px 80px' }}
+      style={{
+        maxWidth: 1600,
+        width: '100%',
+        margin: '0 auto',
+        padding: '32px clamp(20px, 4vw, 48px) 96px',
+      }}
     >
       {/* ── Breadcrumbs ─────────────────────────────────────────────── */}
       <nav
@@ -763,25 +782,10 @@ const CategoryView = ({ slug, onAddToInquiry, navigate }) => {
                 >
                   RFQ · On Request
                 </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 14,
-                    fontWeight: 900,
-                    color: 'var(--accent)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 999,
-                    padding: '6px 14px',
-                    background: 'rgba(255,255,255,0.7)',
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Notify Me
-                </span>
               </div>
             </div>
           </article>
+
         ))}
 
         {visibleProducts.length === 0 && (
